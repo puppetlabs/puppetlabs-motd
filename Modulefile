@@ -1,11 +1,8 @@
 name    'puppetlabs-motd'
-version '1.0.0'
-source 'UNKNOWN'
+version '1.0.1'
+source 'git@github.com:puppetlabs/puppetlabs-motd.git'
 author 'puppetlabs'
-license 'UNKNOWN'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
-
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+license 'Apache License, Version 2.0'
+summary 'A simple module to demonstrate managing /etc/motd as a template'
+description 'This module simply manages /etc/motd as a template, showing interpolation of system attributes'
+project_page 'https://github.com/puppetlabs/puppetlabs-motd'
