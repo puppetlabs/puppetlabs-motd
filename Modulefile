@@ -1,5 +1,5 @@
 name    'puppetlabs-motd'
-version '1.0.1'
+version '1.0.2'
 source 'git@github.com:puppetlabs/puppetlabs-motd.git'
 author 'puppetlabs'
 license 'Apache License, Version 2.0'
