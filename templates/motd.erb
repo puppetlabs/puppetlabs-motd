@@ -1,3 +1,4 @@
+<% if @is_virtual %>This machine is virtual using the technology <%= @virtual %> <% else %> This machine is physical <% end %>
 The operating system is <%= @operatingsystem %>
 The free memory is <%= @memoryfree %>
 The domain is <%= @domain %>
