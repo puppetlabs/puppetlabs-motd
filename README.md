@@ -32,6 +32,19 @@ If you would like to change the location of the template:
       template => template('mymodule/mytemplate.erb'),
     }
 
+
+Optional
+--------
+
+motd::register add on motd the module that are enabled.
+Example to use motd::register:
+
+    class apache {
+      include apache::install, apache::config, apache::service
+      motd::register{'Apache': }
+    }
+
+
 Limitations
 ------------
 
