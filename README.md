@@ -29,7 +29,7 @@ MOTD allows you to use the default contents of the template, customize the templ
 If you would like to change the location of the template: 
 
     class { 'motd':
-      template => template('mymodule/mytemplate.erb'),
+      template => 'mymodule/mytemplate.erb',
     }
 
 Limitations
