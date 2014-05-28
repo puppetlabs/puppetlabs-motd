@@ -1,26 +1,7 @@
 {
   "project_page": "https://github.com/puppetlabs/puppetlabs-motd",
   "license": "Apache License, Version 2.0",
-  "source": "git@github.com:puppetlabs/puppetlabs-motd.git",
-  "checksums": {
-    "manifests/README.markdown": "b9970454391883e36b55137328792a55",
-    "files/README.markdown": "3d44458cc68d8513b51e3b56c604eec4",
-    "lib/puppet/parser/functions/README.markdown": "e596ce938864a80fd1e51640cca7f612",
-    "lib/puppet/facter/README.markdown": "145e26334b4d80e48e9e55ba78800579",
-    "spec/README.markdown": "32a1fc0121c28aff554ef5d422b8b51e",
-    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
-    "spec/unit/puppet/provider/README.markdown": "e52668944ee6af2fb5d5b9e798342645",
-    "Modulefile": "24961239921a62834a7a1f4eb0c69d4e",
-    "templates/README.markdown": "aada0a1952329e46b98695349dba6203",
-    "manifests/init.pp": "3641e81d27300f0838eb0856424ef334",
-    "README": "94bd47cdea2f88e9acec6e4634a3bf57",
-    "spec/unit/puppet/type/README.markdown": "de26a7643813abd6c2e7e28071b1ef94",
-    "templates/motd.erb": "024dc0dd716936b02790c2ec282dc8b3",
-    "lib/puppet/type/README.markdown": "34b8c80ba8683afca99f2d28ca7e70b2",
-    "lib/puppet/provider/README.markdown": "3835801d7626dd8d541c4fdf7ca9f3e4",
-    "tests/init.pp": "5086992bfbe4109aef08a6dc91736250",
-    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c"
-  },
+  "source": "https://github.com/puppetlabs/puppetlabs-motd",
   "dependencies": [
 
   ],
@@ -31,5 +12,5 @@
   "summary": "A simple module to demonstrate managing /etc/motd as a template",
   "name": "puppetlabs-motd",
   "author": "puppetlabs",
-  "version": "1.0.1"
+  "version": "1.1.0"
 }
