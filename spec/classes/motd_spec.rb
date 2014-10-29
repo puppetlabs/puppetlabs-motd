@@ -11,7 +11,7 @@ describe 'motd', :type => :class do
     end
     it { should_not contain_file('/etc/motd') }
   end
-  
+
   describe "On Linux - no ::domain" do
     let(:facts) {{
       :kernel => 'Linux',
@@ -35,7 +35,7 @@ describe 'motd', :type => :class do
       :memoryfree      => "1 KB",
       :domain          => "testdomain"
     }}
-    context "When a motd template is not specified" do
+    context "When neither template or source are specified" do
       it { should contain_File('/etc/motd').with(
         :ensure  => 'file',
         :backup  => 'false',
@@ -43,15 +43,38 @@ describe 'motd', :type => :class do
         )
       }
     end
+
+    context 'When both template and source are specified' do
+      let(:params) { {
+        :content => 'Hello!',
+        :template => 'motd/spec.erb',
+      } }
+      it { should contain_File('/etc/motd').with(
+        :ensure  => 'file',
+        :backup  => 'false',
+        :content => "Test Template for Rspec\n"
+        )
+      }
+    end
+
+    context 'When a source is specified' do
+      let(:params) { {:content => 'Hello!' } }
+      it { should contain_File('/etc/motd').with(
+        :ensure  => 'file',
+        :backup  => 'false',
+        :content => "Hello!"
+        )
+      }
+    end
+
     context "When an external template is specified" do
       let(:params) { { :template => 'motd/spec.erb' } }
       it { should contain_File('/etc/motd').with(
         :ensure  => 'file',
         :backup  => 'false',
         :content => "Test Template for Rspec\n"
-        ) 
+        )
       }
-    end   
+    end
   end
 end
-
