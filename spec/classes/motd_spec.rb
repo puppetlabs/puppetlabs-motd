@@ -12,18 +12,19 @@ describe 'motd', :type => :class do
     it { should_not contain_file('/etc/motd') }
   end
   
-  describe "On Linux - no ::domain"
+  describe "On Linux - no ::domain" do
     let(:facts) {{
       :kernel => 'Linux',
       :operatingsystem => 'TestOS',
-      :memoryfree => '1 KB'
+      :memoryfree => '1 KB',
+      :domain => nil,
     }}
     context 'When ::domain is not present and a template has not been specified' do
       it { should contain_File('/etc/motd').with(
         :ensure => 'file',
         :backup => 'false',
-        :content => "The operating system is TestOS\nThe free memory is 1KB\n"
-      )
+        :content => "The operating system is TestOS\nThe free memory is 1 KB\n"
+      )}
     end
   end
 
@@ -52,6 +53,5 @@ describe 'motd', :type => :class do
       }
     end   
   end
-
 end
 
