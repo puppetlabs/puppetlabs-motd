@@ -35,7 +35,7 @@ If you would like to change the location of the template:
 If you would like to provide a static string as the MOTD content you can use the content parameter:
 
     class { 'motd':
-      content => 'Hello!',
+      content => "Hello!\n",
     }
 
 Limitations
