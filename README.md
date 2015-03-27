@@ -3,7 +3,7 @@ motd
 
 Overview
 --------
-This module populates `/etc/motd` with the contents of a simple template file. 
+This module populates `/etc/motd` in Unix systems, and a registry key in Windows Systems with the contents of a simple template file. 
 
 Module Description
 -------------------
@@ -20,6 +20,9 @@ Motd utilizes the contents of `motd/motd.erb` to populate `etc/motd`. You must d
 
 	include motd
 
+* contents of HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext and legalnoticecaption
+
+Motd utilizes the content of `motd/motd.erb` to populate the legalnoticetext registry key, which is shown before login on a Windows System
 
 Usage
 ------
@@ -41,7 +44,7 @@ If you would like to provide a static string as the MOTD content you can use the
 Limitations
 ------------
 
-Platforms : Linux
+Platforms : Linux, Windows
 
 Development
 ------------

@@ -44,6 +44,7 @@ describe 'motd', :type => :class do
       }
     end
 
+
     context 'When both template and source are specified' do
       let(:params) { {
         :content => 'Hello!',
@@ -73,6 +74,25 @@ describe 'motd', :type => :class do
         :ensure  => 'file',
         :backup  => 'false',
         :content => "Test Template for Rspec\n"
+        )
+      }
+    end
+  end
+  describe "On Windows" do
+    let(:facts) {{
+      :kernel          => 'windows',
+      :operatingsystem => "TestOS",
+      :memoryfree      => "1 KB",
+      :domain          => "testdomain"
+    }}
+    context "When content is specified" do
+      let(:params) { {
+        :content => 'Hello!',
+      } }
+       it { should contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext').with(
+        :ensure  => 'present',
+        :type    => 'string',
+        :data    => "Hello!"
         )
       }
     end
