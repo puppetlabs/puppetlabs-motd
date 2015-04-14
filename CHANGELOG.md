@@ -1,4 +1,4 @@
-## 2014-10-31 Release 1.2.0
+### 2014-10-31 Release 1.2.0
 ### Summary
 - Add content parameter to allow setting static motd content
 

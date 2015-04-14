@@ -16,9 +16,8 @@ class motd (
   $template = undef,
   $content = undef,
 ) {
-  if $::kernel == 'Linux' {
-    if $template {
-      if $content {
+  if $template {
+    if $content {
         warning('Both $template and $content parameters passed to motd, ignoring content')
       }
       $motd_content = template($template)
@@ -30,10 +29,23 @@ class motd (
       $motd_content = template('motd/motd.erb')
     }
 
+
+  if $::kernel == 'Linux' {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
       content => $motd_content,
+    }
+  } elsif $::kernel == 'windows' {
+    registry_value { 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption':
+      ensure => present,
+      type   => string,
+      data   => 'Message of the day',
+    }
+    registry_value { 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext':
+      ensure => present,
+      type   => string,
+      data   => $motd_content,
     }
   }
 }
