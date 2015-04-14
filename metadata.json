@@ -2,7 +2,7 @@
   "name": "puppetlabs-motd",
   "version": "1.2.0",
   "author": "puppetlabs",
-  "summary": "A simple module to demonstrate managing /etc/motd as a template",
+  "summary": "A simple module to demonstrate managing /etc/motd or Windows Logon Message as a template",
   "license": "Apache License, Version 2.0",
   "source": "https://github.com/puppetlabs/puppetlabs-motd",
   "project_page": "https://github.com/puppetlabs/puppetlabs-motd",
@@ -10,8 +10,22 @@
   "types": [
   
   ],
-  "description": "This module simply manages /etc/motd as a template, showing interpolation of system attributes",
+  "description": "This module simply manages /etc/motd or the Windows Logon Message as a template, showing interpolation of system attributes",
+  "operatingsystem_support": [
+     {
+        "operatingsystem":"RedHat",
+        "operatingsystemrelease":[ "5.0", "6.0", "7.0" ]
+     },
+     {
+        "operatingsystem": "Ubuntu",
+        "operatingsystemrelease": [ "12.04", "12.10", "14.04" ]
+      },
+      {
+        "operatingsystem": "Windows",
+        "operatingsystemrelease": [ "2008", "2008 R2", "2012", "2012 R2" ]
+      }
+  ],
   "dependencies": [
-  
+     {"name":"puppetlabs/registry","version_requirement":"1.x"}, 
   ]
 }
