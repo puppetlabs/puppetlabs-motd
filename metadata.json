@@ -27,5 +27,6 @@
   ],
   "dependencies": [
      {"name":"puppetlabs/registry","version_requirement":"1.x"}, 
+     {"name":"puppetlabs/stdlib","version_requirement":">=2.1.0"}, 
   ]
 }

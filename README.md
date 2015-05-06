@@ -24,6 +24,10 @@ Motd utilizes the contents of `motd/motd.erb` to populate `etc/motd`. You must d
 
 Motd utilizes the content of `motd/motd.erb` to populate the legalnoticetext registry key, which is shown before login on a Windows System
 
+* dynamic motd on Debian based systems 
+
+Motd has the option to disable the dynamic motd messages on Debian based systems, by default no changes will be made
+
 Usage
 ------
 
@@ -40,6 +44,12 @@ If you would like to provide a static string as the MOTD content you can use the
     class { 'motd':
       content => "Hello!\n",
     }
+
+If you would like to disable the dynamic motd on Debian based systems: 
+    
+    class { 'motd': 
+      dynamic_motd => false,
+    } 
 
 Limitations
 ------------
