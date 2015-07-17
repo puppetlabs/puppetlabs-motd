@@ -78,6 +78,24 @@ describe 'motd', :type => :class do
       }
     end
   end
+
+  describe "On Debian based Operating Systems" do 
+    let(:facts) {{
+      :kernel    => 'Linux',
+      :osfamily  => 'Debian',
+    }}
+   
+    context "When dynamic motd is false" do 
+      let(:params) { { :dynamic_motd => false } }
+      it { should contain_file_line('dynamic_motd').with_line('session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate') }
+    end
+
+    context "When dynamic motd is true" do 
+      let(:params) { { :dynamic_motd => true } }
+      it { should_not contain_file_line('dynamic_motd') }
+    end
+  end 
+      
   describe "On Windows" do
     let(:facts) {{
       :kernel          => 'windows',
