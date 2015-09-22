@@ -3,13 +3,10 @@
   "version": "1.2.0",
   "author": "puppetlabs",
   "summary": "A simple module to demonstrate managing /etc/motd or Windows Logon Message as a template",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/puppetlabs/puppetlabs-motd",
   "project_page": "https://github.com/puppetlabs/puppetlabs-motd",
   "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
-  "types": [
-  
-  ],
   "description": "This module simply manages /etc/motd or the Windows Logon Message as a template, showing interpolation of system attributes",
   "operatingsystem_support": [
      {
@@ -27,6 +24,6 @@
   ],
   "dependencies": [
      {"name":"puppetlabs/registry","version_requirement":"1.x"}, 
-     {"name":"puppetlabs/stdlib","version_requirement":">=2.1.0"}, 
+     {"name":"puppetlabs/stdlib","version_requirement":">=2.1.0"}
   ]
 }
