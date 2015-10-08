@@ -13,7 +13,7 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class motd (
-  $dynamic_motd = true, 
+  $dynamic_motd = true,
   $template = undef,
   $content = undef,
 ) {
@@ -30,7 +30,6 @@ class motd (
       $motd_content = template('motd/motd.erb')
     }
 
-
   if $::kernel == 'Linux' {
     file { '/etc/motd':
       ensure  => file,
@@ -38,10 +37,10 @@ class motd (
       content => $motd_content,
     }
     if ($::osfamily == 'Debian') and ($dynamic_motd == false) {
-      file_line { 'dynamic_motd': 
-        ensure => absent, 
-        path   => '/etc/pam.d/sshd', 
-        line   => 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate', 
+      file_line { 'dynamic_motd':
+        ensure => absent,
+        path   => '/etc/pam.d/sshd',
+        line   => 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate',
       }
     }
   } elsif $::kernel == 'windows' {
