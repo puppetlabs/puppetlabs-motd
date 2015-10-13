@@ -2,18 +2,15 @@
 #
 # This module manages the /etc/motd file using a template
 #
-# Parameters:
+# @param dynamic_motd [Bool] Enable or disable dynamic motd on Debian systems
+# @param template [String] Allows for custom template location
+# @param content [String] String to be used for motd, priority given to template
 #
-# Actions:
-#
-# Requires:
-#
-# Sample Usage:
+# @example
 #  include motd
 #
-# [Remember: No empty lines between comments and class definition]
 class motd (
-  $dynamic_motd = true, 
+  $dynamic_motd = true,
   $template = undef,
   $content = undef,
 ) {
@@ -38,10 +35,10 @@ class motd (
       content => $motd_content,
     }
     if ($::osfamily == 'Debian') and ($dynamic_motd == false) {
-      file_line { 'dynamic_motd': 
-        ensure => absent, 
-        path   => '/etc/pam.d/sshd', 
-        line   => 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate', 
+      file_line { 'dynamic_motd':
+        ensure => absent,
+        path   => '/etc/pam.d/sshd',
+        line   => 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate',
       }
     }
   } elsif $::kernel == 'windows' {
