@@ -1,3 +1,17 @@
+## Release 1.3.0
+### Summary
+This release adds documentation updates, test improvements, and os support.
+
+#### Features:
+- Acceptance testing on Linux platforms
+- Rewritten documentation, inclusion of strings for automated documentation.
+- Linting of manifest to conform to style guidelines.
+- Adds support for several operating systems:
+  - Debian 6, 7
+  - CentOS 5, 6, 7
+  - Oracle Linux 6, 7
+  - Scientific Linux 5, 6, 7
+
 ### 2014-10-31 Release 1.2.0
 ### Summary
 - Add content parameter to allow setting static motd content
@@ -18,10 +32,10 @@ It also includes documentation and testing improvements.
 
 - Added class parameter to support external templates
 - Updated README documentation
-- Improved Testing 
+- Improved Testing
 
 ####Fixes
 
-- Add LICENSE file 
+- Add LICENSE file
 
 ####Known Bugs
