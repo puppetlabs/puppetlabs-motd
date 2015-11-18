@@ -2,16 +2,13 @@
 #
 # This module manages the /etc/motd file using a template
 #
-# Parameters:
+# @param dynamic_motd [Bool] Enable or disable dynamic motd on Debian systems
+# @param template [String] Allows for custom template location
+# @param content [String] String to be used for motd, priority given to template
 #
-# Actions:
-#
-# Requires:
-#
-# Sample Usage:
+# @example
 #  include motd
 #
-# [Remember: No empty lines between comments and class definition]
 class motd (
   $dynamic_motd = true,
   $template = undef,
