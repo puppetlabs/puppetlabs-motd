@@ -22,4 +22,8 @@ else
   gem 'puppet', :require => false
 end
 
+if RUBY_VERSION < '2.0'
+  gem 'mime-types', '<3.0', :require => false
+end
+
 # vim:ft=ruby
