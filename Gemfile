@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 group :development, :test do
   gem 'beaker-rspec',            :require => false
@@ -24,6 +24,13 @@ end
 
 if RUBY_VERSION < '2.0'
   gem 'mime-types', '<3.0', :require => false
+end
+
+group :system_tests do
+  if beaker_version = ENV['BEAKER_VERSION']
+    gem 'beaker', *location_for(beaker_version)
+  end
+  gem 'master_manipulator', '1.1.2', :require => false
 end
 
 # vim:ft=ruby
