@@ -75,7 +75,10 @@ describe 'disable dynamic motd settings on Debian', :if => fact('osfamily') == '
     it { should contain "Hello world!\n" }
   end
 
-  describe file('/etc/pam.d/sshd') do
-    its(:content) { should_not match /session    optional     pam_motd.so  motd=\/run\/motd.dynamic noupdate/ }
+  # Check that dynamic motd settings are unchanged on Debian.
+  if fact('osfamily') == 'Debian'
+    describe file('/etc/pam.d/sshd') do
+      its(:content) { should match /session    optional     pam_motd.so  motd=\/run\/motd.dynamic noupdate/ }
+    end
   end
 end
