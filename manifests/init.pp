@@ -14,18 +14,17 @@ class motd (
   $template = undef,
   $content = undef,
 ) {
+
   if $template {
     if $content {
         warning('Both $template and $content parameters passed to motd, ignoring content')
-      }
-      $motd_content = template($template)
     }
-    elsif $content {
-      $motd_content = $content
-    }
-    else {
-      $motd_content = template('motd/motd.erb')
-    }
+    $motd_content = template($template)
+  } elsif $content {
+    $motd_content = $content
+  } else {
+    $motd_content = template('motd/motd.erb')
+  }
 
   if $::kernel == 'Linux' {
     file { '/etc/motd':
