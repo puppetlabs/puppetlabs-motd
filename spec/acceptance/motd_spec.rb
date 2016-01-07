@@ -13,7 +13,7 @@ describe 'static message from content' do
   end
 
 
-  if fact('osfamily') != 'Windows'
+  if fact('osfamily') != 'windows'
     describe file('/etc/motd') do
       it { is_expected.to be_file }
       it { should contain "Hello world!\n" }
@@ -50,7 +50,7 @@ describe 'static message from template' do
   end
 
 
-  if fact('osfamily') != 'Windows'
+  if fact('osfamily') != 'windows'
     describe file('/etc/motd') do
       it { is_expected.to be_file }
       it { should contain "Test Template for Rspec" }
