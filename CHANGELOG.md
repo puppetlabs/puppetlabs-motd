@@ -1,3 +1,16 @@
+## Release 1.4.0
+### Summary
+First Puppet Labs supported release of this module! Contains new features and bug fixes for tests.
+
+#### Features:
+- New readme file added for tests. Also several new tests added.
+- Addition of handling in tests to run with Debian 8.
+
+#### Bug Fixes:
+- Tests tweaked to handle several Debian versions.
+- Fixed acceptance tests for Windows.
+
+
 ## Release 1.3.0
 ### Summary
 This release adds documentation updates, test improvements, and os support.
