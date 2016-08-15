@@ -33,10 +33,18 @@ class motd (
       content => $motd_content,
     }
     if ($::osfamily == 'Debian') and ($dynamic_motd == false) {
+      if $::operatingsystem == 'Debian' and versioncmp($::operatingsystemmajrelease, '7') > 0 {
+        $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic'
+      } elsif $::operatingsystem == 'Ubuntu' and versioncmp($::operatingsystemmajrelease, '16.00') > 0 {
+        $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic'
+      } else {
+        $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate'
+      }
+
       file_line { 'dynamic_motd':
         ensure => absent,
         path   => '/etc/pam.d/sshd',
-        line   => 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate',
+        line   => $_line_to_remove,
       }
     }
   } elsif $::kernel == 'windows' {
