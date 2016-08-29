@@ -95,6 +95,8 @@ describe 'motd', type: :class do
     let(:facts) do
       {
         kernel: 'Linux',
+        operatingsystem: 'Debian',
+        operatingsystemmajrelease: '7',
         osfamily: 'Debian'
       }
     end
