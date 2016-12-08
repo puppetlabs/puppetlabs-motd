@@ -1,8 +1,8 @@
 fixtures:
   repositories:
-    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     registry:
-      repo: 'git://github.com/puppetlabs/puppetlabs-registry.git'
+      repo: 'https://github.com/puppetlabs/puppetlabs-registry.git'
       ref: '1.1.0'
   symlinks:
     "motd": "#{source_dir}"

@@ -28,6 +28,7 @@ describe 'motd', type: :class do
           backup: 'false',
           content: "The operating system is TestOS\nThe free memory is 1 KB\n"
         )
+        should create_class('motd::issue')
       end
     end
   end
@@ -49,6 +50,7 @@ describe 'motd', type: :class do
           backup: 'false',
           content: "The operating system is TestOS\nThe free memory is 1 KB\nThe domain is testdomain\n"
         )
+        should create_class('motd::issue')
       end
     end
 
