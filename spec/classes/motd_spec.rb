@@ -9,6 +9,8 @@ describe 'motd', type: :class do
       end.not_to raise_error
     end
     it { should_not contain_file('/etc/motd') }
+    it { should_not contain_file('/etc/issue') }
+    it { should_not contain_file('/etc/issue.net') }
   end
 
   describe 'On Linux - no ::domain' do
@@ -83,6 +85,84 @@ describe 'motd', type: :class do
       let(:params) { { template: 'motd/spec.erb' } }
       it do
         should contain_File('/etc/motd').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n"
+        )
+      end
+    end
+
+    context 'When a template is specified for /etc/issue' do
+      let(:params) { { issue_template: 'motd/spec.erb' } }
+      it do
+        should contain_File('/etc/issue').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n"
+        )
+      end
+    end
+
+    context 'When content is specified for /etc/issue' do
+      let(:params) { { issue_content: 'Hello!' } }
+      it do
+        should contain_File('/etc/issue').with(
+          ensure: 'file',
+          backup: 'false',
+          content: 'Hello!'
+        )
+      end
+    end
+
+    context 'When both content and template is specified for /etc/issue' do
+      # FIXME duplicate behaviour described in FM-5956 until I'm allowed to fix it
+      let(:params) do
+        {
+          issue_content: 'Hello!',
+          issue_template: 'motd/spec.erb'
+        }
+      end
+      it do
+        should contain_File('/etc/issue').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n"
+        )
+      end
+    end
+
+    context 'When a template is specified for /etc/issue.net' do
+      let(:params) { { issue_net_template: 'motd/spec.erb' } }
+      it do
+        should contain_File('/etc/issue.net').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n"
+        )
+      end
+    end
+
+    context 'When content is specified for /etc/issue.net' do
+      let(:params) { { issue_net_content: 'Hello!' } }
+      it do
+        should contain_File('/etc/issue.net').with(
+          ensure: 'file',
+          backup: 'false',
+          content: 'Hello!'
+        )
+      end
+    end
+
+    context 'When both content and template is specified for /etc/issue.net' do
+      # FIXME duplicate behaviour described in FM-5956 until I'm allowed to fix it
+      let(:params) do
+        {
+          issue_net_content: 'Hello!',
+          issue_net_template: 'motd/spec.erb'
+        }
+      end
+      it do
+        should contain_File('/etc/issue.net').with(
           ensure: 'file',
           backup: 'false',
           content: "Test Template for Rspec\n"
