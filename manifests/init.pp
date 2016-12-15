@@ -11,8 +11,8 @@
 #
 class motd (
   $dynamic_motd = true,
-  $template = undef,
-  $content = undef,
+  $template     = undef,
+  $content      = undef,
 ) {
 
   if $template {
@@ -27,6 +27,7 @@ class motd (
   }
 
   if $::kernel == 'Linux' {
+    include '::motd::issue'
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
