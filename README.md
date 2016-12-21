@@ -23,7 +23,7 @@ To configure motd on your system, include the `motd` class: `include motd`.
 
 ## Usage
 
-The motd module configures the message of the day on a wide variety of systems. The module populates either `/etc/motd` (on POSIX systems) or a registry key (on Windows systems) with the contents of a basic template file.
+The motd module configures the message of the day on a wide variety of systems. The module populates either `/etc/motd`, `/etc/issue` and `/etc/issue.net` (on POSIX systems) or a registry key (on Windows systems) with the contents of a basic template file.
 
 By default, the module populates motd using the included template. Alternatively, you can specify a different template or a static string. For example, to use a custom template you would set the template parameter:
 
