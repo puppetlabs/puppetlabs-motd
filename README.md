@@ -23,7 +23,7 @@ To configure motd on your system, include the `motd` class: `include motd`.
 
 ## Usage
 
-The motd module configures the message of the day on a wide variety of systems. The module populates either `/etc/motd` (on POSIX systems) or a registry key (on Windows systems) with the contents of a basic template file.
+The motd module configures the message of the day on a wide variety of systems. The module populates either `/etc/motd`, `/etc/issue` and `/etc/issue.net` (on POSIX systems) or a registry key (on Windows systems) with the contents of a basic template file.
 
 By default, the module populates motd using the included template. Alternatively, you can specify a different template or a static string. For example, to use a custom template you would set the template parameter:
 
@@ -65,6 +65,22 @@ Specifies a static string as the motd content. Valid options: A string, such as 
 ##### `dynamic_motd`
 
 Enables or disables dynamic motd on Debian systems. Valid options:  true or false. Default: true.
+
+##### `issue_template`
+
+Specifies a custom template to process and save to `/etc/issue`. A template take precedence over `issue_content`. Valid options:  '/mymodule/mytemplate.erb'. Default: 'undef'.
+
+##### `issue_content`
+
+Specifies a static string as the `/etc/issue` content. Valid options: A string, such as "Hello!\n", or "Please lock workstations when not in use\n". Default: 'undef'.
+
+##### `issue_net_template`
+
+Specifies a custom template to process and save to `/etc/issue.net`. A template take precedence over `issue_net_content`. Valid options:  '/mymodule/mytemplate.erb'. Default: 'undef'.
+
+##### `issue__net_content`
+
+Specifies a static string as the `/etc/issue.net` content. Valid options: A string, such as "Hello!\n", or "Please lock workstations when not in use\n". Default: 'undef'.
 
 ## Limitations
 
