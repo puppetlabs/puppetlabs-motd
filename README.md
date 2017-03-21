@@ -90,7 +90,7 @@ This module has been tested on the following platforms:
 * Debian 6, 7, 8
 * Oracle 6, 7
 * Red Hat Enterprise Linux (RHEL) 5, 6, 7
-* SLES 5, 6, 7
+* SLES 10, 11, 12
 * Ubuntu 12.04, 12.10, 14.04
 * Windows 2008, 2008 R2, 2012, 2012 R2
 
