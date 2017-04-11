@@ -55,6 +55,10 @@ class motd (
   } else {
     $_issue_net_content = false
   }
+  
+  File {
+      mode => '0644',
+  }
 
   if $::kernel == 'Linux' {
     file { '/etc/motd':
