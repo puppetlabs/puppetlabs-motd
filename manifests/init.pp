@@ -56,7 +56,7 @@ class motd (
     $_issue_net_content = false
   }
 
-  if $::kernel == 'Linux' {
+  if ($::kernel == 'Linux') or ($::kernel == 'SunOS') {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
