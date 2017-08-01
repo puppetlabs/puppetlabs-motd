@@ -1,5 +1,6 @@
-The operating system is <%= @operatingsystem %>
-The free memory is <%= @memoryfree %>
-<%- if @domain -%>
-The domain is <%= @domain %>
-<%- end -%>
+<%= @operatingsystem %> <%= @operatingsystemrelease %> <%= @architecture %>
+
+FQDN:         <%= @fqdn %> (<%= @ipaddress %>)
+Processor:    <%= @processor1 %>
+Kernel:       <%= @kernel %>
+Memory Free:  <%= @memoryfree %>

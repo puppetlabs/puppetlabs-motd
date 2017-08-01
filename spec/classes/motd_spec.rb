@@ -13,35 +13,18 @@ describe 'motd', type: :class do
     it { should_not contain_file('/etc/issue.net') }
   end
 
-  describe 'On Linux - no ::domain' do
-    let(:facts) do
-      {
-        kernel: 'Linux',
-        operatingsystem: 'TestOS',
-        osfamily: 'Debian',
-        memoryfree: '1 KB',
-        domain: nil
-      }
-    end
-    context 'When ::domain is not present and a template has not been specified' do
-      it do
-        should contain_File('/etc/motd').with(
-          ensure: 'file',
-          backup: 'false',
-          content: "The operating system is TestOS\nThe free memory is 1 KB\n"
-        )
-      end
-    end
-  end
-
   describe 'On Linux' do
     let(:facts) do
       {
         kernel: 'Linux',
         operatingsystem: 'TestOS',
+        operatingsystemrelease: 5,
         osfamily: 'Debian',
-        memoryfree: '1 KB',
-        domain: 'testdomain'
+        architecture: 'x86_64',
+        processor1: 'intel awesome',
+        fqdn: 'test.example.com',
+        ipaddress: '123.23.243.1',
+        memoryfree: '1 KB'
       }
     end
     context 'When neither template or source are specified' do
@@ -49,7 +32,7 @@ describe 'motd', type: :class do
         should contain_File('/etc/motd').with(
           ensure: 'file',
           backup: 'false',
-          content: "The operating system is TestOS\nThe free memory is 1 KB\nThe domain is testdomain\n"
+          content: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       Linux\nMemory Free:  1 KB\n"
         )
       end
     end
