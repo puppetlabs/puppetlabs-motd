@@ -174,15 +174,28 @@ describe 'motd', type: :class do
       it { should_not contain_file_line('dynamic_motd') }
     end
   end
-
   describe 'On Windows' do
     let(:facts) do
       {
         kernel: 'windows',
         operatingsystem: 'TestOS',
-        memoryfree: '1 KB',
-        domain: 'testdomain'
+        operatingsystemrelease: 5,
+        osfamily: 'windows',
+        architecture: 'x86_64',
+        processor1: 'intel awesome',
+        fqdn: 'test.example.com',
+        ipaddress: '123.23.243.1',
+        memoryfree: '1 KB'
       }
+    end
+    context 'When neither template or source are specified' do
+      it do
+        should contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext').with(
+          ensure: 'present',
+          type: 'string',
+          data: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       windows\nMemory Free:  1 KB\n"
+        )
+      end
     end
     context 'When content is specified' do
       let(:params) do
