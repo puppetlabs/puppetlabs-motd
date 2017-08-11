@@ -21,7 +21,7 @@ describe 'motd', type: :class do
         operatingsystemrelease: 5,
         osfamily: 'Debian',
         architecture: 'x86_64',
-        processor1: 'intel awesome',
+        processor0: 'intel awesome',
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
         memoryfree: '1 KB'
@@ -182,7 +182,7 @@ describe 'motd', type: :class do
         operatingsystemrelease: 5,
         osfamily: 'windows',
         architecture: 'x86_64',
-        processor1: 'intel awesome',
+        processor0: 'intel awesome',
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
         memoryfree: '1 KB'
