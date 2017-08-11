@@ -59,8 +59,8 @@ class motd (
   File {
     mode => '0644',
   }
-
-  if $::kernel == 'Linux' {
+  
+  if ($::kernel == 'Linux') or ($::kernel == 'SunOS') {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
