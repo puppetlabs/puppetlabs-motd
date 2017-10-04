@@ -56,6 +56,10 @@ class motd (
     $_issue_net_content = false
   }
 
+  File {
+    mode => '0644',
+  }
+
   if ($::kernel == 'Linux') or ($::kernel == 'SunOS') {
     file { '/etc/motd':
       ensure  => file,
