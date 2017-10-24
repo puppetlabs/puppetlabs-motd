@@ -1,3 +1,16 @@
+## Release 1.5.0
+### Summary
+This release is a rollup of changes.
+
+#### Features:
+- Support added for Solaris SunOS.
+- Default MOTD message changed to provide greater out of the box usability.
+- Removed support for deprecated versions of Ubuntu.
+- Added a permissions mode for the file.
+
+#### Bug Fixes:
+- Changed fact processor name.
+
 ## Release 1.4.0
 ### Summary
 First Puppet Labs supported release of this module! Contains new features and bug fixes for tests.
@@ -16,7 +29,7 @@ First Puppet Labs supported release of this module! Contains new features and bu
 This release adds documentation updates, test improvements, and os support.
 
 #### Features:
-- Acceptance testing on Linux platforms
+- Acceptance testing on Linux platforms.
 - Rewritten documentation, inclusion of strings for automated documentation.
 - Linting of manifest to conform to style guidelines.
 - Adds support for several operating systems:
@@ -27,7 +40,7 @@ This release adds documentation updates, test improvements, and os support.
 
 ### 2014-10-31 Release 1.2.0
 ### Summary
-- Add content parameter to allow setting static motd content
+- Add content parameter to allow setting static motd content.
 
 ## 2014-07-15 Release 1.1.1
 ###Summary
@@ -43,12 +56,12 @@ It also includes documentation and testing improvements.
 
 ####Features
 
-- Added class parameter to support external templates
-- Updated README documentation
-- Improved Testing
+- Added class parameter to support external templates.
+- Updated README documentation.
+- Improved Testing.
 
 ####Fixes
 
-- Add LICENSE file
+- Add LICENSE file.
 
 ####Known Bugs

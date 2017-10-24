@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-motd",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "puppetlabs",
   "summary": "A simple module to demonstrate managing /etc/motd or Windows Logon Message as a template",
   "license": "Apache-2.0",
@@ -48,9 +48,9 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6",
         "7",
-        "8"
+        "8",
+        "9"
       ]
     },
     {
