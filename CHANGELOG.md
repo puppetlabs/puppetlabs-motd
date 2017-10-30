@@ -1,3 +1,10 @@
+## Release 1.5.1
+### Summary
+This release is to update the formatting of the module, rubocop having been run for all ruby files and been set to run automatically on all future commits.
+
+### Changed
+- Rubocop has been implemented.
+
 ## Release 1.5.0
 ### Summary
 This release is a rollup of changes.
