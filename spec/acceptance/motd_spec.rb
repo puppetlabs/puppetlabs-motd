@@ -8,52 +8,52 @@ issue_net_file = '/etc/issue.net'
 
 template_expected_content = 'Test Template for Rspec'
 
-pp_static_content = <<-EOS
+pp_static_content = <<-PUPPETCODE
     class { motd:
       content => "Hello world!\n",
     }
-  EOS
+PUPPETCODE
 
-pp_static_template = <<-EOS
+pp_static_template = <<-PUPPETCODE
     class { motd:
       template => "motd/spec.erb",
     }
-  EOS
+PUPPETCODE
 
-pp_static_content_issue = <<-EOS
+pp_static_content_issue = <<-PUPPETCODE
     class { motd:
       issue_content => "Hello world!\n",
       content       => "Hello world!\n",
     }
-  EOS
+PUPPETCODE
 
-pp_static_template_issue = <<-EOS
+pp_static_template_issue = <<-PUPPETCODE
     class { motd:
       issue_template => "motd/spec.erb",
       content        => "Hello world!\n",
     }
-  EOS
+PUPPETCODE
 
-pp_static_content_issue_net = <<-EOS
+pp_static_content_issue_net = <<-PUPPETCODE
     class { motd:
       issue_net_content => "Hello world!\n",
       content           => "Hello world!\n",
     }
-  EOS
+PUPPETCODE
 
-pp_static_template_issue_net = <<-EOS
+pp_static_template_issue_net = <<-PUPPETCODE
     class { motd:
       issue_net_template => "motd/spec.erb",
       content            => "Hello world!\n",
     }
-  EOS
+PUPPETCODE
 
-pp_debian_dynamic = <<-EOS
+pp_debian_dynamic = <<-PUPPETCODE
     class { motd:
       dynamic_motd => false,
       content      => "Hello world!\n",
     }
-  EOS
+PUPPETCODE
 
 # @summary: Helper function to run common functionality of MOTD acceptance tests.
 #           Applies the manifest twice, if not windows checks for file against expected contents.
@@ -72,43 +72,43 @@ def test_motd(pp, expected_contain, filename)
 end
 
 describe 'Message of the day' do
-  context 'static message from content' do
+  context 'when static message from content' do
     it do
       test_motd(pp_static_content, "Hello world!\n", motd_file)
     end
   end
 
-  context 'static message from template' do
+  context 'when static message from template' do
     it do
       test_motd(pp_static_template, template_expected_content, motd_file)
     end
   end
 
-  context 'static message from content in /etc/issue' do
+  context 'when static message from content in /etc/issue' do
     it do
       test_motd(pp_static_content_issue, "Hello world!\n", issue_file)
     end
   end
 
-  context 'static message from template in /etc/issue' do
+  context 'when static message from template in /etc/issue' do
     it do
       test_motd(pp_static_template_issue, template_expected_content, issue_file)
     end
   end
 
-  context 'static message from content in /etc/issue.net' do
+  context 'when static message from content in /etc/issue.net' do
     it do
       test_motd(pp_static_content_issue_net, "Hello world!\n", issue_net_file)
     end
   end
 
-  context 'static message from template in /etc/issue.net' do
+  context 'when static message from template in /etc/issue.net' do
     it do
       test_motd(pp_static_template_issue_net, template_expected_content, issue_net_file)
     end
   end
 
-  context 'disable dynamic motd settings on Debian', if: fact('osfamily') == 'Debian' do
+  context 'when disable dynamic motd settings on Debian', if: fact('osfamily') == 'Debian' do
     it do
       test_motd(pp_debian_dynamic, "Hello world!\n", motd_file)
     end

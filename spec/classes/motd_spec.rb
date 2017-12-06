@@ -27,7 +27,7 @@ describe 'motd', type: :class do
       }
     end
 
-    context 'When neither template or source are specified' do
+    context 'when neither template or source are specified' do
       it do
         is_expected.to contain_File('/etc/motd').with(
           ensure: 'file',
@@ -37,7 +37,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When both template and source are specified' do
+    context 'when both template and source are specified' do
       let(:params) do
         {
           content: 'Hello!',
@@ -54,7 +54,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When a source is specified' do
+    context 'when a source is specified' do
       let(:params) { { content: 'Hello!' } }
 
       it do
@@ -66,7 +66,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When an external template is specified' do
+    context 'when an external template is specified' do
       let(:params) { { template: 'motd/spec.erb' } }
 
       it do
@@ -78,7 +78,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When a template is specified for /etc/issue' do
+    context 'when a template is specified for /etc/issue' do
       let(:params) { { issue_template: 'motd/spec.erb' } }
 
       it do
@@ -90,7 +90,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When content is specified for /etc/issue' do
+    context 'when content is specified for /etc/issue' do
       let(:params) { { issue_content: 'Hello!' } }
 
       it do
@@ -102,7 +102,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When both content and template is specified for /etc/issue' do
+    context 'when both content and template is specified for /etc/issue' do
       # FIXME: duplicate behaviour described in FM-5956 until I'm allowed to fix it
       let(:params) do
         {
@@ -120,7 +120,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When a template is specified for /etc/issue.net' do
+    context 'when a template is specified for /etc/issue.net' do
       let(:params) { { issue_net_template: 'motd/spec.erb' } }
 
       it do
@@ -132,7 +132,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When content is specified for /etc/issue.net' do
+    context 'when content is specified for /etc/issue.net' do
       let(:params) { { issue_net_content: 'Hello!' } }
 
       it do
@@ -144,7 +144,7 @@ describe 'motd', type: :class do
       end
     end
 
-    context 'When both content and template is specified for /etc/issue.net' do
+    context 'when both content and template is specified for /etc/issue.net' do
       # FIXME: duplicate behaviour described in FM-5956 until I'm allowed to fix it
       let(:params) do
         {
@@ -173,13 +173,13 @@ describe 'motd', type: :class do
       }
     end
 
-    context 'When dynamic motd is false' do
+    context 'when dynamic motd is false' do
       let(:params) { { dynamic_motd: false } }
 
       it { is_expected.to contain_file_line('dynamic_motd').with_line('session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate') }
     end
 
-    context 'When dynamic motd is true' do
+    context 'when dynamic motd is true' do
       let(:params) { { dynamic_motd: true } }
 
       it { is_expected.not_to contain_file_line('dynamic_motd') }
@@ -200,7 +200,7 @@ describe 'motd', type: :class do
       }
     end
 
-    context 'When neither template or source are specified' do
+    context 'when neither template or source are specified' do
       it do
         is_expected.to contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext').with(
           ensure: 'present',
@@ -209,7 +209,7 @@ describe 'motd', type: :class do
         )
       end
     end
-    context 'When content is specified' do
+    context 'when content is specified' do
       let(:params) do
         {
           content: 'Hello!',
