@@ -1,6 +1,5 @@
 ---
-require:
- - rubocop-rspec
+require: rubocop-rspec
 AllCops:
   TargetRubyVersion: '2.1'
   Include:
@@ -13,7 +12,6 @@ AllCops:
   - pkg/**/*
   - spec/fixtures/**/*
   - vendor/**/*
-inherit_from: .rubocop_todo.yml
 Metrics/LineLength:
   Description: People have wide screens, use them.
   Max: 200
@@ -64,6 +62,8 @@ Style/TrailingCommaInLiteral:
 Style/SymbolArray:
   Description: Using percent style obscures symbolic intent of array's contents.
   EnforcedStyle: brackets
+Style/EndOfLine:
+  Enabled: false
 Style/CollectionMethods:
   Enabled: true
 Style/MethodCalledOnDoEndBlock:
@@ -88,7 +88,13 @@ Metrics/PerceivedComplexity:
   Enabled: false
 RSpec/DescribeClass:
   Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
 RSpec/MessageExpectation:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/NestedGroups:
   Enabled: false
 Style/AsciiComments:
   Enabled: false
