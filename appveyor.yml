@@ -16,9 +16,6 @@ environment:
       CHECK: syntax lint
     -
       RUBY_VERSION: 24-x64
-      CHECK: metadata_lint
-    -
-      RUBY_VERSION: 24-x64
       CHECK: rubocop
     -
       RUBY_VERSION: 24-x64
