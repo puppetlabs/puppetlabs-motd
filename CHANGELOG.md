@@ -1,3 +1,10 @@
+## Release 1.6.0
+### Summary
+A release that updates motd to become PDK compatible.
+
+#### Changed
+- All changes in this release are the product of PDK convert, the module is now PDK compatible.
+
 ## Release 1.5.1
 ### Summary
 This release is to update the formatting of the module, rubocop having been run for all ruby files and been set to run automatically on all future commits.
