@@ -27,6 +27,10 @@ environment:
       RUBY_VERSION: 21-x64
       CHECK: spec
     -
+      PUPPET_GEM_VERSION: ~> 5.0
+      RUBY_VER: 24-x64
+      CHECK: spec
+    -
       RUBY_VERSION: 24-x64
       PUPPET_GEM_VERSION: ~> 5.0
       CHECK: spec
