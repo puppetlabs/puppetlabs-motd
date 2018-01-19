@@ -7,7 +7,6 @@ before_install:
   - bundle -v
   - rm Gemfile.lock || true
   - gem update --system
-  - gem update bundler
   - gem --version
   - bundle -v
 script:
@@ -44,10 +43,14 @@ matrix:
       env: CHECK="syntax lint"
     -
       env: CHECK=metadata_lint
+    -
+      rvm: 2.1.9
+      script: "bundle exec rake release_checks"
 branches:
   only:
     - master
     - /^v\d/
+    - release
 notifications:
   email: false
 deploy:
