@@ -1,3 +1,10 @@
+## Release 1.7.0
+### Summary
+Release for PDK 1.3.2 compatibility.
+
+#### Changed
+- Converted to the latest version of PDK. Mainly introduces travis to the release branch.
+
 ## Release 1.6.0
 ### Summary
 A release that updates motd to become PDK compatible.
