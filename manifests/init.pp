@@ -60,7 +60,7 @@ class motd (
     mode => '0644',
   }
 
-  if ($::kernel == 'Linux') or ($::kernel == 'SunOS') {
+  if ($::kernel == 'Linux') or ($::kernel == 'SunOS') or ($::kernel == 'FreeBSD') {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
