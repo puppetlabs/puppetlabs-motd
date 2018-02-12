@@ -225,4 +225,71 @@ describe 'motd', type: :class do
       end
     end
   end
+
+  describe 'On FreeBSD' do
+    let(:facts) do
+      {
+        kernel: 'FreeBSD',
+        operatingsystem: 'TestOS',
+        operatingsystemrelease: 11,
+        osfamily: 'FreeBSD',
+        architecture: 'amd64',
+        processor0: 'intel',
+        fqdn: 'test.example.com',
+        ipaddress: '123.23.243.1',
+        memoryfree: '1 KB',
+      }
+    end
+
+    context 'when neither template or source are specified' do
+      it do
+        is_expected.to contain_File('/etc/motd').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "TestOS 11 amd64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel\nKernel:       FreeBSD\nMemory Free:  1 KB\n",
+        )
+      end
+    end
+
+    context 'when both template and source are specified' do
+      let(:params) do
+        {
+          content: 'Hello!',
+          template: 'motd/spec.erb',
+        }
+      end
+
+      it do
+        is_expected.to contain_File('/etc/motd').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n",
+        )
+      end
+    end
+
+    context 'when a source is specified' do
+      let(:params) { { content: 'Hello!' } }
+
+      it do
+        is_expected.to contain_File('/etc/motd').with(
+          ensure: 'file',
+          backup: 'false',
+          content: 'Hello!',
+        )
+      end
+    end
+
+    context 'when an external template is specified' do
+      let(:params) { { template: 'motd/spec.erb' } }
+
+      it do
+        is_expected.to contain_File('/etc/motd').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n",
+        )
+      end
+    end
+  end
 end
