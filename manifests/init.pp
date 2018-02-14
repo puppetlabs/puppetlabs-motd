@@ -67,19 +67,21 @@ class motd (
       content => $motd_content,
     }
 
-    if $_issue_content {
-      file { '/etc/issue':
-        ensure  => file,
-        backup  => false,
-        content => $_issue_content,
+    if $::kernel != 'FreeBSD' {
+      if $_issue_content {
+        file { '/etc/issue':
+          ensure  => file,
+          backup  => false,
+          content => $_issue_content,
+        }
       }
-    }
 
-    if $_issue_net_content {
-      file { '/etc/issue.net':
-        ensure  => file,
-        backup  => false,
-        content => $_issue_net_content,
+      if $_issue_net_content {
+        file { '/etc/issue.net':
+          ensure  => file,
+          backup  => false,
+          content => $_issue_net_content,
+        }
       }
     }
 
