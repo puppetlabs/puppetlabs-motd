@@ -1,3 +1,10 @@
+## Release 1.8.0
+### Summary
+This release includes a change that makes this module *compatible* with FreeBSD.
+
+#### Added
+- Make MOTD compatible with FreeBSD. ([MODULES-6599](https://tickets.puppetlabs.com/browse/MODULES-6599))
+
 ## Release 1.7.0
 ### Summary
 Release for PDK 1.3.2 compatibility.
