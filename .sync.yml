@@ -23,8 +23,8 @@ appveyor.yml:
   branches:
     - release
   extras:
-    - rvm: 2.1.9
-      script: "\"bundle exec rake release_checks\""
+    - env: CHECK=release_checks
+      rvm: 2.1.9
 
 Gemfile:
   required:
