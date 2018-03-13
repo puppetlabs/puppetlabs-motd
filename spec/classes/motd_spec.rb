@@ -213,6 +213,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
+	  windows_motd_title: 'This is the title.',
         }
       end
 
