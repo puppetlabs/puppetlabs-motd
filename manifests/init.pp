@@ -9,7 +9,9 @@
 # @param issue_content [String] String to be used for /etc/issue, priority given to template
 # @param issue_net_template [String] Allows for custom template location for /etc/issue.net
 # @param issue_net_content [String] String to be used for /etc/issue.net, priority given to template
-#
+# @param windows_motd_title [String] String to be used for
+# 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption'
+# as the large text above the legalnoticetext
 # @example
 #  include motd
 #
