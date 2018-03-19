@@ -213,7 +213,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
-	  windows_motd_title: 'This is the title.',
+          windows_motd_title: 'This is the title.',
         }
       end
 
@@ -226,7 +226,7 @@ describe 'motd', type: :class do
         is_expected.to contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption').with(
           ensure: 'present',
           type: 'string',
-	  data: 'This is the title.',
+          data: 'This is the title.',
         )
       end
     end
