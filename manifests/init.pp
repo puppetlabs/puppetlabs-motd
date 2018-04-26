@@ -58,12 +58,12 @@ class motd (
 
   $owner = $::kernel ? {
     'AIX'   => 'bin',
-    default => undef,
+    default => 'root',
   }
 
   $group = $::kernel ? {
     'AIX'   => 'bin',
-    default => undef,
+    default => 'root',
   }
 
   $mode = $::kernel ? {

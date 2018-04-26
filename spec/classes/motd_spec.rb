@@ -33,6 +33,9 @@ describe 'motd', type: :class do
           ensure: 'file',
           backup: 'false',
           content: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       Linux\nMemory Free:  1 KB\n",
+          owner:  'root',
+          group:  'root',
+          mode:   '0644',
         )
       end
     end
@@ -86,6 +89,9 @@ describe 'motd', type: :class do
           ensure: 'file',
           backup: 'false',
           content: "Test Template for Rspec\n",
+          owner:  'root',
+          group:  'root',
+          mode:   '0644',
         )
       end
     end
@@ -128,6 +134,9 @@ describe 'motd', type: :class do
           ensure: 'file',
           backup: 'false',
           content: "Test Template for Rspec\n",
+          owner:  'root',
+          group:  'root',
+          mode:   '0644',
         )
       end
     end
