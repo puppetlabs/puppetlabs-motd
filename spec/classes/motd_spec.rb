@@ -292,4 +292,60 @@ describe 'motd', type: :class do
       end
     end
   end
+  describe 'On AIX' do
+    let(:facts) do
+      {
+        kernel: 'AIX',
+        operatingsystem: 'AIX',
+        operatingsystemrelease: '7100-04-02-1614',
+        osfamily: 'AIX',
+        architecture: 'PowerPC_POWER8',
+        processor0: 'PowerPC_POWER8',
+        fqdn: 'test.example.com',
+        ipaddress: '123.23.243.1',
+        memoryfree: '1 KB',
+      }
+    end
+
+    context 'when neither template or source are specified' do
+      it do
+        is_expected.to contain_File('/etc/motd').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory Free:  1 KB\n",
+          owner:  'bin',
+          group:  'bin',
+          mode:   '0444',
+        )
+      end
+    end
+    context 'when a template is specified for /etc/issue' do
+      let(:params) { { issue_template: 'motd/spec.erb' } }
+
+      it do
+        is_expected.to contain_File('/etc/issue').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n",
+          owner:  'bin',
+          group:  'bin',
+          mode:   '0444',
+        )
+      end
+    end
+    context 'when a template is specified for /etc/issue.net' do
+      let(:params) { { issue_net_template: 'motd/spec.erb' } }
+
+      it do
+        is_expected.to contain_File('/etc/issue.net').with(
+          ensure: 'file',
+          backup: 'false',
+          content: "Test Template for Rspec\n",
+          owner:  'bin',
+          group:  'bin',
+          mode:   '0444',
+        )
+      end
+    end
+  end
 end

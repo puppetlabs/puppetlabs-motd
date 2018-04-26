@@ -56,11 +56,28 @@ class motd (
     $_issue_net_content = false
   }
 
-  File {
-    mode => '0644',
+  $owner = $::kernel ? {
+    'AIX'   => 'bin',
+    default => undef,
   }
 
-  if ($::kernel == 'Linux') or ($::kernel == 'SunOS') or ($::kernel == 'FreeBSD') {
+  $group = $::kernel ? {
+    'AIX'   => 'bin',
+    default => undef,
+  }
+
+  $mode = $::kernel ? {
+    'AIX'   => '0444',
+    default => '0644',
+  }
+
+  File {
+    owner => $owner,
+    group => $group,
+    mode  => $mode,
+  }
+
+  if $::kernel in ['Linux', 'SunOS', 'FreeBSD', 'AIX']  {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
