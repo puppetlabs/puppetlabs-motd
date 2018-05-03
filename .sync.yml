@@ -9,7 +9,7 @@
   branches:
     - release
   extras:
-    - env: CHECK=release_checks
+    - env: PUPPET_GEM_VERSION="~> 4.0" CHECK=release_checks
       rvm: 2.1.9
 
 Gemfile:
