@@ -1,3 +1,11 @@
+## Release 1.9.0
+## Summary
+This release includes a change that makes this module *compatible* with AIX.
+
+#### Added
+- Make MOTD compatible with AIX. ([MODULES-7069](https://tickets.puppetlabs.com/browse/MODULES-7069))
+- Parameter `windows_motd_title` to allow users to customize the windows message of the day title.
+
 ## Release 1.8.0
 ### Summary
 This release includes a change that makes this module *compatible* with FreeBSD.
