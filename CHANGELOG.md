@@ -1,3 +1,12 @@
+## Release 1.9.0
+## Summary
+This release includes a change that makes this module *compatible* with AIX.
+
+#### Added
+- Make MOTD compatible with AIX. ([MODULES-7069](https://tickets.puppetlabs.com/browse/MODULES-7069))
+- Parameter `windows_motd_title` to allow users to customize the Windows message of the day title.
+- Converted to the latest version of PDK (1.5.0).
+
 ## Release 1.8.0
 ### Summary
 This release includes a change that makes this module *compatible* with FreeBSD.
