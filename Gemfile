@@ -34,6 +34,7 @@ group :development do
   gem "puppet-module-win-default-r#{minor_version}",   require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-module-win-dev-r#{minor_version}",       require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-blacksmith", '~> 3.4',                   require: false, platforms: [:ruby]
+  gem "pdk",                                            require: false, platforms: [:ruby]
 end
 group :system_tests do
   gem "puppet-module-posix-system-r#{minor_version}",                            require: false, platforms: [:ruby]
@@ -52,7 +53,12 @@ hiera_version = ENV['HIERA_GEM_VERSION']
 
 gems = {}
 
-gems['puppet'] = location_for(puppet_version)
+#gems['puppet'] = location_for(puppet_version)
+
+gem 'puppet' , git: 'https://github.com/pmcmaw/puppet', ref: '7d99bb4cd2cf893026cd8cc96fe4983468888e29'
+gem 'ffi'
+gem 'ansi', '1.5.0'
+
 
 # If facter or hiera versions have been specified via the environment
 # variables
