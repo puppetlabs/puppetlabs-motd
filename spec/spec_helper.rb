@@ -9,7 +9,7 @@ rescue LoadError => loaderror
 end
 
 include RspecPuppetFacts
-
+# Bananaman
 default_facts = {
   puppetversion: Puppet.version,
   facterversion: Facter.version,
