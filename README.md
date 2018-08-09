@@ -84,15 +84,7 @@ Specifies a static string as the `/etc/issue.net` content. Valid options: A stri
 
 ## Limitations
 
-This module has been tested on the following platforms:
-
-* CentOS 5, 6, 7
-* Debian 8, 9
-* Oracle 6, 7
-* Red Hat Enterprise Linux (RHEL) 5, 6, 7
-* SLES 11, 12
-* Ubuntu 14.04, 16.04, 18.04
-* Windows 2008, 2008 R2, 2012, 2012 R2
+For an extensive list of supported operating systems, see [metadata.json](https://github.com/puppetlabs/puppetlabs-motd/blob/master/metadata.json)
 
 Disabling dynamic motd is supported only on Debian.
 
