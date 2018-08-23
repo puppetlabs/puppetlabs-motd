@@ -9,11 +9,4 @@ install_module_dependencies_on(hosts)
 
 RSpec.configure do |c|
   c.formatter = :documentation
-
-  # Configure all nodes in nodeset
-  c.before :suite do
-    hosts.select { |host| host['platform'] =~ %r{windows}i }.each do |host|
-      on host, puppet('module', 'install', 'puppetlabs-registry')
-    end
-  end
 end
