@@ -78,7 +78,7 @@ Specifies a static string as the `/etc/issue` content. Valid options: A string, 
 
 Specifies a custom template to process and save to `/etc/issue.net`. A template take precedence over `issue_net_content`. Valid options:  '/mymodule/mytemplate.erb'. Default: 'undef'.
 
-##### `issue__net_content`
+##### `issue_net_content`
 
 Specifies a static string as the `/etc/issue.net` content. Valid options: A string, such as "Hello!\n", or "Please lock workstations when not in use\n". Default: 'undef'.
 
