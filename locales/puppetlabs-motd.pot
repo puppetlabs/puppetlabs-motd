@@ -1,0 +1,41 @@
+# #-#-#-#-#  puppetlabs-motd_metadata.pot (PACKAGE VERSION)  #-#-#-#-#
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"#-#-#-#-#  puppetlabs-motd_metadata.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2018-08-30T17:06:40+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.0.0\n"
+"#-#-#-#-#  puppet.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-30 17:06:26 +0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.0.0\n"
+
+#. metadata.json
+#: .summary
+msgid ""
+"A simple module to demonstrate managing /etc/motd or Windows Logon Message "
+"as a template"
+msgstr ""
+
+#. metadata.json
+#: .description
+msgid ""
+"This module simply manages /etc/motd or the Windows Logon Message as a "
+"template, showing interpolation of system attributes"
+msgstr ""

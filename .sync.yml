@@ -17,6 +17,7 @@ Gemfile:
         condition: "Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.3.0')"
       - gem: net-telnet
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
+      - gem: puppet-lint-i18n
   required:
     ':system_tests':
       - gem: 'puppet-module-posix-system-r#{minor_version}'
@@ -29,3 +30,14 @@ Gemfile:
 
 .gitlab-ci.yml:
   unmanaged: true
+
+Rakefile:
+  requires:
+  - puppet_pot_generator/rake_tasks
+
+.rubocop.yml:
+  default_configs:
+    inherit_from: .rubocop_todo.yml
+    require:
+    - rubocop-i18n
+    - rubocop-rspec
