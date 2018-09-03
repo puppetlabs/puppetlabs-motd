@@ -1,19 +1,35 @@
-# Class: motd
+# @summary 
+#   This module configures a system message of the day on a wide variety of systems. 
+# 
+# @example Basic usage
+#   include motd
 #
-# This module manages the /etc/motd file using a template
+# @param dynamic_motd 
+#   Enables or disables dynamic motd on Debian systems.
 #
-# @param dynamic_motd [Bool] Enable or disable dynamic motd on Debian systems
-# @param template [String] Allows for custom template location
-# @param content [String] String to be used for motd, priority given to template
-# @param issue_template [String] Allows for custom template location for /etc/issue
-# @param issue_content [String] String to be used for /etc/issue, priority given to template
-# @param issue_net_template [String] Allows for custom template location for /etc/issue.net
-# @param issue_net_content [String] String to be used for /etc/issue.net, priority given to template
-# @param windows_motd_title [String] String to be used for
-# 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption'
-# as the large text above the legalnoticetext
-# @example
-#  include motd
+# @param template 
+#   Specifies a custom template. A template takes precedence over `content`. Valid options:  '/mymodule/mytemplate.erb'.
+#
+# @param content 
+#   Specifies a static string as the motd content. 
+# 
+# @param issue_template 
+#   Specifies a custom template to process and save to `/etc/issue`. A template takes precedence over `issue_content`.
+# 
+# @param issue_content 
+#   Specifies a static string as the `/etc/issue` content.
+# 
+# @param issue_net_template 
+#   Specifies a custom template to process and save to `/etc/issue.net`. A template takes precedence over `issue_net_content`. 
+# 
+# @param issue_net_content 
+#   Specifies a static string as the `/etc/issue.net` content.
+# 
+# @param windows_motd_title 
+#   Specifies a static string to be used for:
+#   'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext'
+#   and 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption'
+#   The 'legalnoticetext' registry key is shown before login on a Windows system.
 #
 class motd (
   $dynamic_motd = true,
