@@ -44,7 +44,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
-          template: 'motd/spec.erb',
+          template: 'motd/spec.epp',
         }
       end
 
@@ -70,7 +70,7 @@ describe 'motd', type: :class do
     end
 
     context 'when an external template is specified' do
-      let(:params) { { template: 'motd/spec.erb' } }
+      let(:params) { { template: 'motd/spec.epp' } }
 
       it do
         is_expected.to contain_File('/etc/motd').with(
@@ -82,7 +82,7 @@ describe 'motd', type: :class do
     end
 
     context 'when a template is specified for /etc/issue' do
-      let(:params) { { issue_template: 'motd/spec.erb' } }
+      let(:params) { { issue_template: 'motd/spec.epp' } }
 
       it do
         is_expected.to contain_File('/etc/issue').with(
@@ -113,7 +113,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           issue_content: 'Hello!',
-          issue_template: 'motd/spec.erb',
+          issue_template: 'motd/spec.epp',
         }
       end
 
@@ -127,7 +127,7 @@ describe 'motd', type: :class do
     end
 
     context 'when a template is specified for /etc/issue.net' do
-      let(:params) { { issue_net_template: 'motd/spec.erb' } }
+      let(:params) { { issue_net_template: 'motd/spec.epp' } }
 
       it do
         is_expected.to contain_File('/etc/issue.net').with(
@@ -158,7 +158,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           issue_net_content: 'Hello!',
-          issue_net_template: 'motd/spec.erb',
+          issue_net_template: 'motd/spec.epp',
         }
       end
 
@@ -270,7 +270,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
-          template: 'motd/spec.erb',
+          template: 'motd/spec.epp',
         }
       end
 
@@ -296,7 +296,7 @@ describe 'motd', type: :class do
     end
 
     context 'when an external template is specified' do
-      let(:params) { { template: 'motd/spec.erb' } }
+      let(:params) { { template: 'motd/spec.epp' } }
 
       it do
         is_expected.to contain_File('/etc/motd').with(
@@ -335,7 +335,7 @@ describe 'motd', type: :class do
       end
     end
     context 'when a template is specified for /etc/issue' do
-      let(:params) { { issue_template: 'motd/spec.erb' } }
+      let(:params) { { issue_template: 'motd/spec.epp' } }
 
       it do
         is_expected.to contain_File('/etc/issue').with(
@@ -349,7 +349,7 @@ describe 'motd', type: :class do
       end
     end
     context 'when a template is specified for /etc/issue.net' do
-      let(:params) { { issue_net_template: 'motd/spec.erb' } }
+      let(:params) { { issue_net_template: 'motd/spec.epp' } }
 
       it do
         is_expected.to contain_File('/etc/issue.net').with(

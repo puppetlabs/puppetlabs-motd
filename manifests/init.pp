@@ -16,32 +16,32 @@
 #  include motd
 #
 class motd (
-  $dynamic_motd = true,
-  $template = undef,
-  $content = undef,
-  $issue_template = undef,
-  $issue_content = undef,
-  $issue_net_template = undef,
-  $issue_net_content = undef,
-  $windows_motd_title = 'Message of the day',
+  Boolean $dynamic_motd                 = true,
+  Optional[String] $template            = undef,
+  Optional[String] $content             = undef,
+  Optional[String] $issue_template      = undef,
+  Optional[String] $issue_content       = undef,
+  Optional[String] $issue_net_template  = undef,
+  Optional[String] $issue_net_content   = undef,
+  String $windows_motd_title            = 'Message of the day',
 ) {
 
   if $template {
     if $content {
         warning('Both $template and $content parameters passed to motd, ignoring content')
     }
-    $motd_content = template($template)
+    $motd_content = epp($template)
   } elsif $content {
     $motd_content = $content
   } else {
-    $motd_content = template('motd/motd.erb')
+    $motd_content = epp('motd/motd.epp')
   }
 
   if $issue_template {
     if $issue_content {
         warning('Both $issue_template and $issue_content parameters passed to motd, ignoring issue_content')
     }
-    $_issue_content = template($issue_template)
+    $_issue_content = epp($issue_template)
   } elsif $issue_content {
     $_issue_content = $issue_content
   } else {
@@ -52,24 +52,24 @@ class motd (
     if $issue_net_content {
         warning('Both $issue_net_template and $issue_net_content parameters passed to motd, ignoring issue_net_content')
     }
-    $_issue_net_content = template($issue_net_template)
+    $_issue_net_content = epp($issue_net_template)
   } elsif $issue_net_content {
     $_issue_net_content = $issue_net_content
   } else {
     $_issue_net_content = false
   }
 
-  $owner = $::kernel ? {
+  $owner = $facts['kernel'] ? {
     'AIX'   => 'bin',
     default => 'root',
   }
 
-  $group = $::kernel ? {
+  $group = $facts['kernel'] ? {
     'AIX'   => 'bin',
     default => 'root',
   }
 
-  $mode = $::kernel ? {
+  $mode = $facts['kernel'] ? {
     'AIX'   => '0444',
     default => '0644',
   }
@@ -80,14 +80,14 @@ class motd (
     mode  => $mode,
   }
 
-  if $::kernel in ['Linux', 'SunOS', 'FreeBSD', 'AIX']  {
+  if $facts['kernel'] in ['Linux', 'SunOS', 'FreeBSD', 'AIX']  {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
       content => $motd_content,
     }
 
-    if $::kernel != 'FreeBSD' {
+    if $facts['kernel'] != 'FreeBSD' {
       if $_issue_content {
         file { '/etc/issue':
           ensure  => file,
@@ -105,10 +105,10 @@ class motd (
       }
     }
 
-    if ($::osfamily == 'Debian') and ($dynamic_motd == false) {
-      if $::operatingsystem == 'Debian' and versioncmp($::operatingsystemmajrelease, '7') > 0 {
+    if ($facts['osfamily'] == 'Debian') and ($dynamic_motd == false) {
+      if $facts['operatingsystem'] == 'Debian' and versioncmp($facts['operatingsystemmajrelease'], '7') > 0 {
         $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic'
-      } elsif $::operatingsystem == 'Ubuntu' and versioncmp($::operatingsystemmajrelease, '16.00') > 0 {
+      } elsif $facts['operatingsystem'] == 'Ubuntu' and versioncmp($facts['operatingsystemmajrelease'], '16.00') > 0 {
         $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic'
       } else {
         $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate'
@@ -120,7 +120,7 @@ class motd (
         line   => $_line_to_remove,
       }
     }
-  } elsif $::kernel == 'windows' {
+  } elsif $facts['kernel'] == 'windows' {
     registry_value { 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption':
       ensure => present,
       type   => string,
