@@ -86,7 +86,7 @@ class motd (
   }
 
   $mode = $facts['kernel'] ? {
-    'AIX'   => '0444',
+    'AIX'   => '0644',
     default => '0644',
   }
 
