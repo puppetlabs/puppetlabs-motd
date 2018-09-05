@@ -55,7 +55,7 @@ The following parameters are available in `motd`. All parameters are optional.
 
 ##### `template`
 
-Specifies a custom template. A template take precedence over `content`. Valid options:  '/mymodule/mytemplate.erb'. Default: 'undef'.
+Specifies a custom EPP template. A template take precedence over `content`. Valid options:  '/mymodule/mytemplate.epp'. Default: 'undef'.
 
 ##### `content`
 
@@ -67,7 +67,7 @@ Enables or disables dynamic motd on Debian systems. Valid options:  true or fals
 
 ##### `issue_template`
 
-Specifies a custom template to process and save to `/etc/issue`. A template take precedence over `issue_content`. Valid options:  '/mymodule/mytemplate.erb'. Default: 'undef'.
+Specifies a custom EPP template to process and save to `/etc/issue`. A template take precedence over `issue_content`. Valid options:  '/mymodule/mytemplate.epp'. Default: 'undef'.
 
 ##### `issue_content`
 
@@ -75,7 +75,7 @@ Specifies a static string as the `/etc/issue` content. Valid options: A string, 
 
 ##### `issue_net_template`
 
-Specifies a custom template to process and save to `/etc/issue.net`. A template take precedence over `issue_net_content`. Valid options:  '/mymodule/mytemplate.erb'. Default: 'undef'.
+Specifies a custom EPP template to process and save to `/etc/issue.net`. A template take precedence over `issue_net_content`. Valid options:  '/mymodule/mytemplate.epp'. Default: 'undef'.
 
 ##### `issue_net_content`
 
