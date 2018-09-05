@@ -43,8 +43,7 @@ class { 'motd':
 
 
 ## Reference
-
-### Classes
+See [REFERENCE.md](https://github.com/puppetlabs/puppetlabs-motd/blob/master/REFERENCE.md)
 
 #### Public classes
 
