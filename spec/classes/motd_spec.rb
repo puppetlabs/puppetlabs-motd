@@ -330,7 +330,7 @@ describe 'motd', type: :class do
           content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory Free:  1 KB\n",
           owner:  'bin',
           group:  'bin',
-          mode:   '0444',
+          mode:   '0644',
         )
       end
     end
@@ -344,7 +344,7 @@ describe 'motd', type: :class do
           content: "Test Template for Rspec\n",
           owner:  'bin',
           group:  'bin',
-          mode:   '0444',
+          mode:   '0644',
         )
       end
     end
@@ -358,7 +358,7 @@ describe 'motd', type: :class do
           content: "Test Template for Rspec\n",
           owner:  'bin',
           group:  'bin',
-          mode:   '0444',
+          mode:   '0644',
         )
       end
     end
