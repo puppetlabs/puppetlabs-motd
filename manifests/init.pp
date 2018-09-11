@@ -23,7 +23,7 @@ class motd (
   $issue_content = undef,
   $issue_net_template = undef,
   $issue_net_content = undef,
-  $windows_motd_title = 'Message of the day',
+  $windows_motd_title = 'This is my first commit',
 ) {
 
   if $template {
