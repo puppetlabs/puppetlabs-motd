@@ -15,6 +15,10 @@
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 2.1.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs/translate",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
     }
   ],
   "operatingsystem_support": [
@@ -73,10 +77,10 @@
     {
       "operatingsystem": "Windows",
       "operatingsystemrelease": [
-        "2008",
         "2008 R2",
-        "2012",
-        "2012 R2"
+        "2012 R2",
+        "2016",
+        "10"
       ]
     }
   ],

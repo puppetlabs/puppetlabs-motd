@@ -16,7 +16,7 @@ PUPPETCODE
 
 pp_static_template = <<-PUPPETCODE
     class { motd:
-      template => "motd/spec.erb",
+      template => "motd/spec.epp",
     }
 PUPPETCODE
 
@@ -29,7 +29,7 @@ PUPPETCODE
 
 pp_static_template_issue = <<-PUPPETCODE
     class { motd:
-      issue_template => "motd/spec.erb",
+      issue_template => "motd/spec.epp",
       content        => "Hello world!\n",
     }
 PUPPETCODE
@@ -43,7 +43,7 @@ PUPPETCODE
 
 pp_static_template_issue_net = <<-PUPPETCODE
     class { motd:
-      issue_net_template => "motd/spec.erb",
+      issue_net_template => "motd/spec.epp",
       content            => "Hello world!\n",
     }
 PUPPETCODE
