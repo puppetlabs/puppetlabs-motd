@@ -37,7 +37,7 @@ class { 'motd':
 
 ```puppet
 class { 'motd':
-  content => "Hello world!/n",
+  content => "使用しないときは、ワークステーションをロックしてください\n",
 }
 ```
 
