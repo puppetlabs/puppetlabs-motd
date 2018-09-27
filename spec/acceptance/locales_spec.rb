@@ -34,19 +34,19 @@ describe 'i18n Testing', if: (fact('osfamily') == 'Debian' || fact('osfamily') =
   context 'when triggering simple errors' do
     it 'when passing both template and content parameters' do
       apply_manifest(pp_template_content_error, catch_failures: true) do |r|
-        expect(r.stderr).to include('Ɓǿŧħ $ŧḗḿƥŀȧŧḗ ȧƞḓ $ƈǿƞŧḗƞŧ ƥȧřȧḿḗŧḗřş ƥȧşşḗḓ ŧǿ ḿǿŧḓ, īɠƞǿřīƞɠ ƈǿƞŧḗƞŧ')
+        expect(r.stderr).to include('$templateパラメータと$contentパラメータの両方がmotdに渡され、contentは無視されました。')
       end
     end
 
     it 'when passing both issue_template and issue_content parameters' do
       apply_manifest(pp_issue_error, catch_failures: true) do |r|
-        expect(r.stderr).to include('Ɓǿŧħ $īşşŭḗ_ŧḗḿƥŀȧŧḗ ȧƞḓ $īşşŭḗ_ƈǿƞŧḗƞŧ ƥȧřȧḿḗŧḗřş ƥȧşşḗḓ ŧǿ ḿǿŧḓ, īɠƞǿřīƞɠ īşşŭḗ_ƈǿƞŧḗƞŧ')
+        expect(r.stderr).to include('$issue_templateパラメータと$issue_contentパラメータの両方がmotdに渡され、issue_contentは無視されました。')
       end
     end
 
     it 'when passing both issue_net_template and issue_net_content parameters' do
       apply_manifest(pp_net_error, catch_failures: true) do |r|
-        expect(r.stderr).to include('Ɓǿŧħ $īşşŭḗ_ƞḗŧ_ŧḗḿƥŀȧŧḗ ȧƞḓ $īşşŭḗ_ƞḗŧ_ƈǿƞŧḗƞŧ ƥȧřȧḿḗŧḗřş ƥȧşşḗḓ ŧǿ ḿǿŧḓ, īɠƞǿřīƞɠ īşşŭḗ_ƞḗŧ_ƈǿƞŧḗƞŧ')
+        expect(r.stderr).to include('$issue_net_templateパラメータと$issue_net_contentパラメータの両方がmotdに渡され、issue_net_contentは無視されました。')
       end
     end
   end
