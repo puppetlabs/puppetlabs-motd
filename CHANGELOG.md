@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [2.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/2.1.0) (2018-09-27)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.0.0...2.1.0)
+
+### Added
+
+- pdksync - \(MODULES-6805\) metadata.json shows support for puppet 6 [\#164](https://github.com/puppetlabs/puppetlabs-motd/pull/164) ([tphoney](https://github.com/tphoney))
+
 ## [2.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/2.0.0) (2018-09-17)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/1.9.0...2.0.0)
@@ -17,6 +25,10 @@ All notable changes to this project will be documented in this file. The format 
 - \(FM-7307\) - added translation functionality [\#150](https://github.com/puppetlabs/puppetlabs-motd/pull/150) ([Lavinia-Dan](https://github.com/Lavinia-Dan))
 - \(maint\) removing registry pin, update stdlib bound [\#145](https://github.com/puppetlabs/puppetlabs-motd/pull/145) ([tphoney](https://github.com/tphoney))
 - \(FM-7237\) - Addition of support for Ubuntu 18.04 on motd [\#140](https://github.com/puppetlabs/puppetlabs-motd/pull/140) ([david22swan](https://github.com/david22swan))
+
+### UNCATEGORIZED PRS; GO LABEL THEM
+
+- \(MODULES-7808\) - Release Prep 2.0.0 [\#157](https://github.com/puppetlabs/puppetlabs-motd/pull/157) ([Lavinia-Dan](https://github.com/Lavinia-Dan))
 
 ## 1.9.0
 ## Summary
