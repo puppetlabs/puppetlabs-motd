@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [2.1.1](https://github.com/puppetlabs/puppetlabs-motd/tree/2.1.1) (2018-09-28)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.0...2.1.1)
+
+### Fixed
+
+- \(fix\) - Changelog Fix [\#171](https://github.com/puppetlabs/puppetlabs-motd/pull/171) ([david22swan](https://github.com/david22swan))
+
 ## [2.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/2.1.0) (2018-09-27)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.0.0...2.1.0)
