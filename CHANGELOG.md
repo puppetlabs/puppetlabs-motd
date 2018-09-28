@@ -26,10 +26,6 @@ All notable changes to this project will be documented in this file. The format 
 - \(maint\) removing registry pin, update stdlib bound [\#145](https://github.com/puppetlabs/puppetlabs-motd/pull/145) ([tphoney](https://github.com/tphoney))
 - \(FM-7237\) - Addition of support for Ubuntu 18.04 on motd [\#140](https://github.com/puppetlabs/puppetlabs-motd/pull/140) ([david22swan](https://github.com/david22swan))
 
-### UNCATEGORIZED PRS; GO LABEL THEM
-
-- \(MODULES-7808\) - Release Prep 2.0.0 [\#157](https://github.com/puppetlabs/puppetlabs-motd/pull/157) ([Lavinia-Dan](https://github.com/Lavinia-Dan))
-
 ## 1.9.0
 ## Summary
 This release includes a change that makes this module *compatible* with AIX.
