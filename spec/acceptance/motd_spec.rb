@@ -1,7 +1,19 @@
 require 'spec_helper_acceptance'
+require 'pry'
+require 'bolt_spec/run'
+include BoltSpec::Run
+
+def apply_manifest(manifest, fuckit )
+include BoltSpec::Run
+  config_data = {
+      "ssh" =>  { "host-key-check" => false },
+      "winrm" => { "ssl" => false } }
+  host = ENV['HOSTY']
+  result = run_command("/opt/puppetlabs/puppet/bin/puppet apply -e '#{manifest}'", host, config: config_data)
+result
+end
 
 motd_file = '/etc/motd'
-
 issue_file = '/etc/issue'
 
 issue_net_file = '/etc/issue.net'
@@ -66,7 +78,7 @@ def test_motd(pp, expected_contain, filename)
   apply_manifest(pp, catch_failures: true)
   apply_manifest(pp, catch_changes: true)
 
-  return unless fact('osfamily') != 'windows'
+  return unless os[:family] != 'windows'
   expect(file(filename)).to be_file
   expect(file(filename)).to contain expected_contain
 end
@@ -108,7 +120,7 @@ describe 'Message of the day' do
     end
   end
 
-  context 'when disable dynamic motd settings on Debian', if: fact('osfamily') == 'Debian' do
+  context 'when disable dynamic motd settings on Debian', if: os[:family] == 'Debian' do
     it do
       test_motd(pp_debian_dynamic, "Hello world!\n", motd_file)
     end
@@ -117,3 +129,4 @@ describe 'Message of the day' do
     end
   end
 end
+
