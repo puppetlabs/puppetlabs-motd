@@ -1,19 +1,7 @@
 require 'spec_helper_acceptance'
-require 'pry'
-require 'bolt_spec/run'
-include BoltSpec::Run
-
-def apply_manifest(manifest, fuckit )
-include BoltSpec::Run
-  config_data = {
-      "ssh" =>  { "host-key-check" => false },
-      "winrm" => { "ssl" => false } }
-  host = ENV['HOSTY']
-  result = run_command("/opt/puppetlabs/puppet/bin/puppet apply -e '#{manifest}'", host, config: config_data)
-result
-end
 
 motd_file = '/etc/motd'
+
 issue_file = '/etc/issue'
 
 issue_net_file = '/etc/issue.net'
