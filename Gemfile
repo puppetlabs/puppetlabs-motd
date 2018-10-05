@@ -15,8 +15,7 @@ end
 
 ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
 minor_version = ruby_version_segments[0..1].join('.')
-gem 'bolt', git: 'https://github.com/puppetlabs/bolt', ref: '0.24.0'
-gem 'beaker-puppet', '1.6.0'
+gem 'solid_waffle', git: 'git@github.com:puppetlabs/solid-waffle.git'
 group :development do
   gem "fast_gettext", '1.1.0',                         require: false if Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')
   gem "fast_gettext",                                  require: false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.1.0')
