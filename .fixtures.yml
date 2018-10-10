@@ -1,7 +1,8 @@
 fixtures:
   repositories:
-    stdlib: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
+    puppet_agent: 'git://github.com/puppetlabs/puppetlabs-puppet_agent.git'
     registry: 'git://github.com/puppetlabs/puppetlabs-registry.git'
+    stdlib: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
     translate: 'https://github.com/puppetlabs/puppetlabs-translate'
   symlinks:
     "motd": "#{source_dir}"
