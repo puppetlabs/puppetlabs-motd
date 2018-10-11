@@ -29,7 +29,7 @@ By default, the module populates motd using the included template. Alternatively
 
 ```puppet
 class { 'motd':
-  template => 'mymodule/mytemplate.erb',
+  template => 'mymodule/mytemplate.epp',
 }
 ```
 
