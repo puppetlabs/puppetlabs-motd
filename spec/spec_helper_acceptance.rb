@@ -11,11 +11,13 @@ else
   if host_in_group(inventory_hash, ENV['TARGET_HOST'], 'ssh_nodes')
     set :backend, :ssh
     options = Net::SSH::Config.for(host)
-    options[:user] = 'root'
+#    options[:user] = 'root'
+#    options[:port] = '2222'
+    options[:password] = 'root'
     host = ENV['TARGET_HOST']
     set :host,        options[:host_name] || host
     set :ssh_options, options
-  elsif host_in_group(inventory_hash, ENV['TARGET_HOST'], 'win_rm_nodes')
+  elsif host_in_group(inventory_hash, ENV['TARGET_HOST'], 'winrm_nodes')
     require 'winrm'
 
     set :backend, :winrm
