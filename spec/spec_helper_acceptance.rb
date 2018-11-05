@@ -16,7 +16,11 @@ else
     options[:user] = node_config.dig('ssh', 'user') unless node_config.dig('ssh', 'user').nil?
     options[:port] = node_config.dig('ssh', 'port') unless node_config.dig('ssh', 'port').nil?
     options[:password] = node_config.dig('ssh', 'password') unless node_config.dig('ssh', 'password').nil?
-    host = ENV['TARGET_HOST']
+    host = if ENV['TARGET_HOST'].include?(':')
+       ENV['TARGET_HOST'].split(':').first
+      else
+        ENV['TARGET_HOST']
+      end
     set :host,        options[:host_name] || host
     set :ssh_options, options
   elsif host_in_group(inventory_hash, ENV['TARGET_HOST'], 'winrm_nodes')
