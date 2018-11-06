@@ -31,6 +31,7 @@ matrix:
       script: 
       - bundle exec rake 'waffle:provision[docker, ubuntu:14.04]'
       - bundle exec rake waffle:install_agent
+      - bundle exec rake waffle:install_module
       - bundle exec rake acceptance:all
       services: docker
       sudo: required
