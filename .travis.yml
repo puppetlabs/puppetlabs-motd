@@ -20,14 +20,9 @@ matrix:
   fast_finish: true
   include:
     -
-      env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
-    -
-      env: CHECK=parallel_spec
-    -
-      env: PUPPET_GEM_VERSION="~> 5.0" CHECK=parallel_spec
-      rvm: 2.4.4
-    -
       rvm: 2.5.1
+      bundler_args: 
+      dist: trusty
       script: 
       - bundle exec rake 'waffle:provision[docker, ubuntu:14.04]'
       - bundle exec rake waffle:install_agent
@@ -35,6 +30,27 @@ matrix:
       - bundle exec rake acceptance:all
       services: docker
       sudo: required
+    -
+      bundler_args: 
+      dist: trusty
+      rvm: 2.5.1
+      script: 
+      - bundle exec rake 'waffle:provision[docker, centos:6]'
+      - bundle exec rake waffle:install_agent
+      - bundle exec rake waffle:install_module
+      - bundle exec rake acceptance:all
+      services: docker
+      sudo: required
+    -
+      env: CHECK="syntax lint metadata_lint check:symlinks check:git_ignore check:dot_underscore check:test_file rubocop"
+    -
+      env: CHECK=parallel_spec
+    -
+      env: PUPPET_GEM_VERSION="~> 5.0" CHECK=parallel_spec
+      rvm: 2.4.4
+    -
+      env: PUPPET_GEM_VERSION="~> 4.0" CHECK=parallel_spec
+      rvm: 2.1.9
 branches:
   only:
     - master
