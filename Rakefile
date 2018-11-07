@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 require 'pry'
-require 'beaker/puppet_install_helper'
-require 'beaker-puppet'
 require 'solid_waffle/rake_tasks'
 
 require 'puppetlabs_spec_helper/rake_tasks'
