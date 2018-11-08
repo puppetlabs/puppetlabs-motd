@@ -13,6 +13,8 @@ init:
   - 'mkdir C:\ProgramData\PuppetLabs\hiera && exit 0'
   - 'mkdir C:\ProgramData\PuppetLabs\puppet\var && exit 0'
 environment:
+  GITHUB_TOKEN:
+    secure: M1kPyYWdqOK4PkhJMMgo51dXa2eFhl3waqHpmWv9t5pxbUcNwaknpNoeALyA2s5n
   matrix:
     -
       RUBY_VERSION: 24-x64
