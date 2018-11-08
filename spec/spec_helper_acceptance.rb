@@ -22,7 +22,7 @@ else
              ENV['TARGET_HOST'].split(':').first
            else
              ENV['TARGET_HOST']
-      end
+           end
     set :host,        options[:host_name] || host
     set :ssh_options, options
   elsif host_in_group(inventory_hash, ENV['TARGET_HOST'], 'winrm_nodes')
@@ -43,7 +43,5 @@ else
 
     winrm = WinRM::Connection.new opts
     Specinfra.configuration.winrm = winrm
-  else
-    raise "#{ENV['TARGET_HOST']} is not a member of any handled groups, check inventory.yaml"
   end
 end
