@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
 motd_file = '/etc/motd'
@@ -117,4 +119,3 @@ describe 'Message of the day' do
     end
   end
 end
-

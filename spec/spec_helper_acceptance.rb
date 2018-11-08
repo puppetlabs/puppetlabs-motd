@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'serverspec'
 require 'solid_waffle'
 include SolidWaffle
@@ -17,9 +19,9 @@ else
     options[:port] = node_config.dig('ssh', 'port') unless node_config.dig('ssh', 'port').nil?
     options[:password] = node_config.dig('ssh', 'password') unless node_config.dig('ssh', 'password').nil?
     host = if ENV['TARGET_HOST'].include?(':')
-       ENV['TARGET_HOST'].split(':').first
-      else
-        ENV['TARGET_HOST']
+             ENV['TARGET_HOST'].split(':').first
+           else
+             ENV['TARGET_HOST']
       end
     set :host,        options[:host_name] || host
     set :ssh_options, options
@@ -27,19 +29,19 @@ else
     require 'winrm'
 
     set :backend, :winrm
-    set :os, :family => 'windows'
+    set :os, family: 'windows'
     user = node_config.dig('winrm', 'user') unless node_config.dig('winrm', 'user').nil?
     pass = node_config.dig('winrm', 'password') unless node_config.dig('winrm', 'password').nil?
     endpoint = "http://#{ENV['TARGET_HOST']}:5985/wsman"
 
     opts = {
-       user: user,
-       password: pass,
-       endpoint: endpoint,
-       operation_timeout: 300,
+      user: user,
+      password: pass,
+      endpoint: endpoint,
+      operation_timeout: 300,
     }
 
-    winrm = WinRM::Connection.new ( opts)
+    winrm = WinRM::Connection.new opts
     Specinfra.configuration.winrm = winrm
   else
     raise "#{ENV['TARGET_HOST']} is not a member of any handled groups, check inventory.yaml"
