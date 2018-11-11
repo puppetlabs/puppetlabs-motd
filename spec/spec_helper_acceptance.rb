@@ -9,10 +9,10 @@ if ENV['TARGET_HOST'].nil?
 else
   puts "TARGET_HOST #{ENV['TARGET_HOST']}"
   # load inventory
-  inventory_hash = load_inventory_hash
+  inventory_hash = inventory_hash_from_inventory_file
   node_config = config_from_node(inventory_hash, ENV['TARGET_HOST'])
 
-  if host_in_group(inventory_hash, ENV['TARGET_HOST'], 'ssh_nodes')
+  if target_in_group(inventory_hash, ENV['TARGET_HOST'], 'ssh_nodes')
     set :backend, :ssh
     options = Net::SSH::Config.for(host)
     options[:user] = node_config.dig('ssh', 'user') unless node_config.dig('ssh', 'user').nil?
@@ -25,7 +25,7 @@ else
            end
     set :host,        options[:host_name] || host
     set :ssh_options, options
-  elsif host_in_group(inventory_hash, ENV['TARGET_HOST'], 'winrm_nodes')
+  elsif target_in_group(inventory_hash, ENV['TARGET_HOST'], 'winrm_nodes')
     require 'winrm'
 
     set :backend, :winrm
