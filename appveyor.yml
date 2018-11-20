@@ -35,13 +35,6 @@ environment:
       PUPPET_GEM_VERSION: ~> 6.0
       RUBY_VERSION: 25-x64
       CHECK: parallel_spec
-    -
-      RUBY_VERSION: 25-x64
-      test_script:
-        - bundle exec rake 'waffle:provision[docker, ubuntu:14.04]'
-        - bundle exec rake waffle:install_agent
-        - bundle exec rake waffle:install_module
-        - bundle exec rake acceptance:all
 matrix:
   fast_finish: true
 install:
