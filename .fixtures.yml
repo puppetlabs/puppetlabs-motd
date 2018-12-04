@@ -4,7 +4,7 @@ fixtures:
     puppet_agent: 'git://github.com/puppetlabs/puppetlabs-puppet_agent.git'
     registry: 'git://github.com/puppetlabs/puppetlabs-registry.git'
     stdlib: 'git://github.com/puppetlabs/puppetlabs-stdlib.git'
-    translate: 'https://github.com/puppetlabs/puppetlabs-translate'
-    waffle_provision: "git@github.com:puppetlabs/waffle_provision.git"
+    translate: 'git://github.com/puppetlabs/puppetlabs-translate.git'
+    waffle_provision: 'git://github.com/puppetlabs/waffle_provision.git'
   symlinks:
-    "motd": "#{source_dir}"
+    motd: "#{source_dir}"
