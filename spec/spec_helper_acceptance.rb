@@ -22,6 +22,7 @@ else
     options[:user] = node_config.dig('ssh', 'user') unless node_config.dig('ssh', 'user').nil?
     options[:port] = node_config.dig('ssh', 'port') unless node_config.dig('ssh', 'port').nil?
     options[:password] = node_config.dig('ssh', 'password') unless node_config.dig('ssh', 'password').nil?
+    options[:verify_host_key] = Net::SSH::Verifiers::Null.new unless node_config.dig('ssh', 'host-key-check').nil?
     host = if ENV['TARGET_HOST'].include?(':')
              ENV['TARGET_HOST'].split(':').first
            else
