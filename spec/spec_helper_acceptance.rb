@@ -12,7 +12,6 @@ if ENV['TARGET_HOST'].nil? || ENV['TARGET_HOST'] == 'localhost'
     set :backend, :exec
   end
 else
-  puts "TARGET_HOST #{ENV['TARGET_HOST']}"
   # load inventory
   inventory_hash = inventory_hash_from_inventory_file
   node_config = config_from_node(inventory_hash, ENV['TARGET_HOST'])
@@ -30,6 +29,7 @@ else
            end
     set :host,        options[:host_name] || host
     set :ssh_options, options
+    set :request_pty, true
   elsif target_in_group(inventory_hash, ENV['TARGET_HOST'], 'winrm_nodes')
     require 'winrm'
 
