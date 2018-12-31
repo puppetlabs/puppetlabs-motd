@@ -29,7 +29,7 @@ matrix:
       - bundle exec rake 'waffle:provision[docker, debian:9]'
       - bundle exec rake 'waffle:install_agent[puppet5]'
       - bundle exec rake waffle:install_module
-      - bundle exec rake acceptance:all -j10 -m
+      - bundle exec rake waffle:parallel
       services: docker
       sudo: required
     -
@@ -42,7 +42,7 @@ matrix:
       - bundle exec rake 'waffle:provision[docker, centos:7]'
       - bundle exec rake waffle:install_agent
       - bundle exec rake waffle:install_module
-      - bundle exec rake acceptance:all -j10 -m
+      - bundle exec rake waffle:parallel
       services: docker
       sudo: required
     -
@@ -56,7 +56,7 @@ matrix:
       - bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'
       - bundle exec rake waffle:install_agent
       - bundle exec rake waffle:install_module
-      - bundle exec rake acceptance:all -j10 -m
+      - bundle exec rake waffle:parallel
       services: docker
       sudo: required
     -
@@ -69,7 +69,7 @@ matrix:
       - bundle exec rake 'waffle:provision[docker, oraclelinux:7]'
       - bundle exec rake waffle:install_agent
       - bundle exec rake waffle:install_module
-      - bundle exec rake acceptance:all -j10 -m
+      - bundle exec rake waffle:parallel
       services: docker
       sudo: required
     -
@@ -83,7 +83,7 @@ matrix:
       - bundle exec rake 'waffle:provision[docker, ubuntu:18.04]'
       - bundle exec rake waffle:install_agent
       - bundle exec rake waffle:install_module
-      - bundle exec rake acceptance:all -j10 -m
+      - bundle exec rake waffle:parallel
       services: docker
       sudo: required
     -
