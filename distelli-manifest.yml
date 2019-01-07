@@ -1,0 +1,18 @@
+helenpuppet/puppetlabs-motd:
+  PreBuild:
+    - rvm install 2.3.0 # Modules need at least 2.3 to run properly
+    - rvm use 2.3.0 --default
+    - gem install -v '1.15' bundler # Bundler dependancy issues mean we need to pin a version
+    - bundle -v
+    - bundle update --full-index # We require the fullindex option because bundle complains we have too many gems
+  Build: 
+    - bundle exec rake 'waffle:provision[vmpooler, ubuntu-1604-x86_64]'
+    #- bundle exec rake 'waffle:install_agent[puppet5]'
+    #- bundle exec rake waffle:install_module
+    #- bundle exec rake waffle:parallel
+  AfterBuildSuccess:
+  AfterBuildFailure:
+  CommitData:
+    - RepoType: Git
+    - RepoPath: .
+
