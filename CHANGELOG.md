@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [2.1.2](https://github.com/puppetlabs/puppetlabs-motd/tree/2.1.2) (2019-01-24)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.1...2.1.2)
+
+### Fixed
+
+- pdksync - \(FM-7655\) Fix rubygems-update for ruby \< 2.3 [\#188](https://github.com/puppetlabs/puppetlabs-motd/pull/188) ([tphoney](https://github.com/tphoney))
+
 ## [2.1.1](https://github.com/puppetlabs/puppetlabs-motd/tree/2.1.1) (2018-09-28)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.0...2.1.1)
