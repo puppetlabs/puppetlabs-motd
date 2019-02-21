@@ -29,7 +29,7 @@ motdモジュールは、幅広いシステムにおいて本日のメッセー�
 
 ```puppet
 class { 'motd':
-  template => 'mymodule/mytemplate.erb',
+  template => 'mymodule/mytemplate.epp',
 }
 ```
 
