@@ -13,6 +13,8 @@ init:
   - 'mkdir C:\ProgramData\PuppetLabs\hiera && exit 0'
   - 'mkdir C:\ProgramData\PuppetLabs\puppet\var && exit 0'
 environment:
+  GITHUB_TOKEN:
+    secure: M1kPyYWdqOK4PkhJMMgo51dXa2eFhl3waqHpmWv9t5pxbUcNwaknpNoeALyA2s5n
   matrix:
     -
       RUBY_VERSION: 24-x64
@@ -33,8 +35,29 @@ environment:
       PUPPET_GEM_VERSION: ~> 6.0
       RUBY_VERSION: 25-x64
       CHECK: parallel_spec
+    -
+      RUBY_VERSION: 25-x64
+      ACCEPTANCE: yes
+      TARGET_HOST: localhost
+    -
+      RUBY_VERSION: 25-x64
+      ACCEPTANCE: yes
+      TARGET_HOST: localhost
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 matrix:
   fast_finish: true
+for:
+-
+  matrix:
+    only:
+      - ACCEPTANCE: yes
+  install:
+    - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+    - bundle install --jobs 4 --retry 2
+    - type Gemfile.lock
+  test_script:
+     - bundle exec rake spec_prep
+     - bundle exec rake acceptance:localhost
 install:
   - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
   - bundle install --jobs 4 --retry 2 --without system_tests
