@@ -22,8 +22,7 @@ pp_net_error = <<-PUPPETCODE
       content           => "Hello world!\n",
     }
 PUPPETCODE
-
-describe 'i18n Testing', if: (os[:family] == 'debian' || os[:family] == 'redhat') && (Gem::Version.new(puppet_version) >= Gem::Version.new('4.10.5')) do
+describe 'i18n Testing', if: ((os[:family] == 'debian' || os[:family] == 'redhat') && Bundler.rubygems.find_name('puppet_litmus').none?) do
   before :all do
     hosts.each do |host|
       on(host, "sed -i \"96i FastGettext.locale='ja'\" /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet.rb")

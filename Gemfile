@@ -15,6 +15,9 @@ end
 
 ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
 minor_version = ruby_version_segments[0..1].join('.')
+gem 'puppet_litmus', git: "https://#{ENV.fetch("GITHUB_TOKEN")}@github.com/puppetlabs/puppet_litmus.git"
+#gem 'puppet_litmus', path: '/Users/tp/workspace/git/puppet_litmus'
+gem 'pdk', git: 'https://github.com/tphoney/pdk.git', branch: 'pin_cri'
 
 group :development do
   gem "fast_gettext", '1.1.0',                         require: false if Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')
