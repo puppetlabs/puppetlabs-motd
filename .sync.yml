@@ -7,14 +7,15 @@
   unmanaged: true
 
 .travis.yml:
-  docker_sets:
-    - set: docker/centos-7
-    - set: docker/ubuntu-14.04
-  docker_defaults:
-    bundler_args: ""
-  secure: ""
-  branches:
-    - release
+  unmanaged: true
+#  docker_sets:
+#    - set: docker/centos-7
+#    - set: docker/ubuntu-14.04
+#  docker_defaults:
+#    bundler_args: ""
+#  secure: ""
+#  branches:
+#    - release
 
 .rubocop.yml:
   default_configs:
@@ -22,6 +23,9 @@
     require:
     - rubocop-i18n
     - rubocop-rspec
+
+appveyor.yml:
+  unmanaged: true
 
 Gemfile:
   optional:
@@ -32,10 +36,16 @@ Gemfile:
         ref: '20ee04ba1234e9e83eb2ffb5056e23d641c7a018'
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')"
       - gem: 'puppet_litmus'
-        git: 'https://#{ENV.fetch("GITHUB_TOKEN")}@github.com/puppetlabs/puppet_litmus.git'
+        git: 'https://github.com/puppetlabs/puppet_litmus.git'
+      - gem: 'serverspec'
+      - gem: 'net-ssh'
+        version: '< 5.0.0'
       - gem: 'pdk'
         git: 'https://github.com/tphoney/pdk.git'
         branch: 'pin_cri'
+      - gem: 'puppetlabs_spec_helper'
+        git: 'https://github.com/tphoney/puppetlabs_spec_helper.git'
+        branch: 'FM-7847'
 
 Rakefile:
   requires:
