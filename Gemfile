@@ -15,9 +15,6 @@ end
 
 ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
 minor_version = ruby_version_segments[0..1].join('.')
-gem 'puppet_litmus', git: "https://#{ENV.fetch("GITHUB_TOKEN")}@github.com/puppetlabs/puppet_litmus.git"
-#gem 'puppet_litmus', path: '/Users/tp/workspace/git/puppet_litmus'
-gem 'pdk', git: 'https://github.com/tphoney/pdk.git', branch: 'pin_cri'
 
 group :development do
   gem "fast_gettext", '1.1.0',                         require: false if Gem::Version.new(RUBY_VERSION.dup) < Gem::Version.new('2.1.0')
@@ -32,10 +29,11 @@ group :development do
   gem "puppet-module-win-dev-r#{minor_version}",       require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-lint-i18n",                              require: false
   gem "github_changelog_generator",                    require: false, git: 'https://github.com/skywinder/github-changelog-generator', ref: '20ee04ba1234e9e83eb2ffb5056e23d641c7a018' if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')
-end
-group :system_tests do
-  gem "puppet-module-posix-system-r#{minor_version}", require: false, platforms: [:ruby]
-  gem "puppet-module-win-system-r#{minor_version}",   require: false, platforms: [:mswin, :mingw, :x64_mingw]
+  gem "puppet_litmus",                                 require: false, git: 'https://github.com/puppetlabs/puppet_litmus.git'
+  gem "serverspec",                                    require: false
+  gem "net-ssh", '< 5.0.0',                            require: false
+  gem "pdk",                                           require: false, git: 'https://github.com/tphoney/pdk.git', branch: 'pin_cri'
+  gem "puppetlabs_spec_helper",                        require: false, git: 'https://github.com/tphoney/puppetlabs_spec_helper.git', branch: 'FM-7847'
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
