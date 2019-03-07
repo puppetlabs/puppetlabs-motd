@@ -27,6 +27,9 @@ appveyor.yml:
     - rubocop-i18n
     - rubocop-rspec
 
+appveyor.yml:
+  unmanaged: true
+
 Gemfile:
   optional:
     ':development':
@@ -51,6 +54,7 @@ Gemfile:
           - mingw
           - x64_mingw
         condition: "ENV['PUPPET_GEM_VERSION'].nil? or ENV['PUPPET_GEM_VERSION'] !~ %r{ 5}"
+
 Rakefile:
   requires:
   - puppet_pot_generator/rake_tasks
