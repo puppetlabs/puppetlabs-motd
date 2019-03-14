@@ -38,7 +38,6 @@ Gemfile:
       - gem: 'puppetlabs_spec_helper'
         git: 'https://github.com/tphoney/puppetlabs_spec_helper.git'
         branch: 'FM-7847'
-      - gem: 'bolt'
   required:
     ':system_tests':
       - gem: 'puppet-module-posix-system-r#{minor_version}'
@@ -51,9 +50,15 @@ Gemfile:
       - gem: 'puppet_litmus'
         git: 'https://github.com/pmcmaw/puppet_litmus.git'
         branch: 'remove_bolt_dependency'
+        platforms:
+          - ruby
+          - mswin
+          - mingw
+          - x64_mingw
       - gem: 'pdk'
         git: 'https://github.com/tphoney/pdk.git'
         branch: 'pin_cri'
+      - gem: 'bolt'
 Rakefile:
   requires:
   - puppet_pot_generator/rake_tasks
