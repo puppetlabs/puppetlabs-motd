@@ -38,6 +38,7 @@ Gemfile:
       - gem: 'puppetlabs_spec_helper'
         git: 'https://github.com/tphoney/puppetlabs_spec_helper.git'
         branch: 'FM-7847'
+      - gem: 'bolt'
   required:
     ':system_tests':
       - gem: 'puppet-module-posix-system-r#{minor_version}'
