@@ -55,7 +55,7 @@ for:
     - type Gemfile.lock
   test_script:
      - bundle exec rake spec_prep
-     - bundle exec rake acceptance:localhost
+     - bundle exec rake litmus:acceptance:localhost
 install:
   - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
   - bundle install --jobs 4 --retry 2 --without system_tests
