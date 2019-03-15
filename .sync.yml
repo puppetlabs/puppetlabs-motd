@@ -58,7 +58,6 @@ Gemfile:
       - gem: 'pdk'
         git: 'https://github.com/tphoney/pdk.git'
         branch: 'pin_cri'
-      - gem: 'bolt'
 Rakefile:
   requires:
   - puppet_pot_generator/rake_tasks
