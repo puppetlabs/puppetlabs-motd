@@ -42,8 +42,8 @@ environment:
       ACCEPTANCE: yes
       TARGET_HOST: localhost
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-matrix:
-  fast_finish: true
+  #matrix:
+  #  fast_finish: true
 for:
 -
   matrix:
