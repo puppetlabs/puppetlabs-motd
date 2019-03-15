@@ -42,6 +42,17 @@ environment:
       ACCEPTANCE: yes
       TARGET_HOST: localhost
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    -
+      PUPPET_GEM_VERSION: ~> 5.0
+      RUBY_VERSION: 25-x64
+      ACCEPTANCE: yes
+      TARGET_HOST: localhost
+    -
+      PUPPET_GEM_VERSION: ~> 5.0
+      RUBY_VERSION: 25-x64
+      ACCEPTANCE: yes
+      TARGET_HOST: localhost
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
   #matrix:
   #  fast_finish: true
 for:
