@@ -55,6 +55,7 @@ Gemfile:
           - mswin
           - mingw
           - x64_mingw
+        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.1')"
       - gem: 'pdk'
         git: 'https://github.com/tphoney/pdk.git'
         branch: 'pin_cri'

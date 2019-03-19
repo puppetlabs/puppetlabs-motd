@@ -34,7 +34,7 @@ end
 group :system_tests do
   gem "puppet-module-posix-system-r#{minor_version}", require: false, platforms: [:ruby]
   gem "puppet-module-win-system-r#{minor_version}",   require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem "puppet_litmus",                                require: false, git: 'https://github.com/pmcmaw/puppet_litmus.git', branch: 'remove_bolt_dependency', platforms: [:ruby, :mswin, :mingw, :x64_mingw]
+  gem "puppet_litmus",                                require: false, git: 'https://github.com/pmcmaw/puppet_litmus.git', branch: 'remove_bolt_dependency', platforms: [:ruby, :mswin, :mingw, :x64_mingw] if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.1')
   gem "pdk",                                          require: false, git: 'https://github.com/tphoney/pdk.git', branch: 'pin_cri'
   gem "bolt",                                         require: false
 end
