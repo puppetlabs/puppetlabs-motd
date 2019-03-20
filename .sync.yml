@@ -48,8 +48,7 @@ Gemfile:
           - mingw
           - x64_mingw
       - gem: 'puppet_litmus'
-        git: 'https://github.com/pmcmaw/puppet_litmus.git'
-        branch: 'remove_bolt_dependency'
+        git: 'https://github.com/puppetlabs/puppet_litmus.git'
         platforms:
           - ruby
           - mswin
