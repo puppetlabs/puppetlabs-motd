@@ -55,7 +55,7 @@ Gemfile:
           - mswin
           - mingw
           - x64_mingw
-        condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.1')"
+        condition: "ENV['PUPPET_GEM_VERSION'].nil? or ENV['PUPPET_GEM_VERSION'] !~ %r{ 5}"
       - gem: 'pdk'
         git: 'https://github.com/tphoney/pdk.git'
         branch: 'pin_cri'
