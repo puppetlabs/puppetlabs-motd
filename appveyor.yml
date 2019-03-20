@@ -77,6 +77,7 @@ test_script:
   - ruby -v
   - gem -v
   - bundle -v
+  - bundle update
   - bundle exec rake %CHECK%
 notifications:
   - provider: Email

@@ -36,7 +36,6 @@ group :system_tests do
   gem "puppet-module-win-system-r#{minor_version}",   require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet_litmus",                                require: false, git: 'https://github.com/pmcmaw/puppet_litmus.git', branch: 'remove_bolt_dependency', platforms: [:ruby, :mswin, :mingw, :x64_mingw] if ENV['PUPPET_GEM_VERSION'].nil? or ENV['PUPPET_GEM_VERSION'] !~ %r{ 5}
   gem "pdk",                                          require: false, git: 'https://github.com/tphoney/pdk.git', branch: 'pin_cri'
-  gem "bolt",                                         require: false
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
