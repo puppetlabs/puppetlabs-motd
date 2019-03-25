@@ -35,8 +35,6 @@ Gemfile:
         git: 'https://github.com/skywinder/github-changelog-generator'
         ref: '20ee04ba1234e9e83eb2ffb5056e23d641c7a018'
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')"
-      - gem: 'puppetlabs_spec_helper'
-        git: 'https://github.com/puppetlabs/puppetlabs_spec_helper.git'
   required:
     ':system_tests':
       - gem: 'puppet-module-posix-system-r#{minor_version}'
@@ -55,8 +53,7 @@ Gemfile:
           - x64_mingw
         condition: "ENV['PUPPET_GEM_VERSION'].nil? or ENV['PUPPET_GEM_VERSION'] !~ %r{ 5}"
       - gem: 'pdk'
-        git: 'https://github.com/tphoney/pdk.git'
-        branch: 'pin_cri'
+        git: 'https://github.com/puppetlabs/pdk.git'
 Rakefile:
   requires:
   - puppet_pot_generator/rake_tasks
