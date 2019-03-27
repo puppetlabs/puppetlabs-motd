@@ -3,4 +3,4 @@
 FQDN:         <%= $facts[fqdn] %> (<%= $facts[ipaddress] %>)
 Processor:    <%= $facts[processor0] %>
 Kernel:       <%= $facts[kernel] %>
-Memory Free:  <%= $facts[memoryfree] %>
+Memory Size:  <%= $facts[memorysize] %>
