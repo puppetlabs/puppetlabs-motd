@@ -1,12 +1,11 @@
 team-modules/puppetlabs-motd:
   PreBuild:
-    - ruby --version
-    - which ruby
-    - which gem
+    - source /opt/rh/rh-ruby25/enable
     - echo "--- LETS update BUNDLER ---"
     - bundle update --full-index # We require the fullindex option because bundle complains we have too many gems
   Build:
     - echo "--- PROVISIONING ---"
+    - source /opt/rh/rh-ruby25/enable
     - bundle exec rake 'litmus:provision_from_list[release_checks]'
     - cat inventory.yaml
     - echo "--- AGENT INSTALLATION ---"
@@ -16,8 +15,10 @@ team-modules/puppetlabs-motd:
     - echo "--- TESTS RUNNING ---"
     - bundle exec rake litmus:acceptance:parallel
   AfterBuildSuccess:
+    - source /opt/rh/rh-ruby25/enable
     - bundle exec rake litmus:tear_down
   AfterBuildFailure:
+    - source /opt/rh/rh-ruby25/enable
     - bundle exec rake litmus:tear_down
   CommitData:
     - RepoType: Git
