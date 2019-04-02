@@ -23,7 +23,7 @@ describe 'motd', type: :class do
         processor0: 'intel awesome',
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
-        memoryfree: '1 KB',
+        memorysize: '16.00 GB',
       }
     end
 
@@ -32,7 +32,7 @@ describe 'motd', type: :class do
         is_expected.to contain_File('/etc/motd').with(
           ensure: 'file',
           backup: 'false',
-          content: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       Linux\nMemory Free:  1 KB\n",
+          content: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       Linux\nMemory Size:  16.00 GB\n",
           owner:  'root',
           group:  'root',
           mode:   '0644',
@@ -205,7 +205,7 @@ describe 'motd', type: :class do
         processor0: 'intel awesome',
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
-        memoryfree: '1 KB',
+        memorysize: '16.00 GB',
       }
     end
 
@@ -214,7 +214,7 @@ describe 'motd', type: :class do
         is_expected.to contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext').with(
           ensure: 'present',
           type: 'string',
-          data: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       windows\nMemory Free:  1 KB\n",
+          data: "TestOS 5 x86_64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel awesome\nKernel:       windows\nMemory Size:  16.00 GB\n",
         )
       end
     end
@@ -252,7 +252,7 @@ describe 'motd', type: :class do
         processor0: 'intel',
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
-        memoryfree: '1 KB',
+        memorysize: '16.00 GB',
       }
     end
 
@@ -261,7 +261,7 @@ describe 'motd', type: :class do
         is_expected.to contain_File('/etc/motd').with(
           ensure: 'file',
           backup: 'false',
-          content: "TestOS 11 amd64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel\nKernel:       FreeBSD\nMemory Free:  1 KB\n",
+          content: "TestOS 11 amd64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel\nKernel:       FreeBSD\nMemory Size:  16.00 GB\n",
         )
       end
     end
@@ -318,7 +318,7 @@ describe 'motd', type: :class do
         processor0: 'PowerPC_POWER8',
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
-        memoryfree: '1 KB',
+        memorysize: '16.00 GB',
       }
     end
 
@@ -327,7 +327,7 @@ describe 'motd', type: :class do
         is_expected.to contain_File('/etc/motd').with(
           ensure: 'file',
           backup: 'false',
-          content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory Free:  1 KB\n",
+          content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory Size:  16.00 GB\n",
           owner:  'bin',
           group:  'bin',
           mode:   '0644',
