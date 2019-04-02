@@ -7,7 +7,6 @@ team-modules/puppetlabs-motd:
     - echo "--- PROVISIONING ---"
     - source /opt/rh/rh-ruby25/enable
     - bundle exec rake litmus:provision_list[release_checks]
-    - cat inventory.yaml
     - echo "--- AGENT INSTALLATION ---"
     - bundle exec rake litmus:install_agent
     - echo "--- MODULE INSTALLATION ---"
