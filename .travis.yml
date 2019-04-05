@@ -35,11 +35,11 @@ matrix:
     -
       bundler_args:
       dist: trusty
-      env: PLATFORM=centos:el_puppet5
+      env: PLATFORM=centos:el6_puppet6
       rvm: 2.5.1
       script:
-      - time bundle exec rake 'litmus:provision_list[travis_el]'
-      - time bundle exec rake 'litmus:install_agent[puppet5]'
+      - time bundle exec rake 'litmus:provision_list[travis_el6]'
+      - time bundle exec rake 'litmus:install_agent[puppet6]'
       - time bundle exec rake litmus:install_module
       - bundle exec rake litmus:acceptance:parallel
       services: docker
@@ -60,10 +60,10 @@ matrix:
     -
       bundler_args:
       dist: trusty
-      env: PLATFORM=centos:el_puppet6
+      env: PLATFORM=centos:el7_puppet6
       rvm: 2.5.1
       script:
-      - bundle exec rake 'litmus:provision_list[travis_el]'
+      - bundle exec rake 'litmus:provision_list[travis_el7]'
       - bundle exec rake 'litmus:install_agent[puppet6]'
       - bundle exec rake litmus:install_module
       - bundle exec rake litmus:acceptance:parallel
