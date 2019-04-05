@@ -41,12 +41,7 @@ matrix:
       - time bundle exec rake 'litmus:provision_list[travis_el]'
       - time bundle exec rake 'litmus:install_agent[puppet5]'
       - time bundle exec rake litmus:install_module
-      - time TARGET_HOST=localhost:2222 bundle exec rspec ./spec/acceptance/
-      - time TARGET_HOST=localhost:2223 bundle exec rspec ./spec/acceptance/
-      - time TARGET_HOST=localhost:2224 bundle exec rspec ./spec/acceptance/
-      - time TARGET_HOST=localhost:2225 bundle exec rspec ./spec/acceptance/
-      - time TARGET_HOST=localhost:2226 bundle exec rspec ./spec/acceptance/
-      - time TARGET_HOST=localhost:2227 bundle exec rspec ./spec/acceptance/
+      - bundle exec rake litmus:acceptance:parallel
       services: docker
       sudo: required
     -
