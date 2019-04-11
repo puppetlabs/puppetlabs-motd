@@ -37,7 +37,7 @@ To specify a string as the message of the day:
 
 ```puppet
 class { 'motd':
-  content => "Hello world!/n",
+  content => "Hello world!\n",
 }
 ```
 
