@@ -22,13 +22,9 @@ pp_net_error = <<-PUPPETCODE
       content           => "Hello world!\n",
     }
 PUPPETCODE
-
-describe 'i18n Testing', if: (os[:family] == 'debian' || os[:family] == 'redhat') && (Gem::Version.new(puppet_version) >= Gem::Version.new('4.10.5')) do
+describe 'i18n Testing', unless: (os[:family] == 'windows') do
   before :all do
-    hosts.each do |host|
-      on(host, "sed -i \"96i FastGettext.locale='ja'\" /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet.rb")
-      change_locale_on(host, 'ja_JP.utf-8')
-    end
+    run_shell("export LANGUAGE='ja'")
   end
 
   context 'when triggering simple errors' do
@@ -52,9 +48,6 @@ describe 'i18n Testing', if: (os[:family] == 'debian' || os[:family] == 'redhat'
   end
 
   after :all do
-    hosts.each do |host|
-      on(host, 'sed -i "96d" /opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet.rb')
-      change_locale_on(host, 'en_US')
-    end
+    run_shell("export LANGUAGE='en'")
   end
 end
