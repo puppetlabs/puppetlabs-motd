@@ -35,7 +35,7 @@ matrix:
     -
       bundler_args:
       dist: trusty
-      env: PLATFORM=centos:deb_puppet6
+      env: PLATFORMS=deb_puppet6
       rvm: 2.5.1
       script:
       - time bundle exec rake 'litmus:provision_list[travis_deb]'
@@ -60,7 +60,7 @@ matrix:
     -
       bundler_args:
       dist: trusty
-      env: PLATFORM=centos:el_puppet6
+      env: PLATFORMS=el_puppet6
       rvm: 2.5.1
       script:
       - bundle exec rake 'litmus:provision_list[travis_el]'
