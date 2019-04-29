@@ -62,7 +62,7 @@ PUPPETCODE
 # @param [string]  expected_contain:    Expected contents of the MOTD file to be compared
 # @param [string]  filename:            MOTD file to be tested
 def test_motd(pp, expected_contain, filename)
-  apply_manifest_and_idempotent(pp)
+  idempotent_apply(pp)
 
   return unless os[:family] != 'windows'
   expect(file(filename)).to be_file
