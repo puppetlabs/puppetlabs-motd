@@ -2,6 +2,7 @@
 
 require 'serverspec'
 require 'puppet_litmus'
+require 'spec_helper_acceptance_local' if File.file?(File.join(File.dirname(__FILE__), 'spec_helper_acceptance_local.rb'))
 include PuppetLitmus
 
 if ENV['TARGET_HOST'].nil? || ENV['TARGET_HOST'] == 'localhost'
@@ -16,7 +17,11 @@ else
   inventory_hash = inventory_hash_from_inventory_file
   node_config = config_from_node(inventory_hash, ENV['TARGET_HOST'])
 
-  if target_in_group(inventory_hash, ENV['TARGET_HOST'], 'ssh_nodes')
+  if target_in_group(inventory_hash, ENV['TARGET_HOST'], 'docker_nodes')
+    host = ENV['TARGET_HOST']
+    set :backend, :docker
+    set :docker_container, host
+  elsif target_in_group(inventory_hash, ENV['TARGET_HOST'], 'ssh_nodes')
     set :backend, :ssh
     options = Net::SSH::Config.for(host)
     options[:user] = node_config.dig('ssh', 'user') unless node_config.dig('ssh', 'user').nil?
