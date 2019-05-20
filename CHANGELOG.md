@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v3.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v3.0.0) (2019-05-17)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.2...v3.0.0)
+
+### Changed
+
+- pdksync - \(MODULES-8444\) - Raise lower Puppet bound [\#208](https://github.com/puppetlabs/puppetlabs-motd/pull/208) ([david22swan](https://github.com/david22swan))
+
+### Added
+
+- simplistic support for vscode integration to litmus added [\#212](https://github.com/puppetlabs/puppetlabs-motd/pull/212) ([abuxton](https://github.com/abuxton))
+- \(MODULES-8767\) Add support for SLES 15 [\#205](https://github.com/puppetlabs/puppetlabs-motd/pull/205) ([eimlav](https://github.com/eimlav))
+- \(FM-7647\) use puppet\_litmus for acceptance testing [\#200](https://github.com/puppetlabs/puppetlabs-motd/pull/200) ([tphoney](https://github.com/tphoney))
+
+### Fixed
+
+- \(bugfix\) remove scientific 5 testing [\#217](https://github.com/puppetlabs/puppetlabs-motd/pull/217) ([tphoney](https://github.com/tphoney))
+- \(FM-8073\) litmus block support [\#216](https://github.com/puppetlabs/puppetlabs-motd/pull/216) ([tphoney](https://github.com/tphoney))
+- \(bugfix\) changes needed for litmus 0.1.0 release [\#214](https://github.com/puppetlabs/puppetlabs-motd/pull/214) ([tphoney](https://github.com/tphoney))
+- \(MODULES-8758\) Change memoryfree to memorysize in template [\#204](https://github.com/puppetlabs/puppetlabs-motd/pull/204) ([eimlav](https://github.com/eimlav))
+
 ## [2.1.2](https://github.com/puppetlabs/puppetlabs-motd/tree/2.1.2) (2019-01-24)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.1...2.1.2)
