@@ -27,7 +27,7 @@ The following parameters are available in the `motd` class.
 
 ##### `dynamic_motd`
 
-Data type: `Any`
+Data type: `Boolean`
 
 Enables or disables dynamic motd on Debian systems.
 
@@ -35,7 +35,7 @@ Default value: `true`
 
 ##### `template`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Specifies a custom template. A template takes precedence over `content`. Valid options:  '/mymodule/mytemplate.erb'.
 
@@ -43,7 +43,7 @@ Default value: `undef`
 
 ##### `content`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Specifies a static string as the motd content.
 
@@ -51,7 +51,7 @@ Default value: `undef`
 
 ##### `issue_template`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Specifies a custom template to process and save to `/etc/issue`. A template takes precedence over `issue_content`.
 
@@ -59,7 +59,7 @@ Default value: `undef`
 
 ##### `issue_content`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Specifies a static string as the `/etc/issue` content.
 
@@ -67,7 +67,7 @@ Default value: `undef`
 
 ##### `issue_net_template`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Specifies a custom template to process and save to `/etc/issue.net`. A template takes precedence over `issue_net_content`.
 
@@ -75,7 +75,7 @@ Default value: `undef`
 
 ##### `issue_net_content`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Specifies a static string as the `/etc/issue.net` content.
 
@@ -83,7 +83,7 @@ Default value: `undef`
 
 ##### `windows_motd_title`
 
-Data type: `Any`
+Data type: `String`
 
 Specifies a static string to be used for:
 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext'
