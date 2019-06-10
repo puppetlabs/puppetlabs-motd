@@ -1,6 +1,6 @@
 {
-    "recommendations": [
-        "ms-vscode.powershell",
-        "jpogran.puppet-vscode"
-    ]
+  "recommendations": [
+    "jpogran.puppet-vscode",
+    "rebornix.Ruby"
+  ]
 }
