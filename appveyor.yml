@@ -55,6 +55,7 @@ for:
     - type Gemfile.lock
   test_script:
      - bundle exec rake spec_prep
+     - bundle exec puppet config print modulepath
      - bundle exec rake litmus:acceptance:localhost
 install:
   - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
