@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- azure
+
+pool: vmpooler
+
+steps:
+- script: echo doot
+  displayName: 'echo doot!'
+- script: ls
+  displayName: 'whats checked out ?'
+- bash: | 
+    source /opt/rh/rh-ruby25/enable
+    bundle install --path vendor/bundle --jobs 3
+  displayName: 'install gems'
+- bash: |
+    source /opt/rh/rh-ruby25/enable
+    bundle exec rake litmus:provision_list[release_checks] 
+  displayName: 'provision systems'
+- script: cat inventory.yaml
+  displayName: 'display systems'
+- bash: |
+    source /opt/rh/rh-ruby25/enable
+    bundle exec rake litmus:install_agent
+  displayName: 'install agent'
+- bash: |
+    source /opt/rh/rh-ruby25/enable
+    bundle exec rake litmus:install_module
+  displayName: 'install module'
+- bash: |
+    source /opt/rh/rh-ruby25/enable
+    bundle exec rake litmus:acceptance:parallel 
+  displayName: 'run tests'
+- bash: |
+    source /opt/rh/rh-ruby25/enable
+    bundle exec rake litmus:tear_down
+  displayName: 'teardown'
+  condition: always()
