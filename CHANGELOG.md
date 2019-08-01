@@ -2,7 +2,20 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v3.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v3.0.0) (2019-05-17)
+## [v3.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v3.1.0) (2019-08-01)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v3.0.0...v3.1.0)
+
+### Added
+
+- \(MODULES-9653\) Add Windows Server 2019 support [\#235](https://github.com/puppetlabs/puppetlabs-motd/pull/235) ([eimlav](https://github.com/eimlav))
+- FM-8043 - redhat8 support [\#222](https://github.com/puppetlabs/puppetlabs-motd/pull/222) ([lionce](https://github.com/lionce))
+
+### Fixed
+
+- \(bugfix\) allow private keys in ssh testing [\#223](https://github.com/puppetlabs/puppetlabs-motd/pull/223) ([tphoney](https://github.com/tphoney))
+
+## [v3.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v3.0.0) (2019-05-20)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.2...v3.0.0)
 
