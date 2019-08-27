@@ -54,7 +54,7 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
 
     - name: Spec Tests
-      uses: puppetlabs/actions/modules/litmus_spec@v0.1.0
+      uses: RandomNoun7/actions/modules/litmus_spec@add-windows-modules-support
       with:
         puppet_gem_versionm: ${{ matrix.puppet_gem_version }}
         check: ${{ matrix.check }}
