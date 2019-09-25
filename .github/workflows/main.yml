@@ -23,7 +23,7 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
 
     - name: Litmus Parallel
-      uses: puppetlabs/actions/modules/litmus_parallel@v0.6.0
+      uses: puppetlabs/action-litmus_parallel@master
       with:
         platform: ${{ matrix.platform }}
         agent_family: ${{ matrix.agent_family }}
@@ -54,7 +54,7 @@ jobs:
         ruby-version: ${{ matrix.ruby_version }}
 
     - name: Spec Tests
-      uses: puppetlabs/actions/modules/litmus_spec@v0.6.0
+      uses: puppetlabs/action-litmus_spec@master
       with:
         puppet_gem_versionm: ${{ matrix.puppet_gem_version }}
         check: ${{ matrix.check }}
