@@ -13,7 +13,7 @@
 
 ## Module Description
 
-The motd module configures a system message of the day. The module includes a default message template. Alternatively, you can specify a different template or a static string.
+The motd moduwakkale configures a system message of the day. The module includes a default message template. Alternatively, you can specify a different template or a static string.
 
 ## Setup
 
