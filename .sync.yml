@@ -1,6 +1,16 @@
 ---
 appveyor.yml:
-  unmanaged: true
+  use_litmus: true
+  matrix_extras:
+    -
+      RUBY_VERSION: 25-x64
+      ACCEPTANCE: "yes"
+      TARGET_HOST: localhost
+    -
+      RUBY_VERSION: 25-x64
+      ACCEPTANCE: "yes"
+      TARGET_HOST: localhost
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 .gitignore:
   required:
@@ -83,6 +93,7 @@ appveyor.yml:
     - rubocop-rspec
 
 Gemfile:
+  use_litmus: true
   optional:
     ':development':
       - gem: puppet-lint-i18n
