@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.0.0) (2019-11-11)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v3.1.0...v4.0.0)
+
+### Changed
+
+- pdksync - FM-8499 - remove ubuntu14 support [\#262](https://github.com/puppetlabs/puppetlabs-motd/pull/262) ([lionce](https://github.com/lionce))
+
+### Added
+
+- FM-8405 Debian10 support [\#242](https://github.com/puppetlabs/puppetlabs-motd/pull/242) ([lionce](https://github.com/lionce))
+
 ## [v3.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v3.1.0) (2019-08-01)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v3.0.0...v3.1.0)
@@ -10,6 +22,7 @@ All notable changes to this project will be documented in this file. The format 
 
 - \(MODULES-9653\) Add Windows Server 2019 support [\#235](https://github.com/puppetlabs/puppetlabs-motd/pull/235) ([eimlav](https://github.com/eimlav))
 - FM-8043 - redhat8 support [\#222](https://github.com/puppetlabs/puppetlabs-motd/pull/222) ([lionce](https://github.com/lionce))
+- simplistic support for vscode integration to litmus added [\#212](https://github.com/puppetlabs/puppetlabs-motd/pull/212) ([abuxton](https://github.com/abuxton))
 
 ### Fixed
 
@@ -25,7 +38,6 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- simplistic support for vscode integration to litmus added [\#212](https://github.com/puppetlabs/puppetlabs-motd/pull/212) ([abuxton](https://github.com/abuxton))
 - \(MODULES-8767\) Add support for SLES 15 [\#205](https://github.com/puppetlabs/puppetlabs-motd/pull/205) ([eimlav](https://github.com/eimlav))
 - \(FM-7647\) use puppet\_litmus for acceptance testing [\#200](https://github.com/puppetlabs/puppetlabs-motd/pull/200) ([tphoney](https://github.com/tphoney))
 
@@ -48,6 +60,10 @@ All notable changes to this project will be documented in this file. The format 
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/2.1.0...2.1.1)
 
+### Added
+
+- \(FM-7306\) - Added Puppet 4 data types and changed templates to .epp [\#152](https://github.com/puppetlabs/puppetlabs-motd/pull/152) ([eimlav](https://github.com/eimlav))
+
 ### Fixed
 
 - \(fix\) - Changelog Fix [\#171](https://github.com/puppetlabs/puppetlabs-motd/pull/171) ([david22swan](https://github.com/david22swan))
@@ -59,6 +75,7 @@ All notable changes to this project will be documented in this file. The format 
 ### Added
 
 - pdksync - \(MODULES-6805\) metadata.json shows support for puppet 6 [\#164](https://github.com/puppetlabs/puppetlabs-motd/pull/164) ([tphoney](https://github.com/tphoney))
+- \(maint\) removing registry pin, update stdlib bound [\#145](https://github.com/puppetlabs/puppetlabs-motd/pull/145) ([tphoney](https://github.com/tphoney))
 
 ## [2.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/2.0.0) (2018-09-17)
 
@@ -71,9 +88,7 @@ All notable changes to this project will be documented in this file. The format 
 ### Added
 
 - \(FM-7310\)- Updating Windows version support [\#156](https://github.com/puppetlabs/puppetlabs-motd/pull/156) ([lionce](https://github.com/lionce))
-- \(FM-7306\) - Added Puppet 4 data types and changed templates to .epp [\#152](https://github.com/puppetlabs/puppetlabs-motd/pull/152) ([eimlav](https://github.com/eimlav))
 - \(FM-7307\) - added translation functionality [\#150](https://github.com/puppetlabs/puppetlabs-motd/pull/150) ([Lavinia-Dan](https://github.com/Lavinia-Dan))
-- \(maint\) removing registry pin, update stdlib bound [\#145](https://github.com/puppetlabs/puppetlabs-motd/pull/145) ([tphoney](https://github.com/tphoney))
 - \(FM-7237\) - Addition of support for Ubuntu 18.04 on motd [\#140](https://github.com/puppetlabs/puppetlabs-motd/pull/140) ([david22swan](https://github.com/david22swan))
 
 ## 1.9.0
