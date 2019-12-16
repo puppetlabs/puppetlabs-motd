@@ -80,6 +80,8 @@ branches:
     - release
 notifications:
   email: false
+  slack:
+    secure: kWN4IvjB5scKS6a00jGLVgn2l0wZz6o+DC4ZyZNCxrf4LlihySJyneboPNQb6nthPwVCFh72sBxjT45Ue2JZO30dKiT7eOXGo/N2EK6NpORXEDtuIKBfuZ8ZQ+bos9hVXHmxzujnunQZemLwodDKcwEWMIEjT3QeV5NQUukOHYM=
 deploy:
   provider: puppetforge
   user: puppet
