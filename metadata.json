@@ -97,7 +97,7 @@
     }
   ],
   "description": "This module simply manages /etc/motd or the Windows Logon Message as a template, showing interpolation of system attributes",
-  "template-url": "https://github.com/puppetlabs/pdk-templates#master",
-  "template-ref": "heads/master-0-g643529a",
+  "template-url": "https://github.com/DavidS/pdk-templates.git#update-only-on-request",
+  "template-ref": "remotes/origin/update-only-on-request-0-g0697835",
   "pdk-version": "1.14.1"
 }
