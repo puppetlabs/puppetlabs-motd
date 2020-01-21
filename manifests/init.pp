@@ -82,6 +82,7 @@ class motd (
 
   $group = $facts['kernel'] ? {
     'AIX'   => 'bin',
+    'FreeBSD' => 'wheel',
     default => 'root',
   }
 
