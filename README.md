@@ -1,4 +1,4 @@
-# motd
+# motd - just checking appveyor
 
 #### Table of Contents
 
