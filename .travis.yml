@@ -30,6 +30,7 @@ jobs:
     -
       before_script:
       - "bundle exec rake 'litmus:provision_list[travis_deb]'"
+      - "bundle exec bolt command run 'apt-get install --yes apt-transport-https --force-yes' --targets ssh_nodes --inventoryfile inventory.yaml"
       - "bundle exec rake 'litmus:install_agent[puppet5]'"
       - "bundle exec rake litmus:install_module"
       bundler_args:
@@ -41,6 +42,7 @@ jobs:
     -
       before_script:
       - "bundle exec rake 'litmus:provision_list[travis_ub]'"
+      - "bundle exec bolt command run 'apt-get install --yes apt-transport-https --force-yes' --targets ssh_nodes --inventoryfile inventory.yaml"
       - "bundle exec rake 'litmus:install_agent[puppet5]'"
       - "bundle exec rake litmus:install_module"
       bundler_args:
