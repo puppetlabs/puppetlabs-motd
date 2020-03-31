@@ -1,5 +1,5 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
-gem 'puppet_litmus', git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'master', require: false, platforms: [:ruby, :mswin, :mingw, :x64_mingw] if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("2.5.0")
+gem 'puppet_litmus', git: 'https://github.com/DavidS/puppet_litmus.git', branch: 'release_prep_0.18.0', require: false, platforms: [:ruby, :mswin, :mingw, :x64_mingw] if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("2.5.0")
 
 
 def location_for(place_or_version, fake_version = nil)
