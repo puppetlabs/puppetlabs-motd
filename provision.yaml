@@ -2,6 +2,12 @@
 default:
   provisioner: docker 
   images: ['litmusimage/centos:7']
+docker:
+  provisioner: docker
+  images: ['litmusimage/centos:6','litmusimage/scientificlinux:6','litmusimage/oraclelinux:6','litmusimage/centos:7', 'litmusimage/debian:10']
+docker_exp:
+  provisioner: docker_exp
+  images: ['litmusimage/centos:6','litmusimage/scientificlinux:6','litmusimage/oraclelinux:6','litmusimage/centos:7', 'litmusimage/debian:10']
 vagrant:
   provisioner: vagrant
   images: ['centos/7', 'generic/ubuntu1804', 'gusztavvargadr/windows-server']

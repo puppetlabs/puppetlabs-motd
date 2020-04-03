@@ -2,8 +2,7 @@
 version: 1.1.x.{build}
 branches:
   only:
-    - master
-    - release
+    - disabled
 skip_commits:
   message: /^\(?doc\)?.*/
 clone_depth: 10
