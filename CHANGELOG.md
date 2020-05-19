@@ -2,15 +2,26 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.1.1](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.1.1) (2020-05-19)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v4.1.0...v4.1.1)
+
+### Fixed
+
+- \(MAINT\) Ensure FreeBSD compatibility [\#271](https://github.com/puppetlabs/puppetlabs-motd/pull/271) ([dandrzejewski](https://github.com/dandrzejewski))
+
 ## [v4.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.1.0) (2020-01-20)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v4.0.0...v4.1.0)
 
 ### Added
 
-- pdksync - \(FM-8581\) - Debian 10 added to travis and provision file refactored [\#277](https://github.com/puppetlabs/puppetlabs-motd/pull/277) ([david22swan](https://github.com/david22swan))
-- pdksync - "MODULES-10242 Add ubuntu14 support back to the modules" [\#267](https://github.com/puppetlabs/puppetlabs-motd/pull/267) ([sheenaajay](https://github.com/sheenaajay))
+- \(MODULES-10242\) Add back support for Ubuntu 14.04 [\#267](https://github.com/puppetlabs/puppetlabs-motd/pull/267) ([sheenaajay](https://github.com/sheenaajay))
 - \(FM-8691\) - Addition of Support for CentOS 8 [\#264](https://github.com/puppetlabs/puppetlabs-motd/pull/264) ([david22swan](https://github.com/david22swan))
+
+### Fixed
+
+- \(MODULES-10387\) Raise lower bound for puppetlabs-registry dependency to 4.0.0 [\#276](https://github.com/puppetlabs/puppetlabs-motd/pull/276) ([daianamezdrea](https://github.com/daianamezdrea))
 
 ## [v4.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.0.0) (2019-11-11)
 
