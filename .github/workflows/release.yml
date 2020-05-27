@@ -1,9 +1,9 @@
-name: "release"
+name: "IAC-825"
 
 on: 
   push:
     branches:
-      - 'release'
+      - 'IAC-825'
 
 jobs:
   LitmusAcceptancePuppet5:
