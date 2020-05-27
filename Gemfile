@@ -34,6 +34,10 @@ group :development do
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 end
 
+group :system_tests do
+  gem 'puppet_litmus', require: false, git: 'https://github.com/pmcmaw/puppet_litmus', branch: 'IAC-825'
+end
+
 puppet_version = ENV['PUPPET_GEM_VERSION']
 facter_version = ENV['FACTER_GEM_VERSION']
 hiera_version = ENV['HIERA_GEM_VERSION']
