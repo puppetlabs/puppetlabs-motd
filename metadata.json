@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-motd",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "author": "puppetlabs",
   "summary": "A simple module to demonstrate managing /etc/motd or Windows Logon Message as a template",
   "license": "Apache-2.0",
@@ -76,7 +76,8 @@
       "operatingsystemrelease": [
         "14.04",
         "16.04",
-        "18.04"
+        "18.04",
+        "20.04"
       ]
     },
     {
@@ -98,6 +99,6 @@
   ],
   "description": "This module simply manages /etc/motd or the Windows Logon Message as a template, showing interpolation of system attributes",
   "template-url": "https://github.com/puppetlabs/pdk-templates#master",
-  "template-ref": "heads/master-0-g095317c",
+  "template-ref": "heads/master-0-g88b05c7",
   "pdk-version": "1.17.0"
 }
