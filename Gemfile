@@ -74,3 +74,6 @@ extra_gemfiles.each do |gemfile|
   end
 end
 # vim: syntax=ruby
+
+
+gem 'puppet_litmus', git: 'https://github.com/DavidS/puppet_litmus.git', branch: 'release-prep/0.18.3' if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("2.5.0")
