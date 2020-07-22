@@ -34,11 +34,6 @@ environment:
       ACCEPTANCE: yes
       TARGET_HOST: localhost
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    -
-      RUBY_VERSION: 27-x64
-      ACCEPTANCE: yes
-      TARGET_HOST: localhost
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
 for:
 -
   matrix:
