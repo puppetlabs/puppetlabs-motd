@@ -29,4 +29,39 @@ release_checks_5:
 release_checks_6:
   provisioner: abs
   images: ['redhat-5-x86_64', 'redhat-6-x86_64', 'redhat-7-x86_64', 'redhat-8-x86_64', 'centos-5-x86_64', 'centos-6-x86_64', 'centos-7-x86_64', 'centos-8-x86_64', 'oracle-5-x86_64', 'oracle-6-x86_64', 'oracle-7-x86_64', 'scientific-6-x86_64', 'scientific-7-x86_64', 'debian-8-x86_64', 'debian-9-x86_64', 'debian-10-x86_64', 'sles-12-x86_64', 'sles-15-x86_64', 'ubuntu-1404-x86_64', 'ubuntu-1604-x86_64', 'ubuntu-1804-x86_64', 'ubuntu-2004-x86_64', 'win-2008r2-x86_64', 'win-2012r2-x86_64', 'win-2016-core-x86_64', 'win-2019-core-x86_64', 'win-10-pro-x86_64']
-  
+#####################################
+# Puppet 7.x Nightly Configurations #
+#####################################
+# All ABS / VMPooler Puppet 7.x images
+abs_7_nightly:
+  provisioner: abs
+  images: ['redhat-7-x86_64', 'redhat-8-x86_64', 'centos-7-x86_64', 'centos-8-x86_64', 'oracle-7-x86_64', 'scientific-7-x86_64', 'debian-9-x86_64', 'debian-10-x86_64', 'sles-12-x86_64', 'sles-15-x86_64', 'ubuntu-1804-x86_64', 'ubuntu-2004-x86_64', 'win-2012r2-x86_64', 'win-2016-core-x86_64', 'win-2019-core-x86_64', 'win-10-pro-x86_64']
+# All Docker containers compatible with Puppet 7.x
+docker_7_nightly:
+  provisioner: docker
+  images: ['litmusimage/debian:9', 'litmusimage/debian:10', 'litmusimage/ubuntu:18.04', 'litmusimage/ubuntu:20.04', 'litmusimage/centos:7', 'litmusimage/centos:8', 'litmusimage/oraclelinux:7', 'litmusimage/scientificlinux:7']
+# Travis Docker Puppet 7.x configurations
+travis_7_deb_9:
+  provisioner: docker
+  images: ['litmusimage/debian:9']
+travis_7_deb_10:
+  provisioner: docker
+  images: ['litmusimage/debian:10']
+travis_7_ub_18:
+  provisioner: docker
+  images: ['litmusimage/ubuntu:18.04']
+travis_7_ub_20:
+  provisioner: docker
+  images: ['litmusimage/ubuntu:20.04']
+travis_7_cent_7:
+  provisioner: docker
+  images: ['litmusimage/centos:7']
+travis_7_cent_8:
+  provisioner: docker
+  images: ['litmusimage/centos:8']
+travis_7_ora_7:
+  provisioner: docker
+  images: ['litmusimage/oraclelinux:7']
+travis_7_sci_7:
+  provisioner: docker
+  images: ['litmusimage/scientificlinux:7']
