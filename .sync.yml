@@ -8,8 +8,9 @@
     - rubocop-i18n
     - rubocop-rspec
 ".travis.yml":
-  global_env: 
-    - HONEYCOMB_WRITEKEY="7f3c63a70eecc61d635917de46bea4e6",HONEYCOMB_DATASET="litmus tests"
+  global_env:
+  - HONEYCOMB_WRITEKEY="7f3c63a70eecc61d635917de46bea4e6",HONEYCOMB_DATASET="litmus
+    tests"
   dist: trusty
   deploy_to_forge:
     enabled: false
@@ -19,23 +20,20 @@
   secure: ''
   use_litmus: true
   litmus:
-    provision_list:
-    - ---travis_el
-    - travis_deb
-    - travis_el6
-    - travis_el7
-    - travis_el8
+    provision_list: []
     complex:
     - collection:
         puppet_collection:
-        - puppet6
+        - puppet7-nightly
         provision_list:
-        - travis_ub_6
-    - collection:
-        puppet_collection:
-        - puppet5
-        provision_list:
-        - travis_ub_5
+        - travis_puppet7_centos_7
+        - travis_puppet7_centos_8
+        - travis_puppet7_oraclelinux_7
+        - travis_puppet7_scientificlinux_7
+        - travis_puppet7_debian_9
+        - travis_puppet7_debian_10
+        - travis_puppet7_ubuntu_18.04
+        - travis_puppet7_ubuntu_20.04
   simplecov: true
   notifications:
     slack:
