@@ -43,11 +43,11 @@ class { 'motd':
 
 ## Reference
 
-See [REFERENCE.md](https://github.com/puppetlabs/puppetlabs-motd/blob/master/REFERENCE.md)
+See [REFERENCE.md](https://github.com/puppetlabs/puppetlabs-motd/blob/main/REFERENCE.md)
 
 ## Limitations
 
-For an extensive list of supported operating systems, see [metadata.json](https://github.com/puppetlabs/puppetlabs-motd/blob/master/metadata.json)
+For an extensive list of supported operating systems, see [metadata.json](https://github.com/puppetlabs/puppetlabs-motd/blob/main/metadata.json)
 
 Disabling dynamic motd is supported only on Debian.
 
