@@ -69,7 +69,7 @@ def test_motd(pp, expected_contain, filename)
   expect(file(filename)).to contain expected_contain
 end
 
-describe 'Message of the day' do
+describe 'Message of the day', :integration do
   context 'when static message from content' do
     it do
       test_motd(pp_static_content, "Hello world!\n", motd_file)
