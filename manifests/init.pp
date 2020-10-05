@@ -41,10 +41,9 @@ class motd (
   Optional[String] $issue_net_content   = undef,
   String $windows_motd_title            = 'Message of the day',
 ) {
-
   if $template {
     if $content {
-        warning(translate('Both $template and $content parameters passed to motd, ignoring content'))
+      warning(translate('Both $template and $content parameters passed to motd, ignoring content'))
     }
     $motd_content = epp($template)
   } elsif $content {
@@ -55,7 +54,7 @@ class motd (
 
   if $issue_template {
     if $issue_content {
-        warning(translate('Both $issue_template and $issue_content parameters passed to motd, ignoring issue_content'))
+      warning(translate('Both $issue_template and $issue_content parameters passed to motd, ignoring issue_content'))
     }
     $_issue_content = epp($issue_template)
   } elsif $issue_content {
@@ -66,7 +65,7 @@ class motd (
 
   if $issue_net_template {
     if $issue_net_content {
-        warning(translate('Both $issue_net_template and $issue_net_content parameters passed to motd, ignoring issue_net_content'))
+      warning(translate('Both $issue_net_template and $issue_net_content parameters passed to motd, ignoring issue_net_content'))
     }
     $_issue_net_content = epp($issue_net_template)
   } elsif $issue_net_content {
@@ -96,7 +95,7 @@ class motd (
     mode  => $mode,
   }
 
-  if $facts['kernel'] in ['Linux', 'SunOS', 'FreeBSD', 'AIX']  {
+  if $facts['kernel'] in ['Linux', 'SunOS', 'FreeBSD', 'AIX'] {
     file { '/etc/motd':
       ensure  => file,
       backup  => false,
