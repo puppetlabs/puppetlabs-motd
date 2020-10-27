@@ -24,9 +24,9 @@ jobs:
       uses: actions/cache@v1
       with:
         path: vendor/gems
-        key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+        key: ${{ runner.os }}-nightly-${{ hashFiles('**/Gemfile') }}
         restore-keys: |
-          ${{ runner.os }}-build-
+          ${{ runner.os }}-nightly-
           ${{ runner.os }}-
 
     - name: Install gems
@@ -49,6 +49,9 @@ jobs:
         EOF
         curl -X POST $PROVISION_SERVICE/v1/provision --data @test_machines.json > inventory.yaml
 
+    # The provision service hands out machines as soon as they're provisioned.
+    # The GCP VMs might still take a while to spool up and configure themselves fully.
+    # This retry loop spins until all agents have been installed successfully.
     - name: Install agent
       uses: nick-invision/retry@v1
       with:
@@ -57,8 +60,15 @@ jobs:
         retry_wait_seconds: 60
         command: bundle exec rake 'litmus:install_agent'
 
+    # The agent installer on windows does not finish in time for this to work. To
+    # work around this for now, retry after a minute if installing the module failed.
     - name: Install module
-      run: bundle exec rake 'litmus:install_module'
+      uses: nick-invision/retry@v1
+      with:
+        timeout_minutes: 30
+        max_attempts: 2
+        retry_wait_seconds: 60
+        command: bundle exec rake 'litmus:install_module'
 
     - name: Run acceptance tests
       run: bundle exec rake 'litmus:acceptance:parallel'
