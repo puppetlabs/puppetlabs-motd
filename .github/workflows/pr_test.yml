@@ -1,0 +1,93 @@
+name: "PR Testing"
+
+on: [pull_request]
+
+jobs:
+  LitmusAcceptance:
+    env:
+      HONEYCOMB_WRITEKEY: 7f3c63a70eecc61d635917de46bea4e6
+      HONEYCOMB_DATASET: litmus tests
+      PROVISION_SERVICE: https://facade-main-6f3kfepqcq-ew.a.run.app
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+
+    - name: Cache gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/gems
+        key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Install gems
+      run: bundle install
+
+    - name: Provision test environment
+      run: |
+        cat <<EOF >> test_machines.json
+        {
+          "url" : "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID",
+          "VMs": [
+            {
+             "cloud": "gcp",
+             "region": "europe-west1",
+             "zone": "europe-west1-d",
+             "images": ["rhel-8-v20200811", "sles-15-sp1-v20200610", "sles-12-sp5-v20200610"]
+            }
+          ]
+        }
+        EOF
+        date
+        curl -X POST $PROVISION_SERVICE/v1/provision --data @test_machines.json > inventory.yaml
+        cat inventory.yaml
+
+    - name: Install agent
+      uses: nick-invision/retry@v1
+      with:
+        timeout_minutes: 30
+        max_attempts: 5
+        retry_wait_seconds: 60
+        command: bundle exec rake 'litmus:install_agent'
+
+    - name: Install module
+      run: bundle exec rake 'litmus:install_module'
+
+    - name: Run acceptance tests
+      run: bundle exec rake 'litmus:acceptance:parallel'
+
+    - name: Remove test environment
+      if: ${{ always() }}
+      run: |
+        uniqueid=$(cat inventory.yaml | grep -m 1 uuid | cut -d ':' -f 2 | tr -d ' ')
+        cat <<EOF >> delete_resources.json
+        {
+          "uuid" : "$uniqueid"
+        }
+        EOF
+        echo "Removing uuid"
+        cat delete_resources.json
+        curl -X DELETE $PROVISION_SERVICE/v1/provision --data @delete_resources.json
+
+  slack-workflow-status:
+    if: always()
+    name: Post Workflow Status To Slack
+    needs:
+      - LitmusAcceptance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Workflow Notification
+        uses: Gamesight/slack-workflow-status@master
+        with:
+          # Required Input
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          slack_webhook_url: ${{secrets.SLACK_WEBHOOK}}
+          # Optional Input
+          channel: '#team-ia-bots'
+          name: 'GABot'
