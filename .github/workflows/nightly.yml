@@ -47,7 +47,7 @@ jobs:
         cat request.json || true
         echo ::endgroup::
         echo ::group::=== INVENTORY ===
-        cat inventory.yaml || true
+        sed -e 's/password: .*/password: "[redacted]"/' < inventory.yaml || true
         echo ::endgroup::
 
     # The provision service hands out machines as soon as they're provisioned.
