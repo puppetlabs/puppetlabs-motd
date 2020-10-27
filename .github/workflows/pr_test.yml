@@ -39,7 +39,7 @@ jobs:
              "cloud": "gcp",
              "region": "europe-west1",
              "zone": "europe-west1-d",
-             "images": ["rhel-8-v20200811", "sles-15-sp1-v20200610", "sles-12-sp5-v20200610"]
+             "images": ["rhel-8-v20200811", "sles-15-sp1-v20200610", "sles-12-sp5-v20200610", "windows-server-2012-r2-dc-core-v20200609", "windows-server-2016-dc-core-v20200609", "windows-server-2019-dc-core-v20200609"]
             }
           ]
         }
