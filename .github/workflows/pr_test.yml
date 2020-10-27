@@ -7,7 +7,7 @@ jobs:
     env:
       HONEYCOMB_WRITEKEY: 7f3c63a70eecc61d635917de46bea4e6
       HONEYCOMB_DATASET: litmus tests
-      PROVISION_SERVICE: https://facade-main-6f3kfepqcq-ew.a.run.app
+      SERVICE_URL: https://facade-main-6f3kfepqcq-ew.a.run.app/v1/provision
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -27,26 +27,26 @@ jobs:
           ${{ runner.os }}-
 
     - name: Install gems
-      run: bundle install
+      run: |
+        bundle config path vendor/gems
+        bundle config jobs 8
+        bundle config retry 3
+        bundle install
+
+    - name: bundler environment
+      run: |
+        bundle env
 
     - name: Provision test environment
       run: |
-        cat <<EOF >> test_machines.json
-        {
-          "url" : "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID",
-          "VMs": [
-            {
-             "cloud": "gcp",
-             "region": "europe-west1",
-             "zone": "europe-west1-d",
-             "images": ["rhel-8-v20200811", "sles-15-sp1-v20200610", "sles-12-sp5-v20200610", "windows-server-2012-r2-dc-core-v20200609", "windows-server-2016-dc-core-v20200609", "windows-server-2019-dc-core-v20200609"]
-            }
-          ]
-        }
-        EOF
-        date
-        curl -X POST $PROVISION_SERVICE/v1/provision --data @test_machines.json > inventory.yaml
-        cat inventory.yaml
+        bundle exec rake 'litmus:provision_list[cloud_ci]'
+        bundle exec rake 'litmus:provision_list[cloud_ci]'
+        echo ::group::=== REQUEST ===
+        cat request.json || true
+        echo ::endgroup::
+        echo ::group::=== INVENTORY ===
+        cat inventory.yaml || true
+        echo ::endgroup::
 
     # The provision service hands out machines as soon as they're provisioned.
     # The GCP VMs might still take a while to spool up and configure themselves fully.
@@ -75,15 +75,10 @@ jobs:
     - name: Remove test environment
       if: ${{ always() }}
       run: |
-        uniqueid=$(cat inventory.yaml | grep -m 1 uuid | cut -d ':' -f 2 | tr -d ' ')
-        cat <<EOF >> delete_resources.json
-        {
-          "uuid" : "$uniqueid"
-        }
-        EOF
-        echo "Removing uuid"
-        cat delete_resources.json
-        curl -X DELETE $PROVISION_SERVICE/v1/provision --data @delete_resources.json
+        bundle exec rake 'litmus:tear_down'
+        echo ::group::=== REQUEST ===
+        cat request.json || true
+        echo ::endgroup::
 
   slack-workflow-status:
     if: always()
