@@ -109,7 +109,7 @@ jobs:
       uses: nick-invision/retry@v1
       with:
         timeout_minutes: 30
-        max_attempts: 2
+        max_attempts: 5
         retry_wait_seconds: 60
         command: bundle exec rake 'litmus:install_module'
 
