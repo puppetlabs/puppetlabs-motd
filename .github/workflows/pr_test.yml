@@ -2,23 +2,28 @@ name: "PR Testing"
 
 on: [pull_request]
 
-jobs:
-  LitmusAcceptance:
-    env:
-      HONEYCOMB_WRITEKEY: 7f3c63a70eecc61d635917de46bea4e6
-      HONEYCOMB_DATASET: litmus tests
-      SERVICE_URL: https://facade-main-6f3kfepqcq-ew.a.run.app/v1/provision
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
+env:
+  HONEYCOMB_WRITEKEY: 7f3c63a70eecc61d635917de46bea4e6
+  HONEYCOMB_DATASET: litmus tests
+  SERVICE_URL: https://facade-main-6f3kfepqcq-ew.a.run.app/v1/provision
 
-    - name: Set up Ruby 2.7
+jobs:
+  setup_matrix:
+    name: "Setup Test Matrix"
+    runs-on: ubuntu-20.04
+    outputs:
+      matrix: ${{ steps.get-matrix.outputs.matrix }}
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v2
+
+    - name: Activate Ruby 2.7
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: "2.7"
 
     - name: Cache gems
-      uses: actions/cache@v1
+      uses: actions/cache@v2
       with:
         path: vendor/gems
         key: ${{ runner.os }}-pr-${{ hashFiles('**/Gemfile') }}
@@ -32,6 +37,45 @@ jobs:
         bundle config jobs 8
         bundle config retry 3
         bundle install
+        bundle clean
+
+    - name: Setup Acceptance Test Matrix
+      id: get-matrix
+      run: "bundle exec matrix_from_metadata"
+
+  Acceptance:
+    needs:
+      - setup_matrix
+
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix: ${{fromJson(needs.setup_matrix.outputs.matrix)}}
+
+    steps:
+    - name: Checkout Source
+      uses: actions/checkout@v2
+
+    - name: Activate Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: "2.7"
+
+    - name: Cache gems
+      uses: actions/cache@v2
+      with:
+        path: vendor/gems
+        key: ${{ runner.os }}-pr-${{ hashFiles('**/Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-pr-
+          ${{ runner.os }}-
+
+    - name: Install gems
+      run: |
+        bundle config path vendor/gems
+        bundle config jobs 8
+        bundle config retry 3
+        bundle install
+        bundle clean
 
     - name: bundler environment
       run: |
@@ -39,9 +83,10 @@ jobs:
 
     - name: Provision test environment
       run: |
-        bundle exec rake 'litmus:provision_list[cloud_ci]'
+        bundle exec rake 'litmus:provision[provision::provision_service,${{ matrix.platform }}]'
         echo ::group::=== REQUEST ===
         cat request.json || true
+        echo
         echo ::endgroup::
         echo ::group::=== INVENTORY ===
         sed -e 's/password: .*/password: "[redacted]"/' < inventory.yaml || true
@@ -56,7 +101,7 @@ jobs:
         timeout_minutes: 30
         max_attempts: 5
         retry_wait_seconds: 60
-        command: bundle exec rake 'litmus:install_agent'
+        command: bundle exec rake 'litmus:install_agent[${{ matrix.collection }}]'
 
     # The agent installer on windows does not finish in time for this to work. To
     # work around this for now, retry after a minute if installing the module failed.
@@ -77,4 +122,5 @@ jobs:
         bundle exec rake 'litmus:tear_down'
         echo ::group::=== REQUEST ===
         cat request.json || true
+        echo
         echo ::endgroup::
