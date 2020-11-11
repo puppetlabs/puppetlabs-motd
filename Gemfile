@@ -24,15 +24,15 @@ group :development do
   gem "json", '2.2.0',                                         require: false if Gem::Requirement.create('~> 2.4.2').satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "json", '2.2.0',                                         require: false if Gem::Requirement.create(['>= 2.5.0', '< 2.7.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "rb-readline", '= 0.5.5',                                  require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem "puppet-module-posix-default-r#{minor_version}", '~> 0.4', require: false, platforms: [:ruby]
-  gem "puppet-module-posix-dev-r#{minor_version}", '~> 0.4',     require: false, platforms: [:ruby]
-  gem "puppet-module-win-default-r#{minor_version}", '~> 0.4',   require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem "puppet-module-win-dev-r#{minor_version}", '~> 0.4',       require: false, platforms: [:mswin, :mingw, :x64_mingw]
+  source "https://dl.cloudsmith.io/#{ENV['CLOUDSMITH_AUTH']}/sanfrancrisko/puppet-module-gems-litmus-r27-only/ruby/" do
+    gem "puppet-module-posix-default-r#{minor_version}", '~> 0.6', require: false, platforms: [:ruby]
+    gem "puppet-module-posix-dev-r#{minor_version}", '~> 0.6',     require: false, platforms: [:ruby]
+    gem "puppet-module-win-default-r#{minor_version}", '~> 0.6',   require: false, platforms: [:mswin, :mingw, :x64_mingw]
+    gem "puppet-module-win-dev-r#{minor_version}", '~> 0.6',       require: false, platforms: [:mswin, :mingw, :x64_mingw]
+  end
   gem "puppet-lint-i18n",                                        require: false
   gem "github_changelog_generator",                              require: false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')
-  gem "puppet_litmus",                                           require: false, git: 'https://github.com/puppetlabs/puppet_litmus', ref: 'main' if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
-  gem "bolt", '2.33.2',                                          require: false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
-  gem "rspec-puppet",                                            require: false, git: 'https://github.com/rodjek/rspec-puppet', ref: 'master'
+  gem "bolt",                                                    require: true, git: 'https://github.com/sanfrancrisko/bolt', branch: 'IAC-1233/main/bolt_puppet7_support' if Gem::Version.new(RUBY_VERSION.dup) > Gem::Version.new('2.7')
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
