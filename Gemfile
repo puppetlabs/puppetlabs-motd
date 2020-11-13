@@ -33,6 +33,7 @@ group :development do
   gem "puppet-lint-i18n",                                        require: false
   gem "github_changelog_generator",                              require: false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')
   gem "bolt",                                                    require: true, git: 'https://github.com/sanfrancrisko/bolt', branch: 'IAC-1233/main/bolt_puppet7_support' if Gem::Version.new(RUBY_VERSION.dup) > Gem::Version.new('2.7')
+  gem "facterdb",                                                require: true, git: 'https://github.com/camptocamp/facterdb' if Gem::Version.new(RUBY_VERSION.dup) > Gem::Version.new('2.7')
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
