@@ -30,9 +30,9 @@ group :development do
   gem "puppet-module-win-dev-r#{minor_version}", '~> 0.4',       require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "puppet-lint-i18n",                                        require: false
   gem "github_changelog_generator",                              require: false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')
-  gem "puppet_litmus",                                           require: false, git: 'https://github.com/puppetlabs/puppet_litmus', ref: 'main' if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
   gem "bolt", '2.33.2',                                          require: false if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
   gem "rspec-puppet",                                            require: false, git: 'https://github.com/rodjek/rspec-puppet', ref: 'master'
+  gem "puppet_litmus",                                           require: false, git: 'https://github.com/pmcmaw/puppet_litmus', ref:'GH-326/main/display-node-names'
 end
 
 puppet_version = ENV['PUPPET_GEM_VERSION']
