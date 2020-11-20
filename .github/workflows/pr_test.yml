@@ -102,7 +102,7 @@ jobs:
         timeout_minutes: 30
         max_attempts: 5
         retry_wait_seconds: 60
-        command: bundle exec rake 'litmus:install_agent[${{ matrix.collection }}]'
+        command: bundle exec rake 'litmus:install_agent[puppet6]'
 
     # The agent installer on windows does not finish in time for this to work. To
     # work around this for now, retry after a minute if installing the module failed.
