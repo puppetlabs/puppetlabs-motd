@@ -68,13 +68,13 @@ Gemfile:
     - gem: bolt
       version: '2.32.0'
       condition: Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
-    # wait for https://github.com/rodjek/rspec-puppet/pull/811 release
-    - gem: rspec-puppet
-      git: https://github.com/rodjek/rspec-puppet
-      ref: master
 Rakefile:
   requires:
   - puppet_pot_generator/rake_tasks
 spec/spec_helper.rb:
   mock_with: ":rspec"
   coverage_report: true
+.gitpod.Dockerfile:
+  unmanaged: false
+.gitpod.yml:
+  unmanaged: false
