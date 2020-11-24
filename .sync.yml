@@ -1,4 +1,7 @@
 ---
+common:
+  service_url: https://facade-main-6f3kfepqcq-ew.a.run.app/v1/provision
+
 ".gitlab-ci.yml":
   delete: true
 ".rubocop.yml":
@@ -77,4 +80,8 @@ spec/spec_helper.rb:
 .gitpod.Dockerfile:
   unmanaged: false
 .gitpod.yml:
+  unmanaged: false
+.github/workflows/nightly.yml:
+  unmanaged: false
+.github/workflows/pr_test.yml:
   unmanaged: false
