@@ -25,7 +25,6 @@ common:
     provision_list:
     - ---travis_el
     - travis_deb
-    - travis_el6
     - travis_el7
     - travis_el8
     complex:
