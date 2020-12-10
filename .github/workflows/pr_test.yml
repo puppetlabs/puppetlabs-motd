@@ -71,6 +71,51 @@ jobs:
       run: |
         buildevents step $TRACE_ID $STEP_ID $STEP_START 'Setup Test Matrix'
 
+  SpecPuppet7:
+    needs:
+      - setup_matrix
+
+    runs-on: ubuntu-20.04
+    env:
+      PUPPET_GEM_VERSION: 7
+    strategy:
+      fail-fast: false
+      matrix: ${{fromJson(needs.setup_matrix.outputs.matrix)}}
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+
+      - name: Activate Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.7"
+
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/gems
+          key: ${{ runner.os }}-pr-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-pr-
+            ${{ runner.os }}-
+
+      - name: Install gems
+        run: |
+          bundle config path vendor/gems
+          bundle config jobs 8
+          bundle config retry 3
+          bundle install
+          bundle clean
+
+      - name: bundler environment
+        run: |
+          bundle env
+
+      - name: Parallel Spec Tests
+        run: |
+          bundle exec rake spec_parallel
+
   Acceptance:
     needs:
       - setup_matrix
