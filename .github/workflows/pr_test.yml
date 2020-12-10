@@ -9,14 +9,15 @@ env:
 
 jobs:
   Spec:
+    name: "Spec Tests"
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
         include:
-          - puppet_ver: 5
+          - puppet_ver: '~> 5'
             ruby_ver: 2.5
-          - puppet_ver: 6
+          - puppet_ver: '~> 6'
             ruby_ver: 2.5
           - puppet_ver: 7
             ruby_ver: 2.7
