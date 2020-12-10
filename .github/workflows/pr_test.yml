@@ -13,18 +13,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        puppet_ver: [5, 6, 7]
-        ruby_ver: [2.5, 2.7]
         include:
           - puppet_ver: 5
-            ruby_version: 2.5
+            ruby_ver: 2.5
           - puppet_ver: 6
-            ruby_version: 2.5
+            ruby_ver: 2.5
           - puppet_ver: 7
-            ruby_version: 2.7
+            ruby_ver: 2.7
     steps:
       - env:
-          PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
+        PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
       - name: Checkout Source
         uses: actions/checkout@v2
 
