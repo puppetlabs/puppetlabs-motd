@@ -13,18 +13,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        puppet_ruby_vers: [[2.5, 5], [2.5, 6], [2.7, 7]]
-
+        puppet_ver: [5, 6, 7]
+        include:
+          - puppet_ver: 5
+            ruby_version: 2.5
+          - puppet_ver: 6
+            ruby_version: 2.5
+          - puppet_ver: 7
+            ruby_version: 2.7
     steps:
       - env:
-          PUPPET_GEM_VERSION: ${{ matrix.puppet_ruby_vers[1] }}
+          PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
       - name: Checkout Source
         uses: actions/checkout@v2
 
-      - name: Activate Ruby ${{ matrix.puppet_ruby_vers[0] }}
+      - name: Activate Ruby ${{ matrix.ruby_ver }}
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.puppet_ruby_vers[0] }}
+          ruby-version: ${{ matrix.ruby_ver }}
 
       - name: Cache gems
         uses: actions/cache@v2
