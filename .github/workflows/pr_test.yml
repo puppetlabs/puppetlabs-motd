@@ -21,8 +21,6 @@ jobs:
           - puppet_ver: 7
             ruby_ver: 2.7
     steps:
-    - env:
-      PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
     - name: Checkout Source
       uses: actions/checkout@v2
 
@@ -41,6 +39,8 @@ jobs:
           ${{ runner.os }}-
 
     - name: Install gems
+      env:
+        PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
       run: |
         bundle config path vendor/gems
         bundle config jobs 8
@@ -49,10 +49,14 @@ jobs:
         bundle clean
 
     - name: bundler environment
+      env:
+        PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
       run: |
         bundle env
 
     - name: Parallel Spec Tests
+      env:
+        PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
       run: |
         bundle exec rake spec
 
