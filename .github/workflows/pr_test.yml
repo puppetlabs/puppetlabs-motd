@@ -72,9 +72,6 @@ jobs:
         buildevents step $TRACE_ID $STEP_ID $STEP_START 'Setup Test Matrix'
 
   SpecPuppet7:
-    needs:
-      - setup_matrix
-
     runs-on: ubuntu-20.04
     env:
       PUPPET_GEM_VERSION: 7
