@@ -60,7 +60,7 @@ jobs:
       env:
         PUPPET_GEM_VERSION: ${{ matrix.puppet_ver }}
       run: |
-        bundle exec rake spec
+        bundle exec rake parallel_spec
 
   setup_matrix:
     name: "Setup Test Matrix"
