@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        combos: ['Puppet 5 + Ruby 2.5', 'Puppet 6 + Ruby 2.5', 'Puppet 7 + Ruby 2.7']
+        combos: ['Puppet 5', 'Puppet 6', 'Puppet 7']
         include:
           - puppet_ver: '~> 5'
             ruby_ver: 2.5
