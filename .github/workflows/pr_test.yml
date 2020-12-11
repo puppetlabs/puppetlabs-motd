@@ -14,13 +14,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        combos: ['Puppet 5', 'Puppet 6', 'Puppet 7']
+        puppet_ver: ['Puppet 5', 'Puppet 6', 'Puppet 7']
+        ruby_ver: ['Ruby 2.5', 'Ruby 2.7']
         include:
           - puppet_ver: '~> 5'
             ruby_ver: 2.5
           - puppet_ver: '~> 6'
             ruby_ver: 2.5
-          - puppet_ver: 7
+          - puppet_ver: '7'
             ruby_ver: 2.7
     steps:
     - name: Checkout Source
