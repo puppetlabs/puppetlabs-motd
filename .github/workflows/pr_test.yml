@@ -14,8 +14,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        puppet_ver: ['Puppet 5', 'Puppet 6', 'Puppet 7']
-        ruby_ver: ['Ruby 2.5', 'Ruby 2.7']
         include:
           - puppet_ver: '~> 5'
             ruby_ver: 2.5
