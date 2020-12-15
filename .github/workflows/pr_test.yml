@@ -77,7 +77,7 @@ jobs:
 
     runs-on: ubuntu-20.04
     strategy:
-      matrix: ${{fromJson(needs.setup_matrix.outputs.matrix)}}
+      matrix: ${{fromJson(needs.setup_matrix.outputs.matrix.spec_test_matrix)}}
       fail-fast: false
 
     steps:
