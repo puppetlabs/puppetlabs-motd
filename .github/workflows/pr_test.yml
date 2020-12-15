@@ -71,13 +71,13 @@ jobs:
       run: |
         buildevents step $TRACE_ID $STEP_ID $STEP_START 'Setup Test Matrix'
   Spec:
-    name: "Spec Tests Puppet ${{ matrix.spec_test_matrix.puppet_version }} (Ruby ${{ matrix.spec_test_matrix.ruby_version }})"
+    name: "Spec Tests Puppet ${{ spec_matrix.puppet_version }} (Ruby ${{ spec_matrix.ruby_version }})"
     needs:
       - setup_matrix
 
     runs-on: ubuntu-20.04
     strategy:
-      matrix: ${{fromJson(needs.setup_matrix.outputs.matrix.spec_test_matrix)}}
+      matrix: ${{fromJson(needs.setup_matrix.outputs.spec_matrix)}}
       fail-fast: false
 
     steps:
