@@ -70,6 +70,7 @@ jobs:
       if: ${{ always() }}
       run: |
         buildevents step $TRACE_ID $STEP_ID $STEP_START 'Setup Test Matrix'
+
   Spec:
     name: "Spec Tests Puppet ${{ spec_matrix.puppet_version }} (Ruby ${{ spec_matrix.ruby_version }})"
     needs:
