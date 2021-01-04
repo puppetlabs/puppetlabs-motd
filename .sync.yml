@@ -4,12 +4,6 @@ common:
 
 ".gitlab-ci.yml":
   delete: true
-".rubocop.yml":
-  default_configs:
-    inherit_from: ".rubocop_todo.yml"
-    require:
-    - rubocop-i18n
-    - rubocop-rspec
 ".travis.yml":
   global_env:
     - HONEYCOMB_WRITEKEY="7f3c63a70eecc61d635917de46bea4e6",HONEYCOMB_DATASET="litmus tests"
@@ -57,22 +51,13 @@ appveyor.yml:
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
   simplecov: true
 Gemfile:
-  use_litmus: true
   optional:
     ":development":
-    - gem: puppet-lint-i18n
     - gem: github_changelog_generator
-      condition: Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')
     - gem: puppet_litmus
       git: https://github.com/puppetlabs/puppet_litmus
       ref: main
       condition: Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
-    - gem: bolt
-      version: '2.32.0'
-      condition: Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.5.0')
-Rakefile:
-  requires:
-  - puppet_pot_generator/rake_tasks
 spec/spec_helper.rb:
   mock_with: ":rspec"
   coverage_report: true
