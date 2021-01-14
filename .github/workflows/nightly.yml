@@ -200,6 +200,18 @@ jobs:
       run: |
         buildevents step $TRACE_ID $STEP_ID $STEP_START 'Remove test environment'
 
+  promoteService:
+    if: ${{ success() }}
+    name: "Promote provision service"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Repository dispatch"
+        uses: peter-evans/repository-dispatch@ce5485de42c9b2622d2ed064be479e8ed65e76f4 # pin@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: puppetlabs/provision_service
+          event-type: promote
+
   slack-workflow-status:
     if: always()
     name: Post Workflow Status To Slack
