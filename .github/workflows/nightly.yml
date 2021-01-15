@@ -208,7 +208,7 @@ jobs:
       - name: "Repository dispatch"
         uses: peter-evans/repository-dispatch@ce5485de42c9b2622d2ed064be479e8ed65e76f4 # pin@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.REPO_DISPATCH }}
           repository: puppetlabs/provision_service
           event-type: promote
 
