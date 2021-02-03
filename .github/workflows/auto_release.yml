@@ -56,6 +56,10 @@ jobs:
         echo STEP_ID="auto_release"  >> $GITHUB_ENV
         echo STEP_START=$(date +%s) >> $GITHUB_ENV
 
+    - name: Append PDK to Gemfile
+      run: |
+        echo "gem 'pdk'" >> Gemfile
+
     - name: Bundler Setup
       run: |
         buildevents cmd $TRACE_ID $STEP_ID 'bundle config path vendor/gems' -- bundle config path vendor/gems
