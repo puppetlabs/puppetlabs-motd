@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.3.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.3.0) (2021-02-04)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v4.3.0...v4.3.0)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- Update json requirement from = 2.1.0 to 2.2.0 [\#381](https://github.com/puppetlabs/puppetlabs-motd/pull/381) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v4.3.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.3.0) (2020-12-14)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v4.2.0...v4.3.0)
@@ -19,6 +27,10 @@ All notable changes to this project will be documented in this file. The format 
 - \(IAC-974\) - Removal of inappropriate terminology [\#326](https://github.com/puppetlabs/puppetlabs-motd/pull/326) ([david22swan](https://github.com/david22swan))
 - pdksync - \(IAC-973\) - Update travis/appveyor to run on new default branch main [\#320](https://github.com/puppetlabs/puppetlabs-motd/pull/320) ([david22swan](https://github.com/david22swan))
 - \(IAC-746\) - Add ubuntu 20.04 support [\#309](https://github.com/puppetlabs/puppetlabs-motd/pull/309) ([david22swan](https://github.com/david22swan))
+
+### Fixed
+
+- \(MODULES-10387\) Raise lower bound for puppetlabs-registry dependency to 4.0.0 [\#276](https://github.com/puppetlabs/puppetlabs-motd/pull/276) ([daianamezdrea](https://github.com/daianamezdrea))
 
 ### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
 
@@ -42,10 +54,6 @@ All notable changes to this project will be documented in this file. The format 
 
 - \(MODULES-10242\) Add back support for Ubuntu 14.04 [\#267](https://github.com/puppetlabs/puppetlabs-motd/pull/267) ([sheenaajay](https://github.com/sheenaajay))
 - \(FM-8691\) - Addition of Support for CentOS 8 [\#264](https://github.com/puppetlabs/puppetlabs-motd/pull/264) ([david22swan](https://github.com/david22swan))
-
-### Fixed
-
-- \(MODULES-10387\) Raise lower bound for puppetlabs-registry dependency to 4.0.0 [\#276](https://github.com/puppetlabs/puppetlabs-motd/pull/276) ([daianamezdrea](https://github.com/daianamezdrea))
 
 ## [v4.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v4.0.0) (2019-11-11)
 
@@ -85,7 +93,6 @@ All notable changes to this project will be documented in this file. The format 
 - simplistic support for vscode integration to litmus added [\#212](https://github.com/puppetlabs/puppetlabs-motd/pull/212) ([abuxton](https://github.com/abuxton))
 - \(MODULES-8767\) Add support for SLES 15 [\#205](https://github.com/puppetlabs/puppetlabs-motd/pull/205) ([eimlav](https://github.com/eimlav))
 - \(FM-7647\) use puppet\_litmus for acceptance testing [\#200](https://github.com/puppetlabs/puppetlabs-motd/pull/200) ([tphoney](https://github.com/tphoney))
-- \(FM-7307\) - added translation functionality [\#150](https://github.com/puppetlabs/puppetlabs-motd/pull/150) ([Lavinia-Dan](https://github.com/Lavinia-Dan))
 
 ### Fixed
 
@@ -130,8 +137,8 @@ All notable changes to this project will be documented in this file. The format 
 
 - \(FM-7310\)- Updating Windows version support [\#156](https://github.com/puppetlabs/puppetlabs-motd/pull/156) ([lionce](https://github.com/lionce))
 - \(FM-7306\) - Added Puppet 4 data types and changed templates to .epp [\#152](https://github.com/puppetlabs/puppetlabs-motd/pull/152) ([eimlav](https://github.com/eimlav))
+- \(FM-7307\) - added translation functionality [\#150](https://github.com/puppetlabs/puppetlabs-motd/pull/150) ([Lavinia-Dan](https://github.com/Lavinia-Dan))
 - \(maint\) removing registry pin, update stdlib bound [\#145](https://github.com/puppetlabs/puppetlabs-motd/pull/145) ([tphoney](https://github.com/tphoney))
-- \(FM-7237\) - Addition of support for Ubuntu 18.04 on motd [\#140](https://github.com/puppetlabs/puppetlabs-motd/pull/140) ([david22swan](https://github.com/david22swan))
 
 ## 1.9.0
 ## Summary
