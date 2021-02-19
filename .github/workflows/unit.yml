@@ -9,22 +9,32 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - id: set-matrix
-      run: echo '::set-output name=matrix::[{"puppet_version":"5.5.22","ruby_version":"2.5"},"6.19.1":{"puppet_version":"6.19.1","ruby_version":"2.5"},"7.0.0":{"puppet_version":"~> 7","ruby_version":"2.7"}]' 
+      run: echo '::set-output name=matrix::[{"puppet_version":"5.5.22","ruby_version":"2.5"},{"puppet_version":"6.19.1","ruby_version":"2.5"},{"puppet_version":"~> 7","ruby_version":"2.7"}]' 
+
+  # Spec:
+  #   needs: setup_unit_test_matrix
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix: ${{fromJson(needs.setup_unit_test_matrix.outputs.matrix)}}
+
+  #   steps:
+  #   - name: "Activate Ruby ${{matrix.ruby_version}}"
+  #     uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: ${ matrix.ruby_version }}
+  #       bundler-cache: true
+
+  #   - name: Run Spec Tests
+  #     run: |
+  #       echo "PUPPET_GEM_VERSION=${{ matrix.puppet_version }} bundle exec rake parallel_spec"
 
   Spec:
-    needs: setup_unit_test_matrix
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix: ${{fromJson(needs.setup_unit_test_matrix.outputs.matrix)}}
+      matrix: [{"puppet_version":"5.5.22","ruby_version":"2.5"},{"puppet_version":"6.19.1","ruby_version":"2.5"},{"puppet_version":"~> 7","ruby_version":"2.7"}]
 
     steps:
     - name: "Activate Ruby ${{matrix.ruby_version}}"
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${ matrix.ruby_version }}
-        bundler-cache: true
-
-    - name: Run Spec Tests
-      run: |
-        echo "PUPPET_GEM_VERSION=${{ matrix.puppet_version }} bundle exec rake parallel_spec"
+      run: echo "${{matrix.ruby_version}}"
