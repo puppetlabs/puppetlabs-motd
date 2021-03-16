@@ -43,7 +43,7 @@ class motd (
 ) {
   if $template {
     if $content {
-      warning(translate('Both $template and $content parameters passed to motd, ignoring content'))
+      warning('Both $template and $content parameters passed to motd, ignoring content')
     }
     $motd_content = epp($template)
   } elsif $content {
@@ -54,7 +54,7 @@ class motd (
 
   if $issue_template {
     if $issue_content {
-      warning(translate('Both $issue_template and $issue_content parameters passed to motd, ignoring issue_content'))
+      warning('Both $issue_template and $issue_content parameters passed to motd, ignoring issue_content')
     }
     $_issue_content = epp($issue_template)
   } elsif $issue_content {
@@ -65,7 +65,7 @@ class motd (
 
   if $issue_net_template {
     if $issue_net_content {
-      warning(translate('Both $issue_net_template and $issue_net_content parameters passed to motd, ignoring issue_net_content'))
+      warning('Both $issue_net_template and $issue_net_content parameters passed to motd, ignoring issue_net_content')
     }
     $_issue_net_content = epp($issue_net_template)
   } elsif $issue_net_content {
