@@ -2,13 +2,24 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v6.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.0.0) (2021-04-03)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v5.0.0...v6.0.0)
+
+### Changed
+
+- Update metadata.json - remove ubuntu 14.04 [\#401](https://github.com/puppetlabs/puppetlabs-motd/pull/401) ([daianamezdrea](https://github.com/daianamezdrea))
+
+### Fixed
+
+- \(IAC-1497\) - Removal of unsupported `translate` dependency [\#404](https://github.com/puppetlabs/puppetlabs-motd/pull/404) ([david22swan](https://github.com/david22swan))
+
 ## [v5.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v5.0.0) (2021-03-01)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v4.3.0...v5.0.0)
 
 ### Changed
 
-- Update metadata.json - remove ubuntu 14.04 [\#401](https://github.com/puppetlabs/puppetlabs-motd/pull/401) ([daianamezdrea](https://github.com/daianamezdrea))
 - pdksync -  Remove SLES 11 support [\#399](https://github.com/puppetlabs/puppetlabs-motd/pull/399) ([sanfrancrisko](https://github.com/sanfrancrisko))
 - pdksync - Remove RHEL 5 family support [\#398](https://github.com/puppetlabs/puppetlabs-motd/pull/398) ([sanfrancrisko](https://github.com/sanfrancrisko))
 - pdksync - Remove Puppet 5 from testing and bump minimal version to 6.0.0 [\#394](https://github.com/puppetlabs/puppetlabs-motd/pull/394) ([carabasdaniel](https://github.com/carabasdaniel))
