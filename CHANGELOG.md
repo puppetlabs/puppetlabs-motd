@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v6.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.1.0) (2021-08-26)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.0.0...v6.1.0)
+
+### Added
+
+- pdksync - \(IAC-1709\) - Add Support for Debian 11 [\#420](https://github.com/puppetlabs/puppetlabs-motd/pull/420) ([david22swan](https://github.com/david22swan))
+
+### Fixed
+
+- \(IAC-1741\) Allow stdlib v8.0.0 [\#421](https://github.com/puppetlabs/puppetlabs-motd/pull/421) ([david22swan](https://github.com/david22swan))
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- Upgrade to GitHub-native Dependabot [\#413](https://github.com/puppetlabs/puppetlabs-motd/pull/413) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v6.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.0.0) (2021-05-10)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v5.0.0...v6.0.0)
