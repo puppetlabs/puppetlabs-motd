@@ -96,13 +96,15 @@ class motd (
   }
 
   if $facts['kernel'] in ['Linux', 'SunOS', 'FreeBSD', 'AIX'] {
-    file { '/etc/motd':
-      ensure  => file,
-      backup  => false,
-      content => $motd_content,
-    }
+    if $facts['kernel'] == 'FreeBSD' {
+      if versioncmp($facts['os']['release']['major'], '13') >= 0 {
+        $_motd_location = '/etc/motd.template'
+      } else {
+        $_motd_location = '/etc/motd'
+      }
+    } else {
+      $_motd_location = '/etc/motd'
 
-    if $facts['kernel'] != 'FreeBSD' {
       if $_issue_content {
         file { '/etc/issue':
           ensure  => file,
@@ -118,6 +120,12 @@ class motd (
           content => $_issue_net_content,
         }
       }
+    }
+
+    file { $_motd_location:
+      ensure  => file,
+      backup  => false,
+      content => $motd_content,
     }
 
     if ($facts['osfamily'] == 'Debian') and ($dynamic_motd == false) {
