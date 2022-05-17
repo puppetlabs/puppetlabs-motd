@@ -11,9 +11,22 @@ jobs:
     - uses: actions/stale@v3
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        days-before-stale: 60
-        days-before-close: 7
-        stale-issue-message: 'Hi, this issue has been open for a while and has had no recent activity so it has been labeled for attention. With significant change within our team over the past 6 months, we are no longer aware if your issue is still relevant and/or up-to-date.\n\nIf this issue is still important and relevant to you, please drop a comment below and we will add this back to our community workload for prioritisation. Otherwise, it will be considered inactive and will be closed after 7 days. Closed issues can still be reopened if you comment on them shortly after it has been closed.'
-        stale-issue-label: 'attention'
-        stale-pr-message: 'Hi, this PR has been open for a while and has had no recent activity so it has been labeled for attention. With significant change within our team over the past 6 months, we are no longer aware if your PR is still relevant and/or up-to-date.\n\nIf this PR is still important and relevant to you, please drop a comment below and we will add this back to our community workload for prioritisation. Otherwise, it will be considered inactive and will be closed after 7 days. Closed PRs can still be reopened if you comment on them shortly after it has been closed.'
-        stale-pr-label: 'needs-attention'
+        days-before-stale: 75
+        stale-issue-message: |
+          'Hello! 👋 
+          
+          This issue has been open for a while and has had no recent activity so it has been labeled as `attention-needed`.
+          
+          If you are waiting on a response from us we will try and address your comments in the next Community Day.
+          
+          Alternatively, if it is no longer relevant to you please close the issue with a comment.'
+        stale-issue-label: 'attention-needed'
+        stale-pr-message: |
+          'Hello! 👋 
+          
+          This pull request has been open for a while and has had no recent activity so it has been labeled as `attention-needed`.
+          
+          If you are waiting on a response from us we will try and address your comments in the next Community Day.
+          
+          Alternatively, if it is no longer relevant to you please close the pull-request with a comment.'
+        stale-pr-label: 'attention-needed'
