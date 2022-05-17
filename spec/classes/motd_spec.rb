@@ -255,6 +255,11 @@ describe 'motd', type: :class do
         fqdn: 'test.example.com',
         ipaddress: '123.23.243.1',
         memorysize: '16.00 GB',
+        os: {
+          release: {
+            major: '11',
+          },
+        },
       }
     end
 
