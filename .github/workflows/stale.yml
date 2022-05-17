@@ -13,20 +13,20 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 75
         stale-issue-message: |
-          'Hello! 👋 
+          Hello! 👋 
           
           This issue has been open for a while and has had no recent activity so it has been labeled as `attention-needed`.
           
           If you are waiting on a response from us we will try and address your comments in the next Community Day.
           
-          Alternatively, if it is no longer relevant to you please close the issue with a comment.'
+          Alternatively, if it is no longer relevant to you please close the issue with a comment.
         stale-issue-label: 'attention-needed'
         stale-pr-message: |
-          'Hello! 👋 
+          Hello! 👋 
           
           This pull request has been open for a while and has had no recent activity so it has been labeled as `attention-needed`.
           
           If you are waiting on a response from us we will try and address your comments in the next Community Day.
           
-          Alternatively, if it is no longer relevant to you please close the pull-request with a comment.'
+          Alternatively, if it is no longer relevant to you please close the pull-request with a comment.
         stale-pr-label: 'attention-needed'
