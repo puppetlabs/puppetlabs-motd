@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v6.2.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.2.0) (2022-05-30)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.1.0...v6.2.0)
+
+### Added
+
+- Update motd location for FreeBSD 13 and above [\#431](https://github.com/puppetlabs/puppetlabs-motd/pull/431) ([Scnaeg](https://github.com/Scnaeg))
+- pdksync - \(IAC-1753\) - Add Support for AlmaLinux 8 [\#428](https://github.com/puppetlabs/puppetlabs-motd/pull/428) ([david22swan](https://github.com/david22swan))
+- pdksync - \(IAC-1751\) - Add Support for Rocky 8 [\#427](https://github.com/puppetlabs/puppetlabs-motd/pull/427) ([david22swan](https://github.com/david22swan))
+
+### Fixed
+
+- pdksync - \(GH-iac-334\) Remove Support for Ubuntu 16.04 [\#433](https://github.com/puppetlabs/puppetlabs-motd/pull/433) ([david22swan](https://github.com/david22swan))
+- pdksync - \(IAC-1787\) Remove Support for CentOS 6 [\#430](https://github.com/puppetlabs/puppetlabs-motd/pull/430) ([david22swan](https://github.com/david22swan))
+- pdksync - \(IAC-1598\) - Remove Support for Debian 8 [\#426](https://github.com/puppetlabs/puppetlabs-motd/pull/426) ([david22swan](https://github.com/david22swan))
+
 ## [v6.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.1.0) (2021-08-26)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.0.0...v6.1.0)
