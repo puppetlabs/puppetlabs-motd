@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v6.3.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.3.0) (2022-10-03)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.2.0...v6.3.0)
+
+### Added
+
+- pdksync - \(GH-cat-11\) Certify Support for Ubuntu 22.04 [\#447](https://github.com/puppetlabs/puppetlabs-motd/pull/447) ([david22swan](https://github.com/david22swan))
+- pdksync - \(GH-cat-12\) Add Support for Redhat 9 [\#446](https://github.com/puppetlabs/puppetlabs-motd/pull/446) ([david22swan](https://github.com/david22swan))
+
+### Fixed
+
+- \(MAINT\) Dropped support for Windows Server 2008 R2 and FreeBSD [\#448](https://github.com/puppetlabs/puppetlabs-motd/pull/448) ([jordanbreen28](https://github.com/jordanbreen28))
+
 ## [v6.2.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.2.0) (2022-05-30)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.1.0...v6.2.0)
