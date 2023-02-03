@@ -10,6 +10,5 @@ on:
 
 jobs:
 
-  mend:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/mend_ruby.yml@main"
-    secrets: "inherit"
+- name: View PR author
+  run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
