@@ -1,13 +1,11 @@
-name: "mend"
-
-on:
-  pull_request:
-    branches:
-      - "main"
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 jobs:
-  - name: View PR author
-    run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "Org is ${{ github.event.org }}"
+
