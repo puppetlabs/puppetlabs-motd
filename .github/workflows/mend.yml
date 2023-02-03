@@ -1,12 +1,25 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
-jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "Org is ${{ github.org }}"
-      - run: echo "Org is ${{ github.event.pull_request.user.login }}"
-      - run: echo "Org is ${{ github.event.pull_request.user.org }}"
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      env:
+        PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+      steps:
+        - name: script
+          run: |
+            echo "PR author: $PR_AUTHOR"
+          shell: bash
+# jobs:
+#   Explore-GitHub-Actions:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+#       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+#       - run: echo "Org is ${{ github.org }}"
+#       - run: echo "Org is ${{ github.event.pull_request.user.login }}"
+#       - run: echo "Org is ${{ github.event.pull_request.user.org }}"
+#    - name: View PR author
+#   if: ${{ github.event.issue.pull_request }}
+#   run: echo "This PR is opened by ${{ github.event.issue.user.login }} ."
