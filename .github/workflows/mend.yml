@@ -9,6 +9,5 @@ on:
   workflow_dispatch:
 
 jobs:
-
-- name: View PR author
-  run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
+  - name: View PR author
+    run: echo "This PR is opened by ${{ github.event.pull_request.user.login }} ."
