@@ -37,7 +37,7 @@ group :development do
   gem "github_changelog_generator", '= 1.15.2',        require: false
 end
 group :system_tests do
-  gem "puppet_litmus", '< 1.0.0', require: false, git: 'https://github.com/puppetlabs/puppet_litmus/tree/CONT-404-Deprecation_warnings', platforms: [:ruby]
+  gem "puppet_litmus", '< 1.0.0', require: false, git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'CONT-404-Deprecation_warnings', platforms: [:ruby]
   gem "serverspec", '~> 2.41',    require: false
 end
 
