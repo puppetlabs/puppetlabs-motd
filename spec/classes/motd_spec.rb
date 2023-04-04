@@ -43,12 +43,9 @@ describe 'motd', type: :class do
     context 'when neither template or source are specified' do
       it do
         expect(subject).to contain_File('/etc/motd').with(
-          ensure: 'file',
-          backup: 'false',
+          ensure: 'file', backup: 'false',
           content: "RedHat 9.0 x86_64\n\nFQDN:         foo.example.com (10.109.1.2)\nProcessor:    Intel Xeon Processor (Cascadelake)\nKernel:       Linux\nMemory Size:  3.10 GiB\n",
-          owner: 'root',
-          group: 'root',
-          mode: '0644',
+          owner: 'root', group: 'root', mode: '0644'
         )
       end
     end
@@ -99,12 +96,9 @@ describe 'motd', type: :class do
 
       it do
         expect(subject).to contain_File('/etc/issue').with(
-          ensure: 'file',
-          backup: 'false',
+          ensure: 'file', backup: 'false',
           content: "Test Template for Rspec\n",
-          owner: 'root',
-          group: 'root',
-          mode: '0644',
+          owner: 'root', group: 'root', mode: '0644'
         )
       end
     end
@@ -144,12 +138,9 @@ describe 'motd', type: :class do
 
       it do
         expect(subject).to contain_File('/etc/issue.net').with(
-          ensure: 'file',
-          backup: 'false',
+          ensure: 'file', backup: 'false',
           content: "Test Template for Rspec\n",
-          owner: 'root',
-          group: 'root',
-          mode: '0644',
+          owner: 'root', group: 'root', mode: '0644'
         )
       end
     end
@@ -228,6 +219,9 @@ describe 'motd', type: :class do
           type: 'string',
           data: 'Hello!',
         )
+      end
+
+      it do
         expect(subject).to contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticecaption').with(
           ensure: 'present',
           type: 'string',
@@ -355,12 +349,9 @@ describe 'motd', type: :class do
     context 'when neither template or source are specified' do
       it do
         expect(subject).to contain_File('/etc/motd').with(
-          ensure: 'file',
-          backup: 'false',
+          ensure: 'file', backup: 'false',
           content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory Size:  16.00 GB\n",
-          owner: 'bin',
-          group: 'bin',
-          mode: '0644',
+          owner: 'bin', group: 'bin', mode: '0644'
         )
       end
     end
@@ -370,12 +361,9 @@ describe 'motd', type: :class do
 
       it do
         expect(subject).to contain_File('/etc/issue').with(
-          ensure: 'file',
-          backup: 'false',
+          ensure: 'file', backup: 'false',
           content: "Test Template for Rspec\n",
-          owner: 'bin',
-          group: 'bin',
-          mode: '0644',
+          owner: 'bin', group: 'bin', mode: '0644'
         )
       end
     end
@@ -385,12 +373,9 @@ describe 'motd', type: :class do
 
       it do
         expect(subject).to contain_File('/etc/issue.net').with(
-          ensure: 'file',
-          backup: 'false',
+          ensure: 'file', backup: 'false',
           content: "Test Template for Rspec\n",
-          owner: 'bin',
-          group: 'bin',
-          mode: '0644',
+          owner: 'bin', group: 'bin', mode: '0644'
         )
       end
     end

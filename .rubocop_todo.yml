@@ -18,11 +18,6 @@ RSpec/DescribeClass:
     - 'spec/acceptance/motd_spec.rb'
     - 'spec/classes/motd_spec.rb'
 
-# Offense count: 7
-# Configuration parameters: CountAsOne.
-RSpec/ExampleLength:
-  Max: 10
-
 # Offense count: 21
 # Configuration parameters: EnforcedStyle, IgnoreSharedExamples.
 # SupportedStyles: always, named_only
