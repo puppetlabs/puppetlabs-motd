@@ -31,8 +31,3 @@ RSpec/NamedSubject:
 RSpec/NoExpectationExample:
   Exclude:
     - 'spec/acceptance/motd_spec.rb'
-
-# Offense count: 1
-Style/MixinUsage:
-  Exclude:
-    - 'spec/spec_helper.rb'
