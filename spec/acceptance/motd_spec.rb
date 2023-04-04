@@ -67,6 +67,7 @@ def test_motd(pp, expected_contain, filename)
   idempotent_apply(pp)
 
   return unless os[:family] != 'windows'
+
   expect(file(filename)).to be_file
   expect(file(filename)).to contain expected_contain
 end
@@ -112,6 +113,7 @@ describe 'Message of the day' do
     it do
       test_motd(pp_debian_dynamic, "Hello world!\n", motd_file)
     end
+
     describe file('/etc/pam.d/sshd') do
       its(:content) { is_expected.not_to match %r{session    optional     pam_motd.so  motd=/run/motd.dynamic} }
     end
