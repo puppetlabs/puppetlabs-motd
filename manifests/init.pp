@@ -128,10 +128,10 @@ class motd (
       content => $motd_content,
     }
 
-    if ($facts['osfamily'] == 'Debian') and ($dynamic_motd == false) {
-      if $facts['operatingsystem'] == 'Debian' and versioncmp($facts['operatingsystemmajrelease'], '7') > 0 {
+    if ($facts['os']['family'] == 'Debian') and ($dynamic_motd == false) {
+      if $facts['os']['name'] == 'Debian' and versioncmp($facts['os']['release']['major'], '7') > 0 {
         $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic'
-      } elsif $facts['operatingsystem'] == 'Ubuntu' and versioncmp($facts['operatingsystemmajrelease'], '16.00') > 0 {
+      } elsif $facts['os']['name'] == 'Ubuntu' and versioncmp($facts['os']['release']['major'], '16.00') > 0 {
         $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic'
       } else {
         $_line_to_remove = 'session    optional     pam_motd.so  motd=/run/motd.dynamic noupdate'
