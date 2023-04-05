@@ -26,72 +26,72 @@ include motd
 
 The following parameters are available in the `motd` class:
 
-* [`dynamic_motd`](#dynamic_motd)
-* [`template`](#template)
-* [`content`](#content)
-* [`issue_template`](#issue_template)
-* [`issue_content`](#issue_content)
-* [`issue_net_template`](#issue_net_template)
-* [`issue_net_content`](#issue_net_content)
-* [`windows_motd_title`](#windows_motd_title)
+* [`dynamic_motd`](#-motd--dynamic_motd)
+* [`template`](#-motd--template)
+* [`content`](#-motd--content)
+* [`issue_template`](#-motd--issue_template)
+* [`issue_content`](#-motd--issue_content)
+* [`issue_net_template`](#-motd--issue_net_template)
+* [`issue_net_content`](#-motd--issue_net_content)
+* [`windows_motd_title`](#-motd--windows_motd_title)
 
-##### <a name="dynamic_motd"></a>`dynamic_motd`
+##### <a name="-motd--dynamic_motd"></a>`dynamic_motd`
 
 Data type: `Boolean`
 
 Enables or disables dynamic motd on Debian systems.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="template"></a>`template`
+##### <a name="-motd--template"></a>`template`
 
 Data type: `Optional[String]`
 
 Specifies a custom template. A template takes precedence over `content`. Valid options:  '/mymodule/mytemplate.erb'.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="content"></a>`content`
+##### <a name="-motd--content"></a>`content`
 
 Data type: `Optional[String]`
 
 Specifies a static string as the motd content.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="issue_template"></a>`issue_template`
+##### <a name="-motd--issue_template"></a>`issue_template`
 
 Data type: `Optional[String]`
 
 Specifies a custom template to process and save to `/etc/issue`. A template takes precedence over `issue_content`.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="issue_content"></a>`issue_content`
+##### <a name="-motd--issue_content"></a>`issue_content`
 
 Data type: `Optional[String]`
 
 Specifies a static string as the `/etc/issue` content.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="issue_net_template"></a>`issue_net_template`
+##### <a name="-motd--issue_net_template"></a>`issue_net_template`
 
 Data type: `Optional[String]`
 
 Specifies a custom template to process and save to `/etc/issue.net`. A template takes precedence over `issue_net_content`.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="issue_net_content"></a>`issue_net_content`
+##### <a name="-motd--issue_net_content"></a>`issue_net_content`
 
 Data type: `Optional[String]`
 
 Specifies a static string as the `/etc/issue.net` content.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="windows_motd_title"></a>`windows_motd_title`
+##### <a name="-motd--windows_motd_title"></a>`windows_motd_title`
 
 Data type: `String`
 
