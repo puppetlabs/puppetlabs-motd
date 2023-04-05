@@ -1,6 +1,6 @@
-<%= $facts[operatingsystem] %> <%= $facts[operatingsystemrelease] %> <%= $facts[architecture] %>
+<%= $facts[os][name] %> <%= $facts[os][release][full] %> <%= $facts[os][architecture] %>
 
-FQDN:         <%= $facts[fqdn] %> (<%= $facts[ipaddress] %>)
-Processor:    <%= $facts[processor0] %>
+FQDN:         <%= $facts[networking][fqdn] %> (<%= $facts[networking][ip] %>)
+Processor:    <%= $facts[processors][models][0] %>
 Kernel:       <%= $facts[kernel] %>
-Memory Size:  <%= $facts[memorysize] %>
+Memory Size:  <%= $facts[memory][system][available] %>
