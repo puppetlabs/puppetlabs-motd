@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v7.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v7.0.0) (2023-04-05)
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.3.0...v7.0.0)
+
+### Changed
+
+- \(Cont 787\) Add Support for Puppet 8 / Drop Support for Puppet 6 [\#472](https://github.com/puppetlabs/puppetlabs-motd/pull/472) ([david22swan](https://github.com/david22swan))
+
+### Fixed
+
+- pdksync - \(CONT-189\) Remove support for RedHat6 / OracleLinux6 / Scientific6 [\#456](https://github.com/puppetlabs/puppetlabs-motd/pull/456) ([david22swan](https://github.com/david22swan))
+- pdksync - \(CONT-130\) - Dropping Support for Debian 9 [\#450](https://github.com/puppetlabs/puppetlabs-motd/pull/450) ([jordanbreen28](https://github.com/jordanbreen28))
+
 ## [v6.3.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v6.3.0) (2022-10-03)
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v6.2.0...v6.3.0)
@@ -23,7 +36,6 @@ All notable changes to this project will be documented in this file. The format 
 
 - Update motd location for FreeBSD 13 and above [\#431](https://github.com/puppetlabs/puppetlabs-motd/pull/431) ([Scnaeg](https://github.com/Scnaeg))
 - pdksync - \(IAC-1753\) - Add Support for AlmaLinux 8 [\#428](https://github.com/puppetlabs/puppetlabs-motd/pull/428) ([david22swan](https://github.com/david22swan))
-- pdksync - \(IAC-1751\) - Add Support for Rocky 8 [\#427](https://github.com/puppetlabs/puppetlabs-motd/pull/427) ([david22swan](https://github.com/david22swan))
 
 ### Fixed
 
@@ -37,6 +49,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
+- pdksync - \(IAC-1751\) - Add Support for Rocky 8 [\#427](https://github.com/puppetlabs/puppetlabs-motd/pull/427) ([david22swan](https://github.com/david22swan))
 - pdksync - \(IAC-1709\) - Add Support for Debian 11 [\#420](https://github.com/puppetlabs/puppetlabs-motd/pull/420) ([david22swan](https://github.com/david22swan))
 
 ### Fixed
