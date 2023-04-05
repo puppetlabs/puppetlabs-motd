@@ -24,10 +24,3 @@ RSpec/DescribeClass:
 RSpec/NamedSubject:
   Exclude:
     - 'spec/classes/motd_spec.rb'
-
-# Offense count: 7
-# Configuration parameters: AllowedPatterns.
-# AllowedPatterns: ^expect_, ^assert_
-RSpec/NoExpectationExample:
-  Exclude:
-    - 'spec/acceptance/motd_spec.rb'
