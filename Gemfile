@@ -19,13 +19,10 @@ group :development do
   gem "json", '= 2.5.1',                           require: false if Gem::Requirement.create(['>= 3.0.0', '< 3.0.5']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "json", '= 2.6.1',                           require: false if Gem::Requirement.create(['>= 3.1.0', '< 3.1.3']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
   gem "json", '= 2.6.3',                           require: false if Gem::Requirement.create(['>= 3.2.0', '< 4.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "voxpupuli-puppet-lint-plugins", '~> 4.0',   require: false
   gem "facterdb", '~> 1.18',                       require: false
   gem "metadata-json-lint", '>= 2.0.2', '< 4.0.0', require: false
-  gem "puppetlabs_spec_helper", '~> 5.0',          require: false
   gem "rspec-puppet-facts", '~> 2.0',              require: false
   gem "codecov", '~> 0.2',                         require: false
-  gem "dependency_checker", '~> 0.2',              require: false
   gem "parallel_tests", '= 3.12.1',                require: false
   gem "pry", '~> 0.10',                            require: false
   gem "simplecov-console", '~> 0.5',               require: false
@@ -36,8 +33,16 @@ group :development do
   gem "rb-readline", '= 0.5.5',                    require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "github_changelog_generator", '= 1.15.2',    require: false
 end
+
+group :tooling do
+  gem "puppet_litmus", '~> 1.0.0.rc', require: false, platforms: [:ruby, :x64_mingw]
+  gem "puppetlabs_spec_helper", '~> 6.0.0.rc',          require: false
+  gem "dependency_checker", '~> 1.0.0.rc',              require: false
+  # Remove puppet-lint pluigins while we resolve dependency issues.
+  # gem "voxpupuli-puppet-lint-plugins", '~> 4.0',   require: false
+end
+
 group :system_tests do
-  gem "puppet_litmus", '< 1.0.0', require: false, platforms: [:ruby, :x64_mingw]
   gem "serverspec", '~> 2.41',    require: false
 end
 
