@@ -8,10 +8,10 @@ on:
     
 jobs:
   Spec:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@MAINT-use_default_bundler"
     secrets: "inherit"
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@MAINT-use_default_bundler"
     secrets: "inherit"
