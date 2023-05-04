@@ -37,7 +37,7 @@ group :development do
   gem "github_changelog_generator", '= 1.15.2',    require: false
 end
 group :system_tests do
-  gem "puppet_litmus", '< 1.0.0', require: false, platforms: [:ruby, :x64_mingw]
+  gem "puppet_litmus", :git => "git://github.com/david22swan/puppet_litmus.git", :branch => "may_the_4th/main/remove_honeycomb"
   gem "serverspec", '~> 2.41',    require: false
 end
 
