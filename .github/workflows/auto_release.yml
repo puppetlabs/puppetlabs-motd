@@ -2,8 +2,14 @@ name: "Auto release"
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Module version to be released. Must be a valid semver string. (v1.2.3)"
+        required: true
 
 jobs:
   release_prep:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_release_prep.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_release_prep.yml@CONT-930-add_gh-changelog"
+    with:
+      version: "${{ github.event.inputs.version }}"
     secrets: "inherit"
