@@ -8,10 +8,10 @@ on:
     
 jobs:
   Spec:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@CONT-1051-disable-ci-for-non-puppetlabs-modules"
     secrets: "inherit"
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CONT-1051-disable-ci-for-non-puppetlabs-modules"
     secrets: "inherit"
