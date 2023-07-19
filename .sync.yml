@@ -12,6 +12,10 @@ Gemfile:
     ":development":
     - gem: github_changelog_generator
       version: '= 1.15.2'
+spec/default_facts.yml:
+  extra_facts:
+    networking:
+      fqdn: "foo.example.com"
 spec/spec_helper.rb:
   mock_with: ":rspec"
   coverage_report: true

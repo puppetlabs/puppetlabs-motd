@@ -44,7 +44,7 @@ describe 'motd', type: :class do
       it do
         expect(subject).to contain_File('/etc/motd').with(
           ensure: 'file', backup: 'false',
-          content: "RedHat 9.0 x86_64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel Xeon Processor (Cascadelake)\nKernel:       Linux\nMemory Size:  3.10 GiB\n",
+          content: "RedHat 9.0 x86_64\n\nFQDN:         foo.example.com (10.109.1.2)\nProcessor:    Intel Xeon Processor (Cascadelake)\nKernel:       Linux\nMemory Size:  3.10 GiB\n",
           owner: 'root', group: 'root', mode: '0644'
         )
       end
@@ -200,7 +200,7 @@ describe 'motd', type: :class do
         expect(subject).to contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext').with(
           ensure: 'present',
           type: 'string',
-          data: "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
+          data: "windows 10 x64\n\nFQDN:         foo.example.com (10.138.1.5)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
         )
       end
     end
