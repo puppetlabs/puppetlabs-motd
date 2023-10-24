@@ -44,7 +44,10 @@ describe 'motd', type: :class do
       it do
         expect(subject).to contain_File('/etc/motd').with(
           ensure: 'file', backup: 'false',
-          content: "RedHat 9.0 x86_64\n\nFQDN:         foo.example.com (10.109.1.2)\nProcessor:    Intel Xeon Processor (Cascadelake)\nKernel:       Linux\nMemory Size:  3.10 GiB\n",
+          # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
+          # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
+          # "RedHat 9.0 x86_64\n\nFQDN:         foo.example.com (172.16.254.254 OR 10.109.1.2)\nProcessor:    Intel Xeon Processor (Cascadelake)\nKernel:       Linux\nMemory Size:  3.10 GiB\n",
+          content: %r{RedHat\s9\.0\sx86_64\n\nFQDN:\s*foo.example.com\s\((172\.16\.254\.254|10\.109\.1\.2)\)\nProcessor:\s*Intel\sXeon\sProcessor\s\(Cascadelake\)\nKernel:\s*Linux\nMemory\sSize:\s*3.10\sGiB}, # rubocop:disable Layout/LineLength
           owner: 'root', group: 'root', mode: '0644'
         )
       end
@@ -200,7 +203,10 @@ describe 'motd', type: :class do
         expect(subject).to contain_Registry_value('HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\system\legalnoticetext').with(
           ensure: 'present',
           type: 'string',
-          data: "windows 10 x64\n\nFQDN:         foo.example.com (10.138.1.5)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
+          # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
+          # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
+          # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
+          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\((172\.16\.254\.254|10\.138\.1\.5)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\)\sPlatinum\s8272CL\sCPU\s@\s2\.60GHz\nKernel:\s*windows\nMemory\sSize:\s*14\.34\sGiB}, # rubocop:disable Layout/LineLength
         )
       end
     end
