@@ -47,7 +47,7 @@ describe 'motd', type: :class do
           # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
           # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
           # "RedHat 9.3 x86_64\n\nFQDN:         foo.example.com (172.16.254.254 OR 10.109.1.2)\nProcessor:    Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz\nKernel:       Linux\nMemory Size:  1.44 GiB\n",
-          content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\((172\.16\.254\.254|10\.109\.1\.2)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\)\s*.*\nKernel:\s*Linux\nMemory\sSize:\s*1.44\sGiB}, # rubocop:disable Layout/LineLength
+          content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\((172\.16\.254\.254|10\.109\.1\.2)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\)\s*.*\nKernel:\s*Linux\nMemory\sSize:\s*1.44\sGiB},
           owner: 'root', group: 'root', mode: '0644'
         )
       end
