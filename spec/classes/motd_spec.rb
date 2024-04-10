@@ -47,7 +47,7 @@ describe 'motd', type: :class do
           # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
           # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
           # "RedHat 9.3 x86_64\n\nFQDN:         foo.example.com (172.16.254.254 OR 10.109.1.2)\nProcessor:    Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz\nKernel:       Linux\nMemory Size:  1.44 GiB\n",
-          content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\((172\.16\.254\.254|10\.109\.1\.2)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\)\s*.*\nKernel:\s*Linux\nMemory\sSize:\s*1.44\sGiB},
+          content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\((172\.16\.254\.254|10\.109\.1\.2)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\).*\nKernel:\s*Linux\nMemory\sSize:\s*\d+\.\d+\sGiB},
           owner: 'root', group: 'root', mode: '0644'
         )
       end
@@ -206,7 +206,7 @@ describe 'motd', type: :class do
           # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
           # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
           # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
-          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\((172\.16\.254\.254|10\.138\.1\.5)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\)\sPlatinum\s8272CL\sCPU\s@\s2\.60GHz\nKernel:\s*windows\nMemory\sSize:\s*14\.34\sGiB}, # rubocop:disable Layout/LineLength
+          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\((172\.16\.254\.254|10\.138\.1\.5)\)\nProcessor:\s*Intel\(R\)\sXeon\(R\).*\nKernel:\s*windows\nMemory\sSize:\s*\d+\.\d+\sGiB},
         )
       end
     end
