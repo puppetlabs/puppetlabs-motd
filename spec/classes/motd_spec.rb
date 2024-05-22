@@ -49,7 +49,7 @@ describe 'motd', type: :class do
           # "RedHat 9.3 x86_64\n\nFQDN:         foo.example.com (172.16.254.254 OR 10.109.1.2)\n
           #  Processor:    (Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz OR AMD Ryzen 7 PRO 4750U with Radeon Graphics)\nKernel:       Linux\nMemory Size:  1.44 GiB\n",
           content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\((172\.16\.254\.254|10\.109\.1\.2)\)\n
-                      Processor:\s*(Intel\(R\)\sXeon\(R\)|AMD\sRyzen\s7\sPro).*\nKernel:\s*Linux\nMemory\sSize:\s*\d+\.\d+\sGiB},
+                      Processor:\s*(Intel\(R\)\sXeon\(R\)|AMD\sRyzen\s7\sPRO).*\nKernel:\s*Linux\nMemory\sSize:\s*\d+\.\d+\sGiB},
           owner: 'root', group: 'root', mode: '0644'
         )
       end
