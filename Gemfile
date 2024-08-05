@@ -38,8 +38,8 @@ group :development do
   gem "rb-readline", '= 0.5.5',                  require: false, platforms: [:mswin, :mingw, :x64_mingw]
 end
 group :system_tests do
-  gem "puppet_litmus", '~> 1.0', require: false, platforms: [:ruby, :x64_mingw]
-  gem "serverspec", '~> 2.41',   require: false
+  gem "puppet_litmus", git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'feat-add_supported_platforms', require: false
+  gem "serverspec", '~> 2.41', require: false
 end
 group :release_prep do
   gem "puppet-strings", '~> 4.0',         require: false
