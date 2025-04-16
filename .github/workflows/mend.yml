@@ -11,5 +11,5 @@ on:
 jobs:
 
   mend:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/mend_ruby.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/mend_ruby.yml@CAT-2286-Remove_puppet_7_test_infrastructure"
     secrets: "inherit"
