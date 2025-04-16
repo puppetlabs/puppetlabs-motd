@@ -7,12 +7,12 @@ on:
 
 jobs:
   Spec:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@CAT-2286-Remove_puppet_7_test_infrastructure"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
     secrets: "inherit"
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2286-Remove_puppet_7_test_infrastructure"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     secrets: "inherit"
     with:
-      runs_on: "ubuntu-20.04"
+      runs_on: "ubuntu-22.04"
