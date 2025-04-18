@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v7.3.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v7.3.0) - 2025-04-18
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v7.2.0...v7.3.0)
+
+### Added
+
+- (MODULES-11473) Add windows 2022 support [#526](https://github.com/puppetlabs/puppetlabs-motd/pull/526) ([amitkarsale](https://github.com/amitkarsale))
+
 ## [v7.2.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v7.2.0) - 2024-12-17
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v7.1.0...v7.2.0)
