@@ -207,7 +207,9 @@ describe 'motd', type: :class do
           # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
           # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
           # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
-          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\(\d*\.\d*\.\d*\.\d*\)\nProcessor:\s*Intel\(R\)\sXeon\(R\).*\nKernel:\s*windows\nMemory\sSize:\s*\d+\.\d+\sGiB},
+          # or
+          # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    12th Gen Intel(R) Core(TM) i9-12900K\nKernel:       windows\nMemory Size:  1.53 GiB"
+          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\(\d*\.\d*\.\d*\.\d*\)\nProcessor:\s*(?:Intel\(R\)\sXeon\(R\)|12th\sGen\sIntel).*\nKernel:\s*windows\nMemory\sSize:\s*\d+\.\d+\sGiB},
         )
       end
     end
