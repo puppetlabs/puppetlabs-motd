@@ -1,0 +1,38 @@
+name: AlmaLinux 8 SSH Test
+
+on:
+  workflow_dispatch:  # allows manual triggering
+
+jobs:
+  test-ssh:
+    runs-on: ubuntu-latest
+    name: Test SSH on AlmaLinux 8
+
+    steps:
+      - name: Pull almalinux:8 image
+        run: docker pull almalinux:8
+
+      - name: Start container with port forwarding
+        run: |
+          docker run -d --name alma8-test \
+            -p 2222:22 \
+            --privileged \
+            almalinux:8 sleep infinity
+
+      - name: Set up SSH inside container
+        run: |
+          docker exec alma8-test bash -c "
+            dnf install -y openssh-server passwd &&
+            mkdir -p /var/run/sshd &&
+            echo 'root:root' | chpasswd &&
+            sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+            sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config &&
+            /usr/sbin/sshd
+          "
+
+      - name: Wait a moment for sshd to be ready
+        run: sleep 3
+
+      - name: Try SSH login
+        run: |
+          ssh -o StrictHostKeyChecking=no -p 2222 root@localhost "echo SSH success"
