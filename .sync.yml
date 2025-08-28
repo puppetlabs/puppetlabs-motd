@@ -1,6 +1,6 @@
 ---
 common:
-  service_url: https://facade-main-6f3kfepqcq-ew.a.run.app/v1/provision
+  service_url: https://facade-set-subnetwork-1079112402178.europe-west1.run.app/v1/provision
 
 ".gitlab-ci.yml":
   delete: true
