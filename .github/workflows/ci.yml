@@ -16,4 +16,6 @@ jobs:
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     secrets: "inherit"
     with:
+      runs_on: "ubuntu-24.04"
       flags: "--nightly"
+      service_url: "https://facade-regionzone-1079112402178.europe-west1.run.app/v1/provision"
