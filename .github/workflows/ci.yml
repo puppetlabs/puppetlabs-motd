@@ -13,7 +13,7 @@ jobs:
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@MAINT-GCP_troubleshooting"
     secrets: "inherit"
     with:
-      flags: "--nightly"
+      flags: "--nightly --platform-include redhat-8"
