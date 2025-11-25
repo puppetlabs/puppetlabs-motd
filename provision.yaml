@@ -32,6 +32,10 @@ docker_el8:
   provisioner: docker
   images:
   - litmusimage/centos:8
+docker_sles:
+  provisioner: docker
+  images:
+  - litmusimage/sles:15
 release_checks_6:
   provisioner: abs
   images:
