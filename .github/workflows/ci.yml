@@ -14,6 +14,7 @@ jobs:
   Acceptance:
     needs: Spec
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2526-Implement_retry_for_agent_installation"
+    # attempt 2
     secrets: "inherit"
     with:
       flags: "--nightly"
