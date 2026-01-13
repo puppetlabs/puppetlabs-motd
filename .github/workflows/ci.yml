@@ -8,13 +8,13 @@ on:
     
 jobs:
   Spec:
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@CAT-2451-Address_wrong_facter_versioning"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
     secrets: "inherit"
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2451-Address_wrong_facter_versioning"
-    # test different PR, attempt to address facter issues
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2526-Implement_retry_for_agent_installation"
+    # test retry to provision and agent installation
     secrets: "inherit"
     with:
       flags: "--nightly"
