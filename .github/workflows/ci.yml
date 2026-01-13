@@ -13,8 +13,8 @@ jobs:
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2526-Implement_retry_for_agent_installation"
-    # attempt 2
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2451-Address_wrong_facter_versioning"
+    # test different PR, attempt to address facter issues
     secrets: "inherit"
     with:
       flags: "--nightly"
