@@ -14,7 +14,7 @@ jobs:
   Acceptance:
     needs: Spec
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2526-Implement_retry_for_agent_installation"
-    # test retry to provision and agent installation
+    # test retry on DNS dix and agent installation
     secrets: "inherit"
     with:
-      flags: "--nightly"
+      flags: "--nightly --platform-exclude=windows-2019"
