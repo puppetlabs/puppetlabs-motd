@@ -17,3 +17,4 @@ jobs:
     secrets: "inherit"
     with:
       flags: "--nightly"
+      service_url: "https://facade-cat-2080-update-facade-client-dependencies-1079112402178.europe-west1.run.app"
