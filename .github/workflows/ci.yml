@@ -17,4 +17,4 @@ jobs:
     secrets: "inherit"
     with:
       flags: "--nightly"
-      service_url: "https://facade-cat-2081-update-backend-client-dependencie-6f3kfepqcq-ew.a.run.app/v1/provision"
+      service_url: "https://facade-cat-2079-update-facade-dependencies-1079112402178.europe-west1.run.app/v1/provision"
