@@ -13,7 +13,7 @@ jobs:
 
   Acceptance:
     needs: Spec
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@MAINT-Test_alternative_retry_logic"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2561-Address_module_transient_failures"
     secrets: "inherit"
     with:
       flags: "--nightly"
