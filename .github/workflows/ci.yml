@@ -1,19 +1,54 @@
 name: "ci"
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - "main"
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
   workflow_dispatch:
-    
+
 jobs:
+  # When a fork contributor pushes new commits, remove the "approved for ci" label
+  # so a maintainer must re-review before CI can run again with secrets.
+  remove_label:
+    name: "Remove 'approved for ci' on new commits"
+    if: >-
+      github.event.action == 'synchronize' &&
+      github.event.pull_request.head.repo.fork == true
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: 'approved for ci'
+            }).catch(() => {})
+
+  # Non-fork PRs always run. Fork PRs only run when a maintainer (triage+)
+  # has explicitly added the "approved for ci" label after reviewing the code.
   Spec:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.fork == false ||
+      github.event.label.name == 'approved for ci'
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
     secrets: "inherit"
 
   Acceptance:
     needs: Spec
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.fork == false ||
+      github.event.label.name == 'approved for ci'
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
-    secrets: "inherit"
     with:
-      flags: "--nightly"
+      flags: '--nightly'
