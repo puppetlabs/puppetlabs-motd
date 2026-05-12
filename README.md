@@ -1,6 +1,6 @@
 # motd
 
-## Gavin was here
+## Gavin was here twice
 
 #### Table of Contents
 
