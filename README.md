@@ -1,6 +1,6 @@
 # motd
 
-## Gavin's section
+## Gavin's section number 2
 
 #### Table of Contents
 
