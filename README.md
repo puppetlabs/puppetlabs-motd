@@ -71,3 +71,4 @@ Puppet Labs modules on the Puppet Forge are open projects, and community contrib
 The list of contributors can be found at: [https://github.com/puppetlabs/puppetlabs-motd/graphs/contributors](https://github.com/puppetlabs/puppetlabs-motd/graphs/contributors).
 
 <!-- CI smoke test: verifying safe-fork CI workflow (CAT-2632). Safe to revert. -->
+<!-- CI smoke test: second push to trigger synchronize event. -->
