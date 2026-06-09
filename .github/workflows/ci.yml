@@ -20,14 +20,14 @@ concurrency:
 jobs:
   Spec:
     if: github.event_name != 'pull_request_target'
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@CAT-2632-enable_safe_fork_pr_ci"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
 
   Acceptance:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false) ||
       (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.fork == true && contains(github.event.pull_request.labels.*.name, 'allowed-for-ci'))
-    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@CAT-2632-enable_safe_fork_pr_ci"
+    uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     with:
       flags: "--nightly"
     secrets: "inherit"
