@@ -67,7 +67,8 @@ group :development, :release_prep do
   gem "puppet-blacksmith", '~> 7.0',      require: false
 end
 group :system_tests do
-  gem 'puppet_litmus', '~> 2.5',   require: false
+  # TEMP (CAT-2673 test): consume the Windows 2025 matrix branch, do not merge
+  gem 'puppet_litmus', git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'CAT-2673-windows-2025-acceptance-matrix', require: false
   gem "CFPropertyList", '< 3.0.7', require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "serverspec", '~> 2.41',     require: false
 end
