@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v8.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v8.0.0) - 2026-06-28
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v7.3.0...v8.0.0)
+
+### Changed
+
+- (CAT-2352) Puppetcore update [#531](https://github.com/puppetlabs/puppetlabs-motd/pull/531) ([LukasAud](https://github.com/LukasAud))
+
+### Added
+
+- (CAT-2463) Add bolt 5.0 support [#535](https://github.com/puppetlabs/puppetlabs-motd/pull/535) ([gavindidrichsen](https://github.com/gavindidrichsen))
+
+### Other
+
+- (MODULES-11840) Allow puppetlabs/stdlib 10.x [#558](https://github.com/puppetlabs/puppetlabs-motd/pull/558) ([imaqsood](https://github.com/imaqsood))
+- (MAINT) Implement CI runs on fork PRs via approval [#544](https://github.com/puppetlabs/puppetlabs-motd/pull/544) ([LukasAud](https://github.com/LukasAud))
+- (CAT-2296) Update github runner image to ubuntu-24.04 [#529](https://github.com/puppetlabs/puppetlabs-motd/pull/529) ([shubhamshinde360](https://github.com/shubhamshinde360))
+
 ## [v7.3.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v7.3.0) - 2025-04-18
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v7.2.0...v7.3.0)
