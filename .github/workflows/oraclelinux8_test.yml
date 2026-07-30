@@ -12,6 +12,15 @@ jobs:
     name: Test SSH on litmusimage/oraclelinux:8
 
     steps:
+      - name: Disable Apparmor
+        run: |
+          if command -v apparmor_parser >/dev/null ; then
+            sudo find /etc/apparmor.d/ -maxdepth 1 -type f -exec ln -sf {} /etc/apparmor.d/disable/ \;
+            sudo apparmor_parser -R /etc/apparmor.d/disable/* || true
+            sudo systemctl disable apparmor
+            sudo systemctl stop apparmor
+          fi
+
       - name: Pull litmusimage/oraclelinux:8 image
         run: docker pull litmusimage/oraclelinux:8
 
@@ -60,8 +69,21 @@ jobs:
       - name: Try SSH login
         run: |
           sudo apt-get install -y sshpass
-          sshpass -p root ssh -o StrictHostKeyChecking=no -p 2222 root@localhost "echo SSH success; uname -a"
+          sshpass -p root ssh -v -o StrictHostKeyChecking=no -p 2222 root@localhost "echo SSH success; uname -a"
 
-      - name: Dump container logs on failure
+      - name: Dump container logs and auth logs on failure
         if: failure()
-        run: docker logs ol8-test
+        run: |
+          echo "::group::docker logs"
+          docker logs ol8-test
+          echo "::endgroup::"
+          echo "::group::/var/log/secure (auth log)"
+          docker exec ol8-test cat /var/log/secure || true
+          echo "::endgroup::"
+          echo "::group::sshd -T (effective config)"
+          docker exec ol8-test /usr/sbin/sshd -T || true
+          echo "::endgroup::"
+          echo "::group::getenforce / apparmor status on host"
+          getenforce 2>&1 || true
+          sudo aa-status 2>&1 || true
+          echo "::endgroup::"
