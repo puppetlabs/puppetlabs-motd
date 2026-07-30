@@ -1,0 +1,64 @@
+name: OracleLinux 8 SSH Timing Test
+
+on:
+  workflow_dispatch:  # allows manual triggering
+
+jobs:
+  test-ssh:
+    runs-on: ubuntu-latest
+    name: Test SSH on litmusimage/oraclelinux:8
+
+    steps:
+      - name: Pull litmusimage/oraclelinux:8 image
+        run: docker pull litmusimage/oraclelinux:8
+
+      - name: Start container with port forwarding
+        run: |
+          docker run -d --name ol8-test \
+            -p 2222:22 \
+            --privileged \
+            --tmpfs /tmp:exec \
+            litmusimage/oraclelinux:8 /lib/systemd/systemd
+
+      - name: Wait for systemd to report running/degraded
+        run: |
+          docker exec ol8-test bash -c '
+            if [[ "$(readlink /proc/1/exe)" == "/usr/lib/systemd/systemd" ]]; then
+              count=0
+              while ! [[ "$(systemctl is-system-running)" =~ ^running|degraded$ && $count > 20 ]]; do
+                sleep 0.1
+                count=$((count+1))
+              done
+            fi
+            echo "status=$(systemctl is-system-running)"
+          '
+
+      - name: Confirm host keys already present (should be baked in)
+        run: docker exec ol8-test ls -la /etc/ssh/
+
+      - name: dnf install sudo openssh-server openssh-clients
+        run: docker exec ol8-test dnf install -y sudo openssh-server openssh-clients
+
+      - name: Set root password
+        run: docker exec ol8-test bash -c "echo root:root | /usr/sbin/chpasswd"
+
+      - name: Configure sshd_config
+        run: |
+          docker exec ol8-test sed -ri 's/^#?PermitRootLogin .*/PermitRootLogin yes/' /etc/ssh/sshd_config
+          docker exec ol8-test sed -ri 's/^#?PasswordAuthentication .*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+          docker exec ol8-test sed -ri 's/^#?UseDNS .*/UseDNS no/' /etc/ssh/sshd_config
+
+      - name: Start sshd
+        run: docker exec ol8-test /usr/sbin/sshd
+
+      - name: Wait a moment for sshd to be ready
+        run: sleep 3
+
+      - name: Try SSH login
+        run: |
+          sudo apt-get install -y sshpass
+          sshpass -p root ssh -o StrictHostKeyChecking=no -p 2222 root@localhost "echo SSH success; uname -a"
+
+      - name: Dump container logs on failure
+        if: failure()
+        run: docker logs ol8-test
