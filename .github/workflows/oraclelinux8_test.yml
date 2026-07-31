@@ -87,3 +87,54 @@ jobs:
           getenforce 2>&1 || true
           sudo aa-status 2>&1 || true
           echo "::endgroup::"
+
+  real-litmus-provision-with-apparmor:
+    runs-on: ubuntu-latest
+    name: Real litmus:provision, AppArmor ON (default)
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Provision environment (real litmus:provision task)
+        run: bundle exec rake "litmus:provision[docker,litmusimage/oraclelinux:8,]"
+
+      - name: Tear down
+        if: always()
+        run: bundle exec rake 'litmus:tear_down' || true
+
+  real-litmus-provision-without-apparmor:
+    runs-on: ubuntu-latest
+    name: Real litmus:provision, AppArmor OFF
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Disable Apparmor
+        run: |
+          if command -v apparmor_parser >/dev/null ; then
+            sudo find /etc/apparmor.d/ -maxdepth 1 -type f -exec ln -sf {} /etc/apparmor.d/disable/ \;
+            sudo apparmor_parser -R /etc/apparmor.d/disable/* || true
+            sudo systemctl disable apparmor
+            sudo systemctl stop apparmor
+          fi
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Provision environment (real litmus:provision task)
+        run: bundle exec rake "litmus:provision[docker,litmusimage/oraclelinux:8,]"
+
+      - name: Tear down
+        if: always()
+        run: bundle exec rake 'litmus:tear_down' || true
