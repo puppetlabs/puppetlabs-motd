@@ -63,7 +63,7 @@ group :development do
 end
 group :development, :release_prep do
   gem "puppet-strings", '~> 4.0',         require: false
-  gem "puppetlabs_spec_helper", git: "https://github.com/puppetlabs/puppetlabs_spec_helper.git", branch: "cat_2763_release_puppetlabs_syntax", require: false
+  gem "puppetlabs_spec_helper", '~> 9.0', require: false
   gem "puppet-blacksmith", '~> 7.0',      require: false
 end
 group :system_tests do
