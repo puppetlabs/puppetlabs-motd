@@ -9,6 +9,21 @@ else
 end
 source gemsource_default
 
+# A module targets the Puppet, Inc. architecture (puppetlabs-syntax, puppetlabs_spec_helper
+# 9.x, and so on) by default. It only opts into the OpenVox architecture -- and the older
+# gem generation that goes with it -- by explicitly declaring an "openvox" requirement in
+# its own metadata.json. No requirement, or an explicit "puppet" requirement, both mean
+# "puppet" architecture.
+def puppet_module?
+  return true unless File.file?('metadata.json')
+
+  require 'json'
+  metadata = JSON.parse(File.read('metadata.json'))
+  Array(metadata['requirements']).none? { |r| r['name'] == 'openvox' }
+rescue JSON::ParserError
+  true
+end
+
 def location_for(place_or_constraint, fake_constraint = nil, opts = {})
   git_url_regex  = /\A(?<url>(?:https?|git)[:@][^#]*)(?:#(?<branch>.*))?/
   file_url_regex = %r{\Afile://(?<path>.*)}
@@ -36,40 +51,61 @@ def print_gem_statement_for(gems)
 end
 
 group :development do
-  gem "json", '= 2.6.1',                         require: false if Gem::Requirement.create(['>= 3.1.0', '< 3.1.3']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "json", '= 2.6.3',                         require: false if Gem::Requirement.create(['>= 3.2.0', '< 4.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "racc", '~> 1.4.0',                        require: false if Gem::Requirement.create(['>= 2.7.0', '< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "deep_merge", '~> 1.2.2',                  require: false
-  gem "voxpupuli-puppet-lint-plugins", '~> 7.0', require: false
-  gem "facterdb", '~> 2.1',                      require: false if Gem::Requirement.create(['< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "facterdb", '~> 3.0',                      require: false if Gem::Requirement.create(['>= 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "metadata-json-lint", '~> 4.0',            require: false
-  gem "json-schema", '< 5.1.1',                  require: false
-  gem "rspec-puppet-facts", '~> 4.0',            require: false if Gem::Requirement.create(['< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "rspec-puppet-facts", '~> 5.0',            require: false if Gem::Requirement.create(['>= 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
-  gem "dependency_checker", '~> 1.0.0',          require: false
-  gem "parallel_tests", '= 3.12.1',              require: false
-  gem "pry", '~> 0.10',                          require: false
-  gem "simplecov-console", '~> 0.9',             require: false
-  gem "puppet-debugger", '~> 1.6',               require: false
-  gem "rubocop", '~> 1.73.0',                    require: false
-  gem "rubocop-performance", '~> 1.24.0',        require: false
-  gem "rubocop-rspec", '~> 3.5.0',               require: false
-  gem "rubocop-rspec_rails", '~> 2.31.0',        require: false
-  gem "rubocop-factory_bot", '~> 2.27.0',        require: false
-  gem "rubocop-capybara", '~> 2.22.0',           require: false
-  gem "rb-readline", '= 0.5.5',                  require: false, platforms: [:mswin, :mingw, :x64_mingw]
-  gem "bigdecimal", '< 3.2.2',                   require: false, platforms: [:mswin, :mingw, :x64_mingw]
+  gem "json", '= 2.6.1',                  require: false if Gem::Requirement.create(['>= 3.1.0', '< 3.1.3']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "json", '= 2.6.3',                  require: false if Gem::Requirement.create(['>= 3.2.0', '< 4.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "json", '= 2.18.0',                 require: false if Gem::Requirement.create(['>= 4.0.0', '< 5.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "racc", '~> 1.4.0',                 require: false if Gem::Requirement.create(['>= 2.7.0', '< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "deep_merge", '~> 1.2.2',           require: false
+  gem "facterdb", '~> 2.1',               require: false if Gem::Requirement.create(['< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "facterdb", '~> 3.0',               require: false if Gem::Requirement.create(['>= 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "metadata-json-lint", '~> 4.0',     require: false
+  gem "json-schema", '< 5.1.1',           require: false
+  gem "rspec-puppet-facts", '~> 4.0',     require: false if Gem::Requirement.create(['< 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "rspec-puppet-facts", '~> 5.0',     require: false if Gem::Requirement.create(['>= 3.0.0']).satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  gem "dependency_checker", '~> 1.0.0',   require: false
+  gem "parallel_tests", '= 3.12.1',       require: false
+  gem "pry", '~> 0.10',                   require: false
+  gem "simplecov-console", '~> 0.9',      require: false
+  gem "puppet-debugger", '~> 1.6',        require: false
+  gem "rubocop", '~> 1.73.0',             require: false
+  gem "rubocop-performance", '~> 1.24.0', require: false
+  gem "rubocop-hash_inspect", '~> 0.2',   require: false
+  gem "rubocop-rspec", '~> 3.5.0',        require: false
+  gem "rubocop-rspec_rails", '~> 2.31.0', require: false
+  gem "rubocop-factory_bot", '~> 2.27.0', require: false
+  gem "rubocop-capybara", '~> 2.22.0',    require: false
+  gem "rb-readline", '= 0.5.5',           require: false, platforms: [:windows]
+  gem "bigdecimal", '< 3.2.2',            require: false, platforms: [:windows]
 end
 group :development, :release_prep do
-  gem "puppet-strings", '~> 4.0',         require: false
-  gem "puppetlabs_spec_helper", '~> 9.0', require: false
-  gem "puppet-blacksmith", '~> 7.0',      require: false
+  gem "puppet-strings", '>= 4.0', '< 6.0',     require: false
+  gem "puppet-blacksmith", '>= 7.0', '< 10.0', require: false
 end
 group :system_tests do
-  gem 'puppet_litmus', '~> 2.5',   require: false
-  gem "CFPropertyList", '< 3.0.7', require: false, platforms: [:mswin, :mingw, :x64_mingw]
+  gem "puppet_litmus", '~> 2.5',   require: false
+  gem "faraday", '~> 2.5',         require: false
+  gem "CFPropertyList", '< 3.0.7', require: false if RUBY_PLATFORM.include?('darwin')
   gem "serverspec", '~> 2.41',     require: false
+end
+
+# See ADR 0001 (docs/adr/0001-*.md): every gem whose compatible version differs by
+# puppet-vs-openvox architecture lives here, collected in one place. puppet_module? (defined
+# above) decides live, on every bundle install/bundle exec, which side this module resolves
+# to -- true unless this module's own metadata.json declares an "openvox" requirement.
+if puppet_module?
+  group :development do
+    gem "voxpupuli-puppet-lint-plugins", '~> 7.0', require: false
+  end
+  group :development, :release_prep do
+    gem "puppetlabs_spec_helper", '~> 9.0', require: false
+  end
+else
+  group :development do
+    gem "voxpupuli-puppet-lint-plugins", '~> 6.0', require: false
+  end
+  group :development, :release_prep do
+    gem "puppetlabs_spec_helper", '~> 8.0', require: false
+  end
 end
 
 gems = {}

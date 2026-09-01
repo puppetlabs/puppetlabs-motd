@@ -18,7 +18,6 @@ jobs:
   Acceptance:
     needs: Spec
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
-    secrets: "inherit"
     with:
       ruby_version: "3.2"
       flags: >-
