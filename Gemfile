@@ -42,6 +42,30 @@ def location_for(place_or_constraint, fake_constraint = nil, opts = {})
   end
 end
 
+# Floor puppet only when we're actually resolving against a puppetcore-capable source: official
+# puppetcore via PUPPET_FORGE_TOKEN, an internal mirror via GEM_SOURCE_PUPPETCORE, or GEM_SOURCE
+# itself pointed at a proxy that also mirrors puppetcore (e.g. Artifactory) -- any of which
+# resolve puppetcore_source away from the hardcoded public rubygems.org default. Comparing
+# against that literal (rather than the possibly-overridden gemsource_default) matters: a plain
+# GEM_SOURCE override with no separate GEM_SOURCE_PUPPETCORE would otherwise make
+# gemsource_puppetcore equal gemsource_default and wrongly skip the floor. Public rubygems.org
+# itself tops out at 8.10.0 and can't hit the buggy 8.17+ releases at all, so flooring there
+# would just fail resolution outright.
+#
+# The floor version is also Ruby-version-aware: Ruby >= 4.0 needs Puppet 9.x (the only line
+# built against Ruby 4), everything below needs Puppet 8.x. This only affects the *default* --
+# CI matrix cells needing a specific Puppet line already set PUPPET_GEM_VERSION explicitly
+# either way. Note: puppetcore9-nightly reachability is a known flaky external dependency
+# (PA-8337, tracked separately) -- a Ruby4 shell with no PUPPET_GEM_VERSION override could see
+# resolution fail if puppetcore9 is unreachable that day; that's a puppetcore-side availability
+# issue, not a bug in this floor logic.
+def puppet_floor_version(puppetcore_source)
+  return nil if puppetcore_source == 'https://rubygems.org'
+
+  ruby4_or_later = Gem::Requirement.create('>= 4.0.0').satisfied_by?(Gem::Version.new(RUBY_VERSION.dup))
+  ruby4_or_later ? '~> 9.0' : '~> 8.21'
+end
+
 # Print debug information if DEBUG_GEMS or VERBOSE is set
 def print_gem_statement_for(gems)
   puts 'DEBUG: Gem definitions that will be generated:'
@@ -110,16 +134,7 @@ end
 
 gems = {}
 bolt_version = ENV.fetch('BOLT_GEM_VERSION', nil)
-# Puppet 8.17+ (available on puppetcore, not on public rubygems.org -- which tops out at
-# 8.10.0) constrains multi_json's upper bound; leaving this fully unconstrained lets Bundler
-# backtrack past that constraint to whatever older puppet release has no multi_json dependency
-# at all if something else in the graph pulls in a newer multi_json -- resolving to an
-# arbitrary old puppet (seen resolving as low as 8.13/8.16) instead of the latest 8.x. Floor it
-# only when puppetcore is actually in play (PUPPET_FORGE_TOKEN set): public rubygems.org can't
-# hit the buggy 8.17+ releases at all (they don't exist there), so forcing '~> 8.21' when
-# resolving against it would just fail outright with no matching version. CI matrix cells that
-# need a different Puppet line still set PUPPET_GEM_VERSION explicitly either way.
-puppet_default_version = ENV['PUPPET_FORGE_TOKEN'] ? '~> 8.21' : nil
+puppet_default_version = puppet_floor_version(gemsource_puppetcore)
 puppet_version = ENV.fetch('PUPPET_GEM_VERSION', puppet_default_version)
 facter_version = ENV.fetch('FACTER_GEM_VERSION', nil)
 hiera_version = ENV.fetch('HIERA_GEM_VERSION', nil)
