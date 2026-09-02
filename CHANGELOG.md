@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v8.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v8.0.0) - 2026-06-28
+## [v8.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v8.1.0) - 2026-09-02
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v8.0.0...v8.1.0)
+
+### Added
+
+- (MODULES-11702) Add Puppet 9 support [#561](https://github.com/puppetlabs/puppetlabs-motd/pull/561) ([imaqsood](https://github.com/imaqsood))
+
+## [v8.0.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v8.0.0) - 2026-06-29
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v7.3.0...v8.0.0)
 
