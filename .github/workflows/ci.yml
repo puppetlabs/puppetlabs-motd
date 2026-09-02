@@ -1,4 +1,4 @@
-name: "CI"
+name: "ci"
 
 on:
   pull_request:
@@ -21,29 +21,17 @@ jobs:
   Spec:
     if: github.event_name != 'pull_request_target'
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_ci.yml@main"
-    with:
-      # puppet_litmus -> bolt 4.x -> faraday-patron -> patron builds a libcurl native extension;
-      # the runner has no libcurl headers, so install them before bundle (Puppet 9 lane, Ruby 4).
-      additional_packages: "libcurl4-openssl-dev"
-      ruby_version: "3.2"
     secrets: "inherit"
 
   Acceptance:
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false) ||
-      (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.fork == true && contains(github.event.pull_request.labels.*.name, 'allowed-for-ci'))
+      (github.event_name == 'pull_request' &&
+       github.event.pull_request.head.repo.fork == false) ||
+      (github.event_name == 'pull_request_target' &&
+       github.event.pull_request.head.repo.fork == true &&
+       contains(github.event.pull_request.labels.*.name, 'allowed-for-ci'))
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     with:
-      ruby_version: "3.2"
-      flags: >-
-        --nightly
-        --collection-platform-exclude 9:redhat-7
-        --collection-platform-exclude 9:centos-7
-        --collection-platform-exclude 9:oraclelinux-7
-        --collection-platform-exclude 9:scientific-7
-        --collection-platform-exclude 9:debian-10
-        --collection-platform-exclude 9:ubuntu-18.04
-        --collection-platform-exclude 9:ubuntu-20.04
-        --collection-platform-exclude 9:windows-2012r2-x86
+      flags: "--nightly --collection-platform-exclude 9:redhat-7 --collection-platform-exclude 9:centos-7 --collection-platform-exclude 9:oraclelinux-7 --collection-platform-exclude 9:scientific-7 --collection-platform-exclude 9:debian-10 --collection-platform-exclude 9:ubuntu-18.04 --collection-platform-exclude 9:ubuntu-20.04 --collection-platform-exclude 9:windows-2012r2-x86"
     secrets: "inherit"
