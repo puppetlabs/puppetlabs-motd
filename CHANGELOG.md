@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v8.1.1](https://github.com/puppetlabs/puppetlabs-motd/tree/v8.1.1) - 2026-09-04
+
+[Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v8.1.0...v8.1.1)
+
+### Other
+
+- (MODULES-11708) Widen puppetlabs/registry dependency to allow 6.x [#571](https://github.com/puppetlabs/puppetlabs-motd/pull/571) ([span786](https://github.com/span786))
+
 ## [v8.1.0](https://github.com/puppetlabs/puppetlabs-motd/tree/v8.1.0) - 2026-09-02
 
 [Full Changelog](https://github.com/puppetlabs/puppetlabs-motd/compare/v8.0.0...v8.1.0)
