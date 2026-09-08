@@ -47,8 +47,8 @@ describe 'motd', type: :class do
           # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
           # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
           # "RedHat 9.3 x86_64\n\nFQDN:         foo.example.com (172.16.254.254 OR 10.109.1.2)\n
-          # Processor:    (Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz OR AMD Ryzen 7 PRO 4750U with Radeon Graphic)s\nKernel:       Linux\nMemory Size:  1.44 GiB\n",
-          content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\(\d*\.\d*\.\d*\.\d*\)\nProcessor:\s*(Intel\(R\)\sXeon\(R\)|AMD\sRyzen).*\nKernel:\s*Linux\nMemory\sSize:\s*\d+\.\d+\sGiB},
+          # Processor:    (Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz OR AMD Ryzen 7 PRO 4750U with Radeon Graphic)s\nKernel:       Linux\nMemory:       1.44 GiB\n",
+          content: %r{RedHat\s9\.3\sx86_64\n\nFQDN:\s*foo\.example\.com\s\(\d*\.\d*\.\d*\.\d*\)\nProcessor:\s*(Intel\(R\)\sXeon\(R\)|AMD\sRyzen).*\nKernel:\s*Linux\nMemory:\s*\d+\.\d+\sGiB},
           owner: 'root', group: 'root', mode: '0644'
         )
       end
@@ -206,10 +206,10 @@ describe 'motd', type: :class do
           type: 'string',
           # The following Regex checks for the matching content in this comment and allows for two different IP values to be matched after foo.example.com. This is a workaround to ensure that PDK
           # integration testing passes while the MOTD unit tests dont break. The string we are looking for is:
-          # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory Size:  14.34 GiB\n",
+          # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    Intel(R) Xeon(R) Platinum 8272CL CPU @ 2.60GHz\nKernel:       windows\nMemory:       14.34 GiB\n",
           # or
-          # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    12th Gen Intel(R) Core(TM) i9-12900K\nKernel:       windows\nMemory Size:  1.53 GiB"
-          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\(\d*\.\d*\.\d*\.\d*\)\nProcessor:\s*(?:Intel\(R\)\sXeon\(R\)|12th\sGen\sIntel).*\nKernel:\s*windows\nMemory\sSize:\s*\d+\.\d+\sGiB},
+          # "windows 10 x64\n\nFQDN:         foo.example.com (172.16.254.254)\nProcessor:    12th Gen Intel(R) Core(TM) i9-12900K\nKernel:       windows\nMemory:       1.53 GiB"
+          data: %r{windows\s10\sx64\n\nFQDN:\s*foo.example.com\s\(\d*\.\d*\.\d*\.\d*\)\nProcessor:\s*(?:Intel\(R\)\sXeon\(R\)|12th\sGen\sIntel).*\nKernel:\s*windows\nMemory:\s*\d+\.\d+\sGiB},
         )
       end
     end
@@ -261,7 +261,7 @@ describe 'motd', type: :class do
         },
         memory: {
           system: {
-            available: '16.00 GB'
+            total: '16.00 GB'
           }
         },
         processors: {
@@ -277,7 +277,7 @@ describe 'motd', type: :class do
         expect(subject).to contain_File('/etc/motd').with(
           ensure: 'file',
           backup: 'false',
-          content: "FreeBSD 11 amd64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel\nKernel:       FreeBSD\nMemory Size:  16.00 GB\n",
+          content: "FreeBSD 11 amd64\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    intel\nKernel:       FreeBSD\nMemory:       16.00 GB\n",
         )
       end
     end
@@ -344,7 +344,7 @@ describe 'motd', type: :class do
         },
         memory: {
           system: {
-            available: '16.00 GB'
+            total: '16.00 GB'
           }
         },
         processors: {
@@ -359,7 +359,7 @@ describe 'motd', type: :class do
       it do
         expect(subject).to contain_File('/etc/motd').with(
           ensure: 'file', backup: 'false',
-          content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory Size:  16.00 GB\n",
+          content: "AIX 7100-04-02-1614 PowerPC_POWER8\n\nFQDN:         test.example.com (123.23.243.1)\nProcessor:    \PowerPC_POWER8\nKernel:       AIX\nMemory:       16.00 GB\n",
           owner: 'bin', group: 'bin', mode: '0644'
         )
       end
