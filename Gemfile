@@ -67,7 +67,9 @@ group :development, :release_prep do
   gem "puppet-blacksmith", '~> 7.0',      require: false
 end
 group :system_tests do
-  gem 'puppet_litmus', '~> 2.5',   require: false
+  # TEMPORARY, DO NOT MERGE: testing puppetlabs/puppet_litmus#630 (Ubuntu 26.04 docker
+  # support) before it's released. Revert to the '~> 2.5' rubygems constraint once tested.
+  gem 'puppet_litmus', git: 'https://github.com/puppetlabs/puppet_litmus.git', branch: 'add-ubuntu-26.04-docker-support', require: false
   gem "CFPropertyList", '< 3.0.7', require: false, platforms: [:mswin, :mingw, :x64_mingw]
   gem "serverspec", '~> 2.41',     require: false
 end
