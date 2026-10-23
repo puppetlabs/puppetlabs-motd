@@ -20,6 +20,10 @@ jobs:
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     secrets: "inherit"
     with:
+      # TEMPORARY, validation-only (DO NOT MERGE): points at provision_service#445's
+      # ephemeral per-PR branch deployment instead of production, to check whether
+      # that branch regresses provisioning for any of the platforms below.
+      service_url: "https://facade-per-job-machine-type-1079112402178.europe-west1.run.app/v1/provision"
       ruby_version: "3.2"
       flags: >-
         --nightly
