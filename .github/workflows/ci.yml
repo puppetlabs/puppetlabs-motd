@@ -35,6 +35,10 @@ jobs:
       (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.fork == true && contains(github.event.pull_request.labels.*.name, 'allowed-for-ci'))
     uses: "puppetlabs/cat-github-actions/.github/workflows/module_acceptance.yml@main"
     with:
+      # TEMPORARY, validation-only (DO NOT MERGE): points at provision_service
+      # PR #449's branch facade (sles-payg-registration) instead of production,
+      # to verify SLES PAYG registration before merge.
+      service_url: "https://facade-sles-payg-registration-1079112402178.europe-west1.run.app/v1/provision"
       ruby_version: "3.2"
       flags: >-
         --nightly
