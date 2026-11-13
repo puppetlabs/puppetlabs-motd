@@ -12,19 +12,19 @@ describe 'motd', type: :class do
           family: 'Unknown',
           architecture: 'Unknown',
           release: {
-            major: 'Unknown'
-          }
+            major: 'Unknown',
+          },
         },
         memory: {
           system: {
-            available: 'Unknown'
-          }
+            available: 'Unknown',
+          },
         },
         processors: {
           models: [
             'Unknown',
-          ]
-        }
+          ],
+        },
       }
     end
 
@@ -58,7 +58,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
-          template: 'motd/spec.epp'
+          template: 'motd/spec.epp',
         }
       end
 
@@ -124,7 +124,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           issue_content: 'Hello!',
-          issue_template: 'motd/spec.epp'
+          issue_template: 'motd/spec.epp',
         }
       end
 
@@ -166,7 +166,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           issue_net_content: 'Hello!',
-          issue_net_template: 'motd/spec.epp'
+          issue_net_template: 'motd/spec.epp',
         }
       end
 
@@ -218,7 +218,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
-          windows_motd_title: 'This is the title.'
+          windows_motd_title: 'This is the title.',
         }
       end
 
@@ -252,23 +252,23 @@ describe 'motd', type: :class do
           architecture: 'amd64',
           release: {
             full: '11',
-            major: '11'
-          }
+            major: '11',
+          },
         },
         networking: {
           fqdn: 'test.example.com',
-          ip: '123.23.243.1'
+          ip: '123.23.243.1',
         },
         memory: {
           system: {
-            available: '16.00 GB'
-          }
+            available: '16.00 GB',
+          },
         },
         processors: {
           models: [
             'intel',
-          ]
-        }
+          ],
+        },
       }
     end
 
@@ -286,7 +286,7 @@ describe 'motd', type: :class do
       let(:params) do
         {
           content: 'Hello!',
-          template: 'motd/spec.epp'
+          template: 'motd/spec.epp',
         }
       end
 
@@ -335,23 +335,23 @@ describe 'motd', type: :class do
           family: 'AIX',
           architecture: 'PowerPC_POWER8',
           release: {
-            full: '7100-04-02-1614'
-          }
+            full: '7100-04-02-1614',
+          },
         },
         networking: {
           fqdn: 'test.example.com',
-          ip: '123.23.243.1'
+          ip: '123.23.243.1',
         },
         memory: {
           system: {
-            available: '16.00 GB'
-          }
+            available: '16.00 GB',
+          },
         },
         processors: {
           models: [
             'PowerPC_POWER8',
-          ]
-        }
+          ],
+        },
       }
     end
 
