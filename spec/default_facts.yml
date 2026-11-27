@@ -1,6 +1,6 @@
 # Use default_module_facts.yml for module specific facts.
 #
-# Facts specified here will override the values provided by rspec-puppet-facts.
+# Facts specified here will override the values provided by rspec-puppetlabs-facts.
 ---
 networking:
   ip: "172.16.254.254"

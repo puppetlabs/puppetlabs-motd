@@ -10,13 +10,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the motd file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/motd')).to be_file
-        expect(file('/etc/motd')).to contain("Hello world!\n")
-      end
+      expect(file('/etc/motd')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the motd content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/motd')).to contain("Hello world!\n") unless os[:family] == 'windows'
     end
   end
 
@@ -27,13 +30,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the motd file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/motd')).to be_file
-        expect(file('/etc/motd')).to contain('Test Template for Rspec')
-      end
+      expect(file('/etc/motd')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the motd content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/motd')).to contain('Test Template for Rspec') unless os[:family] == 'windows'
     end
   end
 
@@ -45,13 +51,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the issue file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/issue')).to be_file
-        expect(file('/etc/issue')).to contain("Hello world!\n")
-      end
+      expect(file('/etc/issue')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the issue content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/issue')).to contain("Hello world!\n") unless os[:family] == 'windows'
     end
   end
 
@@ -63,13 +72,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the issue file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/issue')).to be_file
-        expect(file('/etc/issue')).to contain('Test Template for Rspec')
-      end
+      expect(file('/etc/issue')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the issue content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/issue')).to contain('Test Template for Rspec') unless os[:family] == 'windows'
     end
   end
 
@@ -81,13 +93,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the issue.net file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/issue.net')).to be_file
-        expect(file('/etc/issue.net')).to contain("Hello world!\n")
-      end
+      expect(file('/etc/issue.net')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the issue.net content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/issue.net')).to contain("Hello world!\n") unless os[:family] == 'windows'
     end
   end
 
@@ -99,13 +114,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the issue.net file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/issue.net')).to be_file
-        expect(file('/etc/issue.net')).to contain('Test Template for Rspec')
-      end
+      expect(file('/etc/issue.net')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the issue.net content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/issue.net')).to contain('Test Template for Rspec') unless os[:family] == 'windows'
     end
   end
 
@@ -117,13 +135,16 @@ describe 'Message of the day' do
         }
     PUPPETCODE
 
-    it do
+    it 'creates the motd file' do
       idempotent_apply(pp)
 
-      unless os[:family] == 'windows'
-        expect(file('/etc/motd')).to be_file
-        expect(file('/etc/motd')).to contain("Hello world!\n")
-      end
+      expect(file('/etc/motd')).to be_file unless os[:family] == 'windows'
+    end
+
+    it 'sets the motd content' do
+      idempotent_apply(pp)
+
+      expect(file('/etc/motd')).to contain("Hello world!\n") unless os[:family] == 'windows'
     end
 
     describe file('/etc/pam.d/sshd') do
